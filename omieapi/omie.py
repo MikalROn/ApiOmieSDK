@@ -1,6 +1,7 @@
 from requests import post
 from json import JSONDecodeError
 
+
 class Omie:
 
     def __init__(self, omie_app_key: str, omie_app_secret: str):
@@ -155,7 +156,7 @@ class Conta(Omie):
         :param registros_por_pagina:            integer	Número de registros retornados
         :param apenas_importado_api:            Bool	Tipo de Cartão para Administradoras de Cartão.
         """
-        apenas_importado_api = self._bool_para_sn( apenas_importado_api )
+        apenas_importado_api = self._bool_para_sn(apenas_importado_api)
         return self._chamada_api_conta(
             call='ListarContasCorrentes',
             param={
@@ -170,7 +171,7 @@ class Conta(Omie):
             codigo_banco: str, descricao: str, saldo_inicial: float
     ) -> dict:
         """
-        :param cCodCCInt:                           nCodCC	integer	Código da conta corrente no Omie.
+        :param cCodCCInt:                           integer	Código da conta corrente no Omie.
         :param tipo_conta_corrente:                 string2	Tipo da Conta Corrente.
         :param codigo_banco:                        string3	Código do banco
         :param descricao:                           string40	Descrição da conta corrente.
@@ -188,10 +189,25 @@ class Conta(Omie):
         )
         return resposta
 
-    def consultar_conta_corrente(self, nCodCC: int, cCodCCint: str) -> dict:
+    def excluir_conta_corrente(self, nCodCC: int, cCodCCInt: str):
         """
         :param nCodCC:          integer	Código da conta corrente no Omie.
-        :param cCodCCint:       cCodCCInt	string20	Código de Integração do Parceiro.
+        :param cCodCCInt:       string20	Código de Integração do Parceiro.
+
+        :return -> : dicionario com resultado da requisição ou erro
+        """
+        return self._chamada_api_conta(
+            call='ExcluirContaCorrente',
+            param={
+                    "nCodCC": nCodCC,
+                    "cCodCCInt": cCodCCInt
+            }
+        )
+
+    def consultar_conta_corrente(self, nCodCC: int, cCodCCInt: str) -> dict:
+        """
+        :param nCodCC:          integer	Código da conta corrente no Omie.
+        :param cCodCCInt:       string20	Código de Integração do Parceiro.
 
         :return -> : dicionario com resultado da requisição ou erro
         """
@@ -199,7 +215,7 @@ class Conta(Omie):
             call='ConsultarContaCorrente',
             param={
                 "nCodCC": nCodCC,
-                "cCodCCInt": cCodCCint
+                "cCodCCInt": cCodCCInt
             }
         )
 
@@ -217,4 +233,25 @@ class Conta(Omie):
                 "registros_por_pagina": registros_por_pagina,
                 "apenas_importado_api": apenas_importado_api
             }
+        )
+    def alterar_conta_corrente(
+            self, cCodCCInt: int, tipo_conta_corrente: str, codigo_banco: str, descricao: str, saldo_inicial: float
+    ) -> dict:
+        """
+        :param cCodCCInt:                           integer	Código da conta corrente no Omie.
+        :param tipo_conta_corrente:                 string2	Tipo da Conta Corrente.
+        :param codigo_banco:                        string3	Código do banco
+        :param descricao:                           string40	Descrição da conta corrente.
+        :param saldo_inicial:                       decimal	Saldo Inicial da Conta Corrente
+        """
+        return self._chamada_api_conta(
+            call='AlterarContaCorrente',
+            param={
+                "cCodCCInt": cCodCCInt,
+                "tipo_conta_corrente": tipo_conta_corrente,
+                "codigo_banco": codigo_banco,
+                "descricao": descricao,
+                "saldo_inicial": saldo_inicial
+            }
+
         )
