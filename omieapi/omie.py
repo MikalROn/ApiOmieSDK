@@ -150,7 +150,9 @@ class Conta(Omie):
             param=param
         )
 
-    def listar_contas_correntes(self, pagina: int, registros_por_pagina: int, apenas_importado_api: bool):
+    def listar_contas_correntes(
+            self, pagina: int, registros_por_pagina: int, apenas_importado_api: bool
+    ) -> dict:
         """
         :param pagina:                          integer	Número da página que será listada.
         :param registros_por_pagina:            integer	Número de registros retornados
@@ -189,7 +191,9 @@ class Conta(Omie):
         )
         return resposta
 
-    def excluir_conta_corrente(self, nCodCC: int, cCodCCInt: str):
+    def excluir_conta_corrente(
+            self, nCodCC: int, cCodCCInt: str
+    ) -> dict:
         """
         :param nCodCC:          integer	Código da conta corrente no Omie.
         :param cCodCCInt:       string20	Código de Integração do Parceiro.
@@ -204,7 +208,9 @@ class Conta(Omie):
             }
         )
 
-    def consultar_conta_corrente(self, nCodCC: int, cCodCCInt: str) -> dict:
+    def consultar_conta_corrente(
+            self, nCodCC: int, cCodCCInt: str
+    ) -> dict:
         """
         :param nCodCC:          integer	Código da conta corrente no Omie.
         :param cCodCCInt:       string20	Código de Integração do Parceiro.
@@ -220,7 +226,8 @@ class Conta(Omie):
         )
 
     def lista_resumo_contas_correntes(
-            self, pagina: int, registros_por_pagina: int, apenas_importado_api: bool) -> dict:
+            self, pagina: int, registros_por_pagina: int, apenas_importado_api: bool
+    ) -> dict:
         """
         :param pagina:                          integer	Número da página que será listada.
         :param registros_por_pagina:            integer	Número de registros retornados
@@ -234,6 +241,7 @@ class Conta(Omie):
                 "apenas_importado_api": apenas_importado_api
             }
         )
+
     def alterar_conta_corrente(
             self, cCodCCInt: int, tipo_conta_corrente: str, codigo_banco: str, descricao: str, saldo_inicial: float
     ) -> dict:
@@ -253,5 +261,22 @@ class Conta(Omie):
                 "descricao": descricao,
                 "saldo_inicial": saldo_inicial
             }
+        )
 
+    def pesquisa_conta_corrente(
+            self, pagina: int, registros_por_pagina: int, apenas_importado_api: bool
+    ) -> dict:
+        """
+        :param pagina:                          integer	Número da página que será listada.
+        :param registros_por_pagina:            integer	Número de registros retornados
+        :param apenas_importado_api:            Bool	Tipo de Cartão para Administradoras de Cartão.
+        """
+        apenas_importado_api = self._bool_para_sn(apenas_importado_api)
+        return self._chamada_api_conta(
+            call='PesquisarContaCorrente',
+            param={
+                "pagina": pagina,
+                "registros_por_pagina": registros_por_pagina,
+                "apenas_importado_api": apenas_importado_api
+            }
         )
