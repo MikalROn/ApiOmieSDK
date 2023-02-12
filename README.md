@@ -1,1 +1,3 @@
 # ApiOmie
+
+> Status da aplicação: Em desenvolvimento....

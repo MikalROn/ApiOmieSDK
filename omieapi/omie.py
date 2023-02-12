@@ -1,5 +1,5 @@
 from requests import post
-
+from json import JSONDecodeError
 
 class Omie:
 
@@ -26,22 +26,35 @@ class Omie:
         return 'S' if boolean else 'N'
 
     def _post_request(self, url: str, json: dict) -> dict:
-        r = post(url, headers=self._head, json=json)
-        if r.status_code == 200:
-            return r.json()
-        else:
+        try:
+            r = post(url, headers=self._head, json=json)
+            if r.status_code == 200:
+                try:
+                    return r.json()
+                except JSONDecodeError as erro:
+                    return {
+                        'Error': 'JSON Decode Error',
+                        'Message': f'{erro}'
+                    }
+            else:
+                return {
+                    'Error': r.status_code,
+                    'headers':  r.headers,
+                    'Mensagem': r.text
+                }
+        except Exception as erro:
             return {
-                'Error': r.status_code,
-                'Mensagem': r.text
-            }
+                    'Error': 'Erro ao fazer requisição ',
+                    'Mensagem': f'{erro}'
+                }
 
     def _chamar_api(self, endpoint: str = '', call: str = '', param: dict = None) -> dict:
         """
         :keyword endpoint:         Final da url EX: geral/contacorrente/
         :keyword call:             Chamada para api  EX: ListarContasCorrentes
-        :keyword param:            Parametros para a chamada Ex:{"pagina": 1,
-                                                  "registros_por_pagina": 100,
-                                                  "apenas_importado_api": "N"}
+        :keyword param:            Parametros para a chamada
+                                   Ex:{"pagina": 1, "registros_por_pagina": 100, "apenas_importado_api": "N"}
+
         :return:                 Resultado da Requisição ou erro
         """
         url = f'{self._endpoint}{endpoint}'
@@ -51,13 +64,14 @@ class Omie:
 
 class Produtos(Omie):
     def listar_produtos(
-        self, registros: int = 100,
-        filtrar_pdv: bool = True, pagina: int = 1,
-        apenas_importado_api: bool = False
+            self, registros: int = 100,
+            filtrar_pdv: bool = True, pagina: int = 1,
+            apenas_importado_api: bool = False
     ) -> dict:
 
         apenas_importado_api = self._bool_para_sn(apenas_importado_api)
         filtrar_pdv = self._bool_para_sn(filtrar_pdv)
+
         return self._chamar_api(
             call='ListarProdutos',
             endpoint='geral/produtos/',
@@ -83,7 +97,7 @@ class NFCe(Omie):
             idVendedor: int = None, idProjeto: int = None,
             idLocalEstoque: int = None, cNaoMovEstoque: str = '',
             cNaoGerarTitulo: str = '', cIncluirProduto: str = ''
-            ) -> dict:
+    ) -> dict:
         """
         * Todos os campos são obrigatórios *
 
@@ -121,13 +135,16 @@ class NFCe(Omie):
                    "cNaoMovEstoque": cNaoMovEstoque,
                    "cNaoGerarTitulo": cNaoGerarTitulo,
                    "cIncluirProduto": cIncluirProduto
-            }
+                   }
         )
 
 
 class Conta(Omie):
+    """ Classe que possui todos os metodos ralacionados a contas correntes no Omie """
     def _chamada_api_conta(self, call: str = '', param: dict = None) -> dict:
+        """ Metodo feito para carregar o endpoint padrão da classe """
         return self._chamar_api(
+            endpoint='geral/contacorrente/',
             call=call,
             param=param
         )
@@ -138,7 +155,7 @@ class Conta(Omie):
         :param registros_por_pagina:            integer	Número de registros retornados
         :param apenas_importado_api:            Bool	Tipo de Cartão para Administradoras de Cartão.
         """
-        apenas_importado_api = self._bool_para_sn(apenas_importado_api)
+        apenas_importado_api = self._bool_para_sn( apenas_importado_api )
         return self._chamada_api_conta(
             call='ListarContasCorrentes',
             param={
@@ -148,9 +165,8 @@ class Conta(Omie):
             }
         )
 
-
     def incluir_conta_corrente(
-            self,  cCodCCInt: int, tipo_conta_corrente: str,
+            self, cCodCCInt: int, tipo_conta_corrente: str,
             codigo_banco: str, descricao: str, saldo_inicial: float
     ) -> dict:
         """
@@ -176,7 +192,8 @@ class Conta(Omie):
         """
         :param nCodCC:          integer	Código da conta corrente no Omie.
         :param cCodCCint:       cCodCCInt	string20	Código de Integração do Parceiro.
-        :return: dicionario com resultado da requisição ou erro
+
+        :return -> : dicionario com resultado da requisição ou erro
         """
         return self._chamada_api_conta(
             call='ConsultarContaCorrente',
@@ -187,7 +204,7 @@ class Conta(Omie):
         )
 
     def lista_resumo_contas_correntes(
-            self, pagina: int, registros_por_pagina: int,apenas_importado_api: bool) -> dict:
+            self, pagina: int, registros_por_pagina: int, apenas_importado_api: bool) -> dict:
         """
         :param pagina:                          integer	Número da página que será listada.
         :param registros_por_pagina:            integer	Número de registros retornados

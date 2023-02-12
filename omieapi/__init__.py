@@ -1,1 +1,1 @@
-from omieapi import *
+from omie import *
