@@ -1,3 +1,3 @@
-# ApiOmie
+# ApiOmie (NÃO OFICIAL)
 
 > Status da aplicação: Em desenvolvimento....
