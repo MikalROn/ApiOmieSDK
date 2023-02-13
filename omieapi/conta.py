@@ -221,4 +221,32 @@ class Conta(Omie):
             }
         )
 
+    def cancelar_pagamento(self, codigo_baixa: int) -> dict:
+        """
+        :param codigo_baixa:            integer	Código para identificar a baixa do título no Contas a Pagar.
+        """
+        return self._chamar_api(
+            call='CancelarPagamento',
+            endpoint='financas/contapagar/',
+            param={
+                "codigo_baixa": codigo_baixa
+            }
+        )
+
+    def consulta_exclui_conta_pagar(self,metodo: str, codigo_lancamento_omie: int, codigo_lancamento_integracao: str) -> dict:
+        """
+        :param metodo:                          'ConsultarContaPagar', 'ExcluirContaPagar'
+        :param codigo_lancamento_omie:          integer	Código do Lançamento de Contas a Pagar.
+        :param codigo_lancamento_integracao:    string60	Código de Integração do Lançamento de Contas a Pagar
+        """
+        self._gerencia_metodo(['ConsultarContaPagar', 'ExcluirContaPagar'], metodo)
+        return self._chamar_api(
+            call=metodo,
+            endpoint='financas/contapagar/',
+            param={
+                "codigo_lancamento_omie": codigo_lancamento_omie,
+                "codigo_lancamento_integracao": codigo_lancamento_integracao
+            }
+        )
+
 
