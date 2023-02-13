@@ -25,6 +25,7 @@ class Omie:
     def _gerencia_metodo(self, lista_de_metodos: list, metodo):
         if metodo not in lista_de_metodos:
             raise ValueError(f'{metodo} Não existe!')
+
     @staticmethod
     def _bool_para_sn(boolean: bool):
         return 'S' if boolean else 'N'

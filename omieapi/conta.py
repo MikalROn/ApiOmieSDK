@@ -58,8 +58,6 @@ class Conta(Omie):
         """
         :param nCodCC:          integer	Código da conta corrente no Omie.
         :param cCodCCInt:       string20	Código de Integração do Parceiro.
-
-        :return -> : dicionario com resultado da requisição ou erro
         """
         return self._chamada_api_conta(
             call='ExcluirContaCorrente',
@@ -75,7 +73,6 @@ class Conta(Omie):
         """
         :param nCodCC:          integer	Código da conta corrente no Omie.
         :param cCodCCInt:       string20	Código de Integração do Parceiro.
-        :return -> : dicionario com resultado da requisição ou erro
         """
         return self._chamada_api_conta(
             call='ConsultarContaCorrente',
@@ -181,8 +178,8 @@ class Conta(Omie):
         :param metodo:          ExcluirLancCC or ConsultaLancCC     Um cancela o outro exclui lançamentos
         :param nCodLanc:        string40	                        Identificação do lançamento do extrato importado
         :param cCodIntLanc:     string20	                        Código do lançamento da conta corrente
-        :return:
         """
+        self._gerencia_metodo(['ExcluirLancCC' , 'ConsultaLancCC'], metodo)
         return self._chamar_api(
             call=metodo,
             endpoint='financas/contacorrentelancamentos',
