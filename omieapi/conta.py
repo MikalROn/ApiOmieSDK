@@ -3,7 +3,7 @@ from omieapi.omie import Omie
 
 class Conta(Omie):
     """ Classe que possui todos os metodos ralacionados a contas correntes no Omie """
-    def _chamada_api_conta(self, call: str = '', param: dict = None) -> dict:
+    def _chamada_api_conta(self, call: str = '', param: dict | tuple | list = None) -> dict:
         """ Metodo feito para carregar o endpoint padrão da classe """
         return self._chamar_api(
             endpoint='geral/contacorrente/',
@@ -141,3 +141,37 @@ class Conta(Omie):
                 "apenas_importado_api": apenas_importado_api
             }
         )
+    def lancamento_em_cc(
+            self, metodo: str, cCodIntLanc: str, nCodCC: int, dDtLanc: str, nValorLanc: float,
+            cCodCateg: str, cTipo: str,  nCodCliente: str, cObs: str
+    ) -> dict:
+        """
+        :param metodo:           IncluirLancCC or AlterarLancCC Um altera o outro inclui novas informações
+        :param cCodIntLanc:                         string20	Código da categoria
+        :param nCodCC:                              integer	    Código da conta corrente.
+        :param dDtLanc:                             string10	Data do lançamento na conta corrente.
+        :param nValorLanc:                          decimal	    Valor do lançamento
+        :param cCodCateg:                           string20	Código da categoria
+        :param cTipo:                               string5	    Tipo de documento.
+        :param nCodCliente:                         integer	    Código de Cliente / Favorecido.
+        :param cObs:                                text	    Observações.
+        """
+        self._gerencia_metodo(['IncluirLancCC', 'AlterarLancCC'], metodo)
+        return self._chamar_api(
+                call=metodo,
+                endpoint='financias/contacorentelancamento',
+                param={
+                    "cCodIntLanc": cCodIntLanc,
+                    "cabecalho": {
+                        "nCodCC": nCodCC,
+                        "dDtLanc": dDtLanc,
+                        "nValorLanc": nValorLanc
+                    }, "detalhes": {
+                        "cCodCateg": cCodCateg,
+                        "cTipo": cTipo,
+                        "nCodCliente": nCodCliente,
+                        "cObs": cObs}
+                }
+
+            )
+

@@ -14,14 +14,17 @@ class Omie:
         self._appsecret = omie_app_secret
         self._head = {'Content-type': 'application/json'}
 
-    def _gerar_json(self, call: str, param: dict) -> dict:
+    def _gerar_json(self, call: str, param: dict | tuple | list) -> dict:
         return {
             "call": call,
             "app_key": self._appkey,
             "app_secret": self._appsecret,
-            "param": [param]
+            "param": [*param]
         }
 
+    def _gerencia_metodo(self, lista_de_metodos: list, metodo):
+        if metodo not in lista_de_metodos:
+            raise ValueError(f'{metodo} Não existe!')
     @staticmethod
     def _bool_para_sn(boolean: bool):
         return 'S' if boolean else 'N'
@@ -49,7 +52,7 @@ class Omie:
                     'Mensagem': f'{erro}'
                 }
 
-    def _chamar_api(self, endpoint: str = '', call: str = '', param: dict = None) -> dict:
+    def _chamar_api(self, endpoint: str = '', call: str = '', param: dict | tuple | list = None) -> dict:
         """
         :keyword endpoint:         Final da url EX: geral/contacorrente/
         :keyword call:             Chamada para api  EX: ListarContasCorrentes
@@ -87,7 +90,7 @@ class Produtos(Omie):
 class CupomFiscal(Omie):
     def listar_cupomfiscal(self, metodo: str, nPagina: int, nRegPorPagina: int) -> dict:
         """
-        :param metodo           CuponsFiscais or CuponsItens or CuponsPagamentos    Meio de listagem
+        :param metodo:           CuponsFiscais or CuponsItens or CuponsPagamentos    Meio de listagem
 
             :CuponsFiscais: -> Listagem dos itens dos cupons fiscais
             :CuponsItens:   -> Listagem dos pagamentos dos cupons fiscais
@@ -96,10 +99,7 @@ class CupomFiscal(Omie):
         :param nPagina:         integer                                             numero da pagina
         :param nRegPorPagina:   integer                                             registros por página
         """
-        lista_de_metodos = ['CuponsFiscais', 'CuponsItens', 'CuponsPagamentos']
-        if metodo not in lista_de_metodos:
-            raise ValueError(f'{metodo} Não existe!')
-
+        self._gerencia_metodo(['CuponsFiscais', 'CuponsItens', 'CuponsPagamentos'], metodo)
         return self._chamar_api(
             call=metodo,
             endpoint='produtos/cupomfiscalconsultar/',
@@ -113,17 +113,13 @@ class CupomFiscal(Omie):
 
     def importar_NFCE(
             self,
-            emiNome: str = '', emiVersao: str = '',
-            emiId: str = '', chNFe: str = '',
-            nfceXml: str = '', nfceMd5: str = '',
-            cAcaoCliente: str = '', idCliente: int = None,
-            idVendedor: int = None, idProjeto: int = None,
-            idLocalEstoque: int = None, cNaoMovEstoque: str = '',
-            cNaoGerarTitulo: str = '', cIncluirProduto: str = ''
+            emiNome: str = None, emiVersao: str = None, emiId: str = None,
+            chNFe: str = None, nfceXml: str = None, nfceMd5: str = None,
+            cAcaoCliente: str = None, idCliente: int = None, idVendedor: int = None,
+            idProjeto: int = None, idLocalEstoque: int = None, cNaoMovEstoque: str = None,
+            cNaoGerarTitulo: str = None, cIncluirProduto: str = None
     ) -> dict:
         """
-        * Todos os campos são obrigatórios *
-
         :keyword emiNome:	        string20	Nome do aplicativo emissor do cupom fiscal.
         :keyword emiVersao:	        string20	Versão do aplicativo emissor do cupom fiscal.
         :keyword emiId:	            string20	Identificação do computador onde o aplicativo emissor do cupom fiscal está instalado. É o código do PDV.+
