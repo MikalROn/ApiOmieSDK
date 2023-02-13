@@ -189,3 +189,36 @@ class Conta(Omie):
             }
         )
 
+    def altelrar_incluir_conta_pagar(
+            self, metodo: str,
+            codigo_lancamento_integracao: str, codigo_cliente_fornecedor: int, data_vencimento: str,
+            valor_documento: float, codigo_categoria: str, data_previsao: str, id_conta_corrente: int
+    ) -> dict:
+        """
+        :param metodo:            'AlterarContaPagar' , 'IncluirContaPagar', 'UpsertContaPagar',
+        :param codigo_lancamento_integracao:           string60	Código de Integração do Lançamento de Contas a Pagar.
+        :param codigo_cliente_fornecedor:              integer	Código do Favorecido / Fornecedor.
+        :param data_vencimento:            dd/mm/yyyy  string10	Data de Vencimento.
+        :param valor_documento:                        float	Valor da Conta.
+        :param codigo_categoria:                       string20	Código da Categoria
+        :param data_previsao:              dd/mm/yyyy  string10	Data da Previsão de Pagamento.
+        :param id_conta_corrente:                      integer	Código da Conta Corrente.
+        """
+        self._gerencia_metodo(
+            ['AlterarContaPagar', 'IncluirContaPagar', 'UpsertContaPagar'], metodo
+        )
+        return self._chamar_api(
+            call=metodo,
+            endpoint='financas/contapagar/',
+            param={
+                "codigo_lancamento_integracao": codigo_lancamento_integracao,
+                "codigo_cliente_fornecedor": codigo_cliente_fornecedor,
+                "data_vencimento": data_vencimento,
+                "valor_documento": valor_documento,
+                "codigo_categoria": codigo_categoria,
+                "data_previsao": data_previsao,
+                "id_conta_corrente": id_conta_corrente
+            }
+        )
+
+
