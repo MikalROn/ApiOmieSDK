@@ -146,7 +146,7 @@ class Conta(Omie):
             cCodCateg: str, cTipo: str,  nCodCliente: str, cObs: str
     ) -> dict:
         """
-        :param metodo:           IncluirLancCC or AlterarLancCC Um altera o outro inclui novas informações
+        :param metodo:        IncluirLancCC or AlterarLancCC    Um altera o outro inclui novas informações
         :param cCodIntLanc:                         string20	Código da categoria
         :param nCodCC:                              integer	    Código da conta corrente.
         :param dDtLanc:                             string10	Data do lançamento na conta corrente.
