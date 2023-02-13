@@ -6,7 +6,7 @@ from omieapi import Produtos
 app = EventSimpleGUI()
 
 produtos = Produtos('38333295000', 'fed2163e2e8dccb53ff914ce9e2f1258')
-lista_de_produtos = produtos.listar_produtos(filtrar_pdv=False)['produto_servico_cadastro']
+lista_de_produtos = produtos.listar_produtos(filtrar_pdv=True)['produto_servico_cadastro']
 data = pd.DataFrame(lista_de_produtos)
 
 headings = {'aliquota_cofins': False, 'aliquota_ibpt': False,
@@ -34,10 +34,13 @@ headings = {'aliquota_cofins': False, 'aliquota_ibpt': False,
             'unidade': True, 'valor_unitario': True}
 
 tabela = sg.Table([], headings=[x for x in headings.keys()],
-                  visible_column_map=[x for x in headings.values()], expand_x=True, k='Tabela')
+                  visible_column_map=[x for x in headings.values()], expand_x=True,
+                      expand_y=True,  k='Tabela')
 
 layout = [
-    [sg.Input(k='PRODUTO', enable_events=True), sg.Button('Buscar'), sg.Text('--->'), sg.Button('Selecionar', expand_x=True)],
+    [sg.Input(k='PRODUTO', enable_events=True),
+     sg.Button('Buscar'), sg.Text('--->'),
+     sg.Button('Selecionar', expand_x=True)],
     [tabela]
 ]
 
@@ -51,15 +54,41 @@ def event_buscar_produtos(event, values, window):
 def event_filtra_produto(event, values, window):
     ...
 
-
-
-
-
-
-win = sg.Window('Produtos', layout)
+win = sg.Window('Produtos', layout, resizable=True)
 retorno = app.run_window(win, close_event='Selecionar')
 slice_tabela = retorno['Tabela'][0]
 print(data.values.tolist()[slice_tabela])
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
