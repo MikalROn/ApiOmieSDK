@@ -75,7 +75,6 @@ class Conta(Omie):
         """
         :param nCodCC:          integer	Código da conta corrente no Omie.
         :param cCodCCInt:       string20	Código de Integração do Parceiro.
-
         :return -> : dicionario com resultado da requisição ou erro
         """
         return self._chamada_api_conta(
@@ -173,7 +172,6 @@ class Conta(Omie):
                         "nCodCliente": nCodCliente,
                         "cObs": cObs}
                 }
-
             )
 
     def consulta_e_exclui_lancamento(
