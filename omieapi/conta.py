@@ -141,6 +141,7 @@ class Conta(Omie):
                 "apenas_importado_api": apenas_importado_api
             }
         )
+
     def lancamento_em_cc(
             self, metodo: str, cCodIntLanc: str, nCodCC: int, dDtLanc: str, nValorLanc: float,
             cCodCateg: str, cTipo: str,  nCodCliente: str, cObs: str
@@ -174,4 +175,22 @@ class Conta(Omie):
                 }
 
             )
+
+    def consulta_e_exclui_lancamento(
+            self, metodo: str,  nCodLanc: str, cCodIntLanc: int
+    ) -> dict:
+        """
+        :param metodo:          ExcluirLancCC or ConsultaLancCC     Um cancela o outro exclui lançamentos
+        :param nCodLanc:        string40	                        Identificação do lançamento do extrato importado
+        :param cCodIntLanc:     string20	                        Código do lançamento da conta corrente
+        :return:
+        """
+        return self._chamar_api(
+            call=metodo,
+            endpoint='financas/contacorrentelancamentos',
+            param={
+                "nCodLanc": nCodLanc,
+                "cCodIntLanc": cCodIntLanc
+            }
+        )
 
