@@ -233,7 +233,9 @@ class Conta(Omie):
             }
         )
 
-    def consulta_exclui_conta_pagar(self,metodo: str, codigo_lancamento_omie: int, codigo_lancamento_integracao: str) -> dict:
+    def consulta_exclui_conta_pagar(
+            self, metodo: str, codigo_lancamento_omie: int, codigo_lancamento_integracao: str
+    ) -> dict:
         """
         :param metodo:                          'ConsultarContaPagar', 'ExcluirContaPagar'
         :param codigo_lancamento_omie:          integer	Código do Lançamento de Contas a Pagar.

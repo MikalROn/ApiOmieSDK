@@ -53,6 +53,19 @@ class Omie:
                     'Mensagem': f'{erro}'
                 }
 
+    def _listar_padrao(
+            self, call: str, endpoint: str, pagina: int, registros_por_pagina: int, apenas_importado_api: bool
+    ) -> dict:
+        apenas_importado_api = self._bool_para_sn(apenas_importado_api)
+        return self._chamar_api(
+            call=call,
+            endpoint=endpoint,
+            param={
+                "pagina": pagina,
+                "registros_por_pagina": registros_por_pagina,
+                "apenas_importado_api": apenas_importado_api
+            }
+        )
     def _chamar_api(self, endpoint: str = '', call: str = '', param: dict | tuple | list = None) -> dict:
         """
         :keyword endpoint:         Final da url EX: geral/contacorrente/
