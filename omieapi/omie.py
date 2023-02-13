@@ -66,6 +66,7 @@ class Omie:
                 "apenas_importado_api": apenas_importado_api
             }
         )
+
     def _chamar_api(self, endpoint: str = '', call: str = '', param: dict | tuple | list = None) -> dict:
         """
         :keyword endpoint:         Final da url EX: geral/contacorrente/
