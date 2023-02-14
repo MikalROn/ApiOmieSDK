@@ -5390,6 +5390,7 @@ class CodigoAutoGerado(Omie):
             }
         )
 
+
     def ListarClassificacaoServico(
             self, pagina, registros_por_pagina
     ) -> dict:
