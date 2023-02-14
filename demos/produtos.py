@@ -5,7 +5,7 @@ from omieapi import Produtos
 
 app = EventSimpleGUI()
 
-produtos = Produtos('38333295000', '')
+produtos = Produtos('', '')
 lista_de_produtos = produtos.listar_produtos(filtrar_pdv=True)['produto_servico_cadastro']
 data = pd.DataFrame(lista_de_produtos)
 
