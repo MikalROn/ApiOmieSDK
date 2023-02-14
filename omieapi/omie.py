@@ -14,6 +14,24 @@ class Omie:
         self._appsecret = omie_app_secret
         self._head = {'Content-type': 'application/json'}
 
+    def conctar_api(self, metodo: str, endpoint: str, parametros: dict) -> dict:
+        """
+        ## Metdodo geral para chamar a api
+         > Para usar este metodo use como referencia a documentação originao do omie Link
+         https://developer.omie.com.br/
+
+        :param metodo:       Função a ser realizada disponivel na api omie EX:  'AssociarCodIntServico'
+        :param endpoint:     Endpiot url da api EX:      'servicos/servico/'
+        :param parametros:   Parametros usados na requisição, EX:  { "nCodServ": 0, "cCodIntServ": "" }
+        :return: Retorna dicionario com resultados da requisição ou erro, erros com Tipos Complexos são gerenciados pela
+        api.
+        """
+        return self._chamar_api(
+            call=metodo,
+            endpoint=endpoint,
+            param=parametros
+        )
+
     def _gerar_json(self, call: str, param: dict | tuple | list) -> dict:
         return {
             "call": call,
@@ -141,14 +159,14 @@ class CupomFiscal(Omie):
         :keyword chNFe:	            string44	Chave de Acesso da Nota Fiscal Consumidor Eletrônico.
         :keyword nfceXml:	        text	    XML da NFC-e enviada.
         :keyword nfceMd5:	        string32	MD5 do arquivo XML enviado em "nfceXml".
-        :keyword cAcaoCliente: 	    string15 Ação a ser executada com relação a tag idCliente.
-        :keyword idCliente:	        integer	Código do cliente.
-        :keyword idVendedor:	    integer	Código do vendedor.
-        :keyword idProjeto:	        integer	Código do projeto.
-        :keyword idLocalEstoque:	integer	Código do Local do Estoque.
-        :keyword cNaoMovEstoque:	string1	Indica que os items do Cupom Fiscal não devem movimentar o estoque.
-        :keyword cNaoGerarTitulo:	string1	Indica que a parcela não deve gerar um título no financeiro.
-        :keyword cIncluirProduto:	string1	Indica se na inclusão do cupom os produtos não existentes devem ser incluídos automaticamente.
+        :keyword cAcaoCliente: 	    string15    Ação a ser executada com relação a tag idCliente.
+        :keyword idCliente:	        integer	    Código do cliente.
+        :keyword idVendedor:	    integer	    Código do vendedor.
+        :keyword idProjeto:	        integer	    Código do projeto.
+        :keyword idLocalEstoque:	integer	    Código do Local do Estoque.
+        :keyword cNaoMovEstoque:	string1	    Indica que os items do Cupom Fiscal não devem movimentar o estoque.
+        :keyword cNaoGerarTitulo:	string1	    Indica que a parcela não deve gerar um título no financeiro.
+        :keyword cIncluirProduto:	string1	    Indica se na inclusão do cupom os produtos não existentes devem ser incluídos automaticamente.
 
         :return: dicionario com resultado da requisição ou erro
         """
