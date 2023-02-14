@@ -5420,4 +5420,3 @@ class CodigoAutoGerado(Omie):
 
             }
         )
-from omieapi import Omie
