@@ -1,6 +1,7 @@
 from requests import get
 from bs4 import BeautifulSoup
 import ast
+import re
 
 # Atenção -> Ao rodar este codigo é gerado um novo codigo automatico
 # Não roda ao importar
@@ -64,6 +65,9 @@ def constroe_parametro(parametros: dict):
         codigo += f'                "{key}":{value},\n'
     return '{\n' + codigo + '\n}'
 
+def sanitiza_metodo(metodo: str) -> str:
+    lista_palavras = re.sub( r"([A-Z])", r" \1", metodo).split()
+    return '_'.join(lista_palavras)
 
 def gerar_codigo_automatico(dicionario: dict):
     codigo = 'from omieapi import Omie \n\n' \
@@ -77,7 +81,7 @@ def gerar_codigo_automatico(dicionario: dict):
         param = dict(zip(lista_atributos, lista_atributos))
 
         codigo += \
-            f'''\n    def {metodo}(
+            f'''\n    def {sanitiza_metodo(metodo)}(
             self, {
             str(lista_atributos)
             .replace("'", "")
