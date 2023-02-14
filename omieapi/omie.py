@@ -1,6 +1,7 @@
 from requests import post
 from json import JSONDecodeError
-from scripts.scrap import pega_links_api
+from omieapi.scripts import pega_links_api
+
 
 class Omie:
 
