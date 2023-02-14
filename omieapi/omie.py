@@ -20,7 +20,7 @@ class Omie:
         """ Metodo que busca online todos os endpoints da api """
         return [link.replace('https://app.omie.com.br/api/v1/') for link in pega_links_api()]
 
-    def conctar_api(self, metodo: str, endpoint: str, parametros: dict) -> dict:
+    def conectar_api(self, metodo: str, endpoint: str, parametros: dict) -> dict:
         """
         ## Metdodo geral para chamar a api
          > Para usar este metodo use como referencia a documentação originao do omie Link
