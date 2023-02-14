@@ -1,6 +1,6 @@
 from requests import post
 from json import JSONDecodeError
-
+from scripts.scrap import pega_links_api
 
 class Omie:
 
@@ -13,6 +13,11 @@ class Omie:
         self._appkey = omie_app_key
         self._appsecret = omie_app_secret
         self._head = {'Content-type': 'application/json'}
+
+    @property
+    def endpoint_api(self):
+        """ Metodo que busca online todos os endpoints da api """
+        return [link.replace('https://app.omie.com.br/api/v1/') for link in pega_links_api()]
 
     def conctar_api(self, metodo: str, endpoint: str, parametros: dict) -> dict:
         """
