@@ -3,7 +3,7 @@ from omieapi import OmieBase
 
 # Aviso -> antes de usar confira se não a oq vc precisa já feito no codigo principal,
 # o codigo autogerdo pode conter erros não detectados ainda
-class CodigoAutoGerado( OmieBase ):
+class CodigoAutoGerado(OmieBase):
     """ Este codigo foi automaticamente geredo por um script de scrap """
 
     def AlterarCliente(
