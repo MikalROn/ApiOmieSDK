@@ -1,13 +1,398 @@
-from omieapi import OmieBase
+from omieapi import Omie 
 
+# Aviso -> antes de usar confira se não a oq vc precisa já feito no codigo principal,
+# o codigo autogerdo pode conter erros não detectados ainda
+class CodigoAutogerado(Omie):
+     """Este codigo foi automaticamente geredo por um script de scrap """ 
 
-# Aviso -> antes de usar confira se nÃ£o a oq vc precisa jÃ¡ feito no codigo principal,
-# o codigo autogerdo pode conter erros nÃ£o detectados ainda
-class CodigoAutoGerado(OmieBase):
-    """ Este codigo foi automaticamente geredo por um script de scrap """
+    def alterar_cliente(
+            self, codigo_cliente_integracao, email, razao_social, nome_fantasia
+            ) -> dict:
+                """Altera os dados do cliente"""
+                return self._chamar_api(
+                    call='AlterarCliente',
+                    endpoint='geral/clientes/',
+                    param = {
+                "codigo_cliente_integracao":codigo_cliente_integracao,
+                "email":email,
+                "razao_social":razao_social,
+                "nome_fantasia":nome_fantasia,
 
+}
+                )
+            
+    def associar_cod_int_cliente(
+            self, codigo_cliente_omie, codigo_cliente_integracao
+            ) -> dict:
+                """"""
+                return self._chamar_api(
+                    call='AssociarCodIntCliente',
+                    endpoint='geral/clientes/',
+                    param = {
+                "codigo_cliente_omie":codigo_cliente_omie,
+                "codigo_cliente_integracao":codigo_cliente_integracao,
 
-    def Consultar_Empresa(
+}
+                )
+            
+    def consultar_cliente(
+            self, codigo_cliente_omie, codigo_cliente_integracao
+            ) -> dict:
+                """Consulta os dados de um cliente"""
+                return self._chamar_api(
+                    call='ConsultarCliente',
+                    endpoint='geral/clientes/',
+                    param = {
+                "codigo_cliente_omie":codigo_cliente_omie,
+                "codigo_cliente_integracao":codigo_cliente_integracao,
+
+}
+                )
+            
+    def excluir_cliente(
+            self, codigo_cliente_omie, codigo_cliente_integracao
+            ) -> dict:
+                """Exclui um cliente da base de dados."""
+                return self._chamar_api(
+                    call='ExcluirCliente',
+                    endpoint='geral/clientes/',
+                    param = {
+                "codigo_cliente_omie":codigo_cliente_omie,
+                "codigo_cliente_integracao":codigo_cliente_integracao,
+
+}
+                )
+            
+    def incluir_cliente(
+            self, codigo_cliente_integracao, email, razao_social, nome_fantasia
+            ) -> dict:
+                """Inclui o cliente no Omie"""
+                return self._chamar_api(
+                    call='IncluirCliente',
+                    endpoint='geral/clientes/',
+                    param = {
+                "codigo_cliente_integracao":codigo_cliente_integracao,
+                "email":email,
+                "razao_social":razao_social,
+                "nome_fantasia":nome_fantasia,
+
+}
+                )
+            
+    def incluir_clientes_por_lote(
+            self, clientes_cadastro, lote
+            ) -> dict:
+                """DEPRECATED"""
+                return self._chamar_api(
+                    call='IncluirClientesPorLote',
+                    endpoint='geral/clientes/',
+                    param = {
+                "clientes_cadastro":clientes_cadastro,
+                "lote":lote,
+
+}
+                )
+            
+    def listar_clientes(
+            self, pagina, registros_por_pagina, apenas_importado_api
+            ) -> dict:
+                """Lista os clientes cadastrados"""
+                return self._chamar_api(
+                    call='ListarClientes',
+                    endpoint='geral/clientes/',
+                    param = {
+                "pagina":pagina,
+                "registros_por_pagina":registros_por_pagina,
+                "apenas_importado_api":apenas_importado_api,
+
+}
+                )
+            
+    def listar_clientes_resumido(
+            self, pagina, registros_por_pagina, apenas_importado_api
+            ) -> dict:
+                """Realiza pesquisa dos clientes"""
+                return self._chamar_api(
+                    call='ListarClientesResumido',
+                    endpoint='geral/clientes/',
+                    param = {
+                "pagina":pagina,
+                "registros_por_pagina":registros_por_pagina,
+                "apenas_importado_api":apenas_importado_api,
+
+}
+                )
+            
+    def upsert_cliente(
+            self, codigo_cliente_integracao, email, razao_social, nome_fantasia
+            ) -> dict:
+                """"""
+                return self._chamar_api(
+                    call='UpsertCliente',
+                    endpoint='geral/clientes/',
+                    param = {
+                "codigo_cliente_integracao":codigo_cliente_integracao,
+                "email":email,
+                "razao_social":razao_social,
+                "nome_fantasia":nome_fantasia,
+
+}
+                )
+            
+    def upsert_cliente_cpf_cnpj(
+            self, cnpj_cpf, email, razao_social, nome_fantasia
+            ) -> dict:
+                """"""
+                return self._chamar_api(
+                    call='UpsertClienteCpfCnpj',
+                    endpoint='geral/clientes/',
+                    param = {
+                "cnpj_cpf":cnpj_cpf,
+                "email":email,
+                "razao_social":razao_social,
+                "nome_fantasia":nome_fantasia,
+
+}
+                )
+            
+    def upsert_clientes_por_lote(
+            self, clientes_cadastro, lote
+            ) -> dict:
+                """DEPRECATED"""
+                return self._chamar_api(
+                    call='UpsertClientesPorLote',
+                    endpoint='geral/clientes/',
+                    param = {
+                "clientes_cadastro":clientes_cadastro,
+                "lote":lote,
+
+}
+                )
+            
+    def alterar_caract_cliente(
+            self, codigo_cliente_omie, codigo_cliente_integracao, campo, conteudo
+            ) -> dict:
+                """"""
+                return self._chamar_api(
+                    call='AlterarCaractCliente',
+                    endpoint='geral/clientescaract/',
+                    param = {
+                "codigo_cliente_omie":codigo_cliente_omie,
+                "codigo_cliente_integracao":codigo_cliente_integracao,
+                "campo":campo,
+                "conteudo":conteudo,
+
+}
+                )
+            
+    def consultar_caract_cliente(
+            self, codigo_cliente_omie, codigo_cliente_integracao
+            ) -> dict:
+                """"""
+                return self._chamar_api(
+                    call='ConsultarCaractCliente',
+                    endpoint='geral/clientescaract/',
+                    param = {
+                "codigo_cliente_omie":codigo_cliente_omie,
+                "codigo_cliente_integracao":codigo_cliente_integracao,
+
+}
+                )
+            
+    def excluir_caract_cliente(
+            self, codigo_cliente_omie, codigo_cliente_integracao, campo
+            ) -> dict:
+                """"""
+                return self._chamar_api(
+                    call='ExcluirCaractCliente',
+                    endpoint='geral/clientescaract/',
+                    param = {
+                "codigo_cliente_omie":codigo_cliente_omie,
+                "codigo_cliente_integracao":codigo_cliente_integracao,
+                "campo":campo,
+
+}
+                )
+            
+    def excluir_todas_caract_cliente(
+            self, codigo_cliente_omie, codigo_cliente_integracao
+            ) -> dict:
+                """"""
+                return self._chamar_api(
+                    call='ExcluirTodasCaractCliente',
+                    endpoint='geral/clientescaract/',
+                    param = {
+                "codigo_cliente_omie":codigo_cliente_omie,
+                "codigo_cliente_integracao":codigo_cliente_integracao,
+
+}
+                )
+            
+    def incluir_caract_cliente(
+            self, codigo_cliente_omie, codigo_cliente_integracao, campo, conteudo
+            ) -> dict:
+                """"""
+                return self._chamar_api(
+                    call='IncluirCaractCliente',
+                    endpoint='geral/clientescaract/',
+                    param = {
+                "codigo_cliente_omie":codigo_cliente_omie,
+                "codigo_cliente_integracao":codigo_cliente_integracao,
+                "campo":campo,
+                "conteudo":conteudo,
+
+}
+                )
+            
+    def excluir_tags(
+            self, nCodCliente, cCodIntCliente, tags
+            ) -> dict:
+                """Remove tags associadas a um cliente."""
+                return self._chamar_api(
+                    call='ExcluirTags',
+                    endpoint='geral/clientetag/',
+                    param = {
+                "nCodCliente":nCodCliente,
+                "cCodIntCliente":cCodIntCliente,
+                "tags":tags,
+
+}
+                )
+            
+    def excluir_todas(
+            self, nCodCliente, cCodIntCliente
+            ) -> dict:
+                """Remove todas as tags associadas a um cliente."""
+                return self._chamar_api(
+                    call='ExcluirTodas',
+                    endpoint='geral/clientetag/',
+                    param = {
+                "nCodCliente":nCodCliente,
+                "cCodIntCliente":cCodIntCliente,
+
+}
+                )
+            
+    def incluir_tags(
+            self, nCodCliente, cCodIntCliente, tags
+            ) -> dict:
+                """Associa tags a um cliente."""
+                return self._chamar_api(
+                    call='IncluirTags',
+                    endpoint='geral/clientetag/',
+                    param = {
+                "nCodCliente":nCodCliente,
+                "cCodIntCliente":cCodIntCliente,
+                "tags":tags,
+
+}
+                )
+            
+    def listar_tags(
+            self, nCodCliente, cCodIntCliente
+            ) -> dict:
+                """Lista as tags de um determinado cliente."""
+                return self._chamar_api(
+                    call='ListarTags',
+                    endpoint='geral/clientetag/',
+                    param = {
+                "nCodCliente":nCodCliente,
+                "cCodIntCliente":cCodIntCliente,
+
+}
+                )
+            
+    def alterar_projeto(
+            self, codigo, codint, nome, inativo
+            ) -> dict:
+                """Altera um projeto"""
+                return self._chamar_api(
+                    call='AlterarProjeto',
+                    endpoint='geral/projetos/',
+                    param = {
+                "codigo":codigo,
+                "codint":codint,
+                "nome":nome,
+                "inativo":inativo,
+
+}
+                )
+            
+    def consultar_projeto(
+            self, codigo, codint
+            ) -> dict:
+                """Consulta um projeto"""
+                return self._chamar_api(
+                    call='ConsultarProjeto',
+                    endpoint='geral/projetos/',
+                    param = {
+                "codigo":codigo,
+                "codint":codint,
+
+}
+                )
+            
+    def excluir_projeto(
+            self, codigo, codint
+            ) -> dict:
+                """Exclui um projeto"""
+                return self._chamar_api(
+                    call='ExcluirProjeto',
+                    endpoint='geral/projetos/',
+                    param = {
+                "codigo":codigo,
+                "codint":codint,
+
+}
+                )
+            
+    def incluir_projeto(
+            self, codint, nome, inativo
+            ) -> dict:
+                """Inclui um novo projeto"""
+                return self._chamar_api(
+                    call='IncluirProjeto',
+                    endpoint='geral/projetos/',
+                    param = {
+                "codint":codint,
+                "nome":nome,
+                "inativo":inativo,
+
+}
+                )
+            
+    def listar_projetos(
+            self, pagina, registros_por_pagina, apenas_importado_api
+            ) -> dict:
+                """Lista os projetos cadastrados"""
+                return self._chamar_api(
+                    call='ListarProjetos',
+                    endpoint='geral/projetos/',
+                    param = {
+                "pagina":pagina,
+                "registros_por_pagina":registros_por_pagina,
+                "apenas_importado_api":apenas_importado_api,
+
+}
+                )
+            
+    def upsert_projeto(
+            self, codigo, codint, nome, inativo
+            ) -> dict:
+                """Inclui / Altera um projeto."""
+                return self._chamar_api(
+                    call='UpsertProjeto',
+                    endpoint='geral/projetos/',
+                    param = {
+                "codigo":codigo,
+                "codint":codint,
+                "nome":nome,
+                "inativo":inativo,
+
+}
+                )
+            
+    def consultar_empresa(
             self, codigo_empresa
             ) -> dict:
                 """Realiza a consulta de um registro especifico"""
@@ -19,8 +404,8 @@ class CodigoAutoGerado(OmieBase):
 
 }
                 )
-
-    def Listar_Empresas(
+            
+    def listar_empresas(
             self, pagina, registros_por_pagina, apenas_importado_api
             ) -> dict:
                 """Lista as empresas cadastradas no Omie."""
@@ -34,8 +419,8 @@ class CodigoAutoGerado(OmieBase):
 
 }
                 )
-
-    def Consultar_Departamento(
+            
+    def consultar_departamento(
             self, codigo
             ) -> dict:
                 """"""
@@ -47,8 +432,8 @@ class CodigoAutoGerado(OmieBase):
 
 }
                 )
-
-    def Listar_Depatartamentos(
+            
+    def listar_depatartamentos(
             self, pagina, registros_por_pagina
             ) -> dict:
                 """DEPRECATED"""
@@ -61,8 +446,8 @@ class CodigoAutoGerado(OmieBase):
 
 }
                 )
-
-    def Consultar_Categoria(
+            
+    def consultar_categoria(
             self, codigo
             ) -> dict:
                 """Consulta uma categoria"""
@@ -74,8 +459,8 @@ class CodigoAutoGerado(OmieBase):
 
 }
                 )
-
-    def Listar_Categorias(
+            
+    def listar_categorias(
             self, pagina, registros_por_pagina
             ) -> dict:
                 """Lista as categorias cadastradas"""
@@ -89,7 +474,7 @@ class CodigoAutoGerado(OmieBase):
 }
                 )
             
-    def Listar_Parcelas(
+    def listar_parcelas(
             self, pagina, registros_por_pagina
             ) -> dict:
                 """Lista de Parcelas cadastradas."""
@@ -103,7 +488,7 @@ class CodigoAutoGerado(OmieBase):
 }
                 )
             
-    def Listar_Tipo_Ativ(
+    def listar_tipo_ativ(
             self, filtrar_por_codigo, filtrar_por_descricao
             ) -> dict:
                 """Listar Tipos de Atividade."""
@@ -117,7 +502,7 @@ class CodigoAutoGerado(OmieBase):
 }
                 )
             
-    def Listar_C_N_A_E(
+    def listar_c_n_a_e(
             self, pagina, registros_por_pagina
             ) -> dict:
                 """Listar os CNAEs cadastrados"""
@@ -131,7 +516,7 @@ class CodigoAutoGerado(OmieBase):
 }
                 )
             
-    def Pesquisar_Cidades(
+    def pesquisar_cidades(
             self, pagina, registros_por_pagina
             ) -> dict:
                 """"""
@@ -145,7 +530,7 @@ class CodigoAutoGerado(OmieBase):
 }
                 )
             
-    def Listar_Paises(
+    def listar_paises(
             self, filtrar_por_codigo, filtrar_por_descricao
             ) -> dict:
                 """"""
@@ -159,15 +544,20 @@ class CodigoAutoGerado(OmieBase):
 }
                 )
             
-    def Listar_Tipos_Anexos(self, codigo) -> dict:
+    def listar_tipos_anexos(
+            self, codigo
+            ) -> dict:
                 """Listagem de tipos de anexos."""
                 return self._chamar_api(
                     call='ListarTiposAnexos',
                     endpoint='geral/tiposanexo/',
-                    param = { "codigo": codigo }
+                    param = {
+                "codigo":codigo,
+
+}
                 )
             
-    def Incluir_Anexo(
+    def incluir_anexo(
             self, cCodIntAnexo, cTabela, nId, cNomeArquivo, cTipoArquivo, cArquivo, cMd5
             ) -> dict:
                 """Inclui o anexo para um documento."""
@@ -186,7 +576,7 @@ class CodigoAutoGerado(OmieBase):
 }
                 )
             
-    def Alterar_Tipo_Entrega(
+    def alterar_tipo_entrega(
             self, nCodEntrega, cCodIntEntrega, cDescricao, cInativo
             ) -> dict:
                 """Alterar tipo de entrega"""
@@ -202,7 +592,7 @@ class CodigoAutoGerado(OmieBase):
 }
                 )
             
-    def Consultar_Tipo_Entrega(
+    def consultar_tipo_entrega(
             self, nCodEntrega, cCodIntEntrega
             ) -> dict:
                 """Consultar tipo de entrega"""
@@ -216,7 +606,7 @@ class CodigoAutoGerado(OmieBase):
 }
                 )
             
-    def Excluir_Tipo_Entrega(
+    def excluir_tipo_entrega(
             self, nCodEntrega, cCodIntEntrega
             ) -> dict:
                 """Excluir tipo de entrega"""
@@ -230,7 +620,7 @@ class CodigoAutoGerado(OmieBase):
 }
                 )
             
-    def Incluir_Tipo_Entrega(
+    def incluir_tipo_entrega(
             self, nCodTransp, cCodIntEntrega, cDescricao, cInativo
             ) -> dict:
                 """Incluir tipo de entrega"""
@@ -246,7 +636,7 @@ class CodigoAutoGerado(OmieBase):
 }
                 )
             
-    def Listar_Tipo_Entrega(
+    def listar_tipo_entrega(
             self, nPagina, nRegistrosPorPagina, nCodTransp
             ) -> dict:
                 """Listar tipo de entrega"""
@@ -261,7 +651,7 @@ class CodigoAutoGerado(OmieBase):
 }
                 )
             
-    def Listar_Tipo_Assinante(
+    def listar_tipo_assinante(
             self, pagina, registros_por_pagina
             ) -> dict:
                 """Lista os tipos de assinante"""
@@ -275,7 +665,7 @@ class CodigoAutoGerado(OmieBase):
 }
                 )
             
-    def Listar_Contas(
+    def listar_contas(
             self, pagina, registros_por_pagina
             ) -> dict:
                 """Lista as contas do CRM."""
@@ -289,7 +679,7 @@ class CodigoAutoGerado(OmieBase):
 }
                 )
             
-    def Verificar_Conta(
+    def verificar_conta(
             self, cNome, cEmail
             ) -> dict:
                 """Verifica se uma conta foi criada a partir do nome e e-mail."""
@@ -303,7 +693,7 @@ class CodigoAutoGerado(OmieBase):
 }
                 )
             
-    def Alterar_Caract_Conta(
+    def alterar_caract_conta(
             self, nCod, cCodInt, campo, conteudo
             ) -> dict:
                 """"""
@@ -319,7 +709,7 @@ class CodigoAutoGerado(OmieBase):
 }
                 )
             
-    def Consultar_Caract_Conta(
+    def consultar_caract_conta(
             self, nCod, cCodInt
             ) -> dict:
                 """"""
@@ -333,7 +723,7 @@ class CodigoAutoGerado(OmieBase):
 }
                 )
             
-    def Excluir_Caract_Conta(
+    def excluir_caract_conta(
             self, nCod, cCodInt, campo
             ) -> dict:
                 """"""
@@ -348,7 +738,7 @@ class CodigoAutoGerado(OmieBase):
 }
                 )
             
-    def Excluir_Todas_Caract_Conta(
+    def excluir_todas_caract_conta(
             self, nCod, cCodInt
             ) -> dict:
                 """"""
@@ -362,7 +752,7 @@ class CodigoAutoGerado(OmieBase):
 }
                 )
             
-    def Incluir_Caract_Conta(
+    def incluir_caract_conta(
             self, nCod, cCodInt, campo, conteudo
             ) -> dict:
                 """"""
@@ -378,7 +768,7 @@ class CodigoAutoGerado(OmieBase):
 }
                 )
             
-    def Consultar_Contato(
+    def consultar_contato(
             self, nCod, cCodInt
             ) -> dict:
                 """Consulta o Contato"""
@@ -392,7 +782,7 @@ class CodigoAutoGerado(OmieBase):
 }
                 )
             
-    def Incluir_Contato(
+    def incluir_contato(
             self, identificacao, endereco, telefone_email
             ) -> dict:
                 """Inclui um novo Contato"""
@@ -407,7 +797,7 @@ class CodigoAutoGerado(OmieBase):
 }
                 )
             
-    def Listar_Contatos(
+    def listar_contatos(
             self, pagina, registros_por_pagina
             ) -> dict:
                 """Lista os contatos do CRM."""
@@ -421,7 +811,7 @@ class CodigoAutoGerado(OmieBase):
 }
                 )
             
-    def Upsert_Contato(
+    def upsert_contato(
             self, identificacao, endereco, telefone_email
             ) -> dict:
                 """Upsert do contato"""
@@ -436,7 +826,7 @@ class CodigoAutoGerado(OmieBase):
 }
                 )
             
-    def Verificar_Contato(
+    def verificar_contato(
             self, cNome, cEmail
             ) -> dict:
                 """"""
@@ -450,7 +840,7 @@ class CodigoAutoGerado(OmieBase):
 }
                 )
             
-    def Alterar_Oportunidade(
+    def alterar_oportunidade(
             self, identificacao
             ) -> dict:
                 """"""
@@ -463,7 +853,7 @@ class CodigoAutoGerado(OmieBase):
 }
                 )
             
-    def Consultar_Oportunidade(
+    def consultar_oportunidade(
             self, nCodOp, cCodIntOp
             ) -> dict:
                 """Consulta de oportunidade."""
@@ -477,7 +867,7 @@ class CodigoAutoGerado(OmieBase):
 }
                 )
             
-    def Excluir_Oportunidade(
+    def excluir_oportunidade(
             self, nCodOp, cCodIntOp
             ) -> dict:
                 """"""
@@ -491,7 +881,7 @@ class CodigoAutoGerado(OmieBase):
 }
                 )
             
-    def Incluir_Oportunidade(
+    def incluir_oportunidade(
             self, identificacao
             ) -> dict:
                 """Incluir uma oportunidade."""
@@ -504,7 +894,7 @@ class CodigoAutoGerado(OmieBase):
 }
                 )
             
-    def Listar_Oportunidades(
+    def listar_oportunidades(
             self, pagina, registros_por_pagina
             ) -> dict:
                 """Lista de oportunidades."""
@@ -518,7 +908,7 @@ class CodigoAutoGerado(OmieBase):
 }
                 )
             
-    def Upsert_Oportunidade(
+    def upsert_oportunidade(
             self, identificacao
             ) -> dict:
                 """Upsert de oportunidade."""
@@ -531,7 +921,7 @@ class CodigoAutoGerado(OmieBase):
 }
                 )
             
-    def Obter_Lista_Op(
+    def obter_lista_op(
             self, cMesAno, cTemperatura
             ) -> dict:
                 """Lista de Oportunidades."""
@@ -545,7 +935,7 @@ class CodigoAutoGerado(OmieBase):
 }
                 )
             
-    def Alterar_Tarefa(
+    def alterar_tarefa(
             self, nCodTarefa, nCodOp, cCodInt, nCodUsuario, dData, cHora, nCodNotif, nCodAtividade, cDescricao
             ) -> dict:
                 """Altera uma tarefa."""
@@ -566,7 +956,7 @@ class CodigoAutoGerado(OmieBase):
 }
                 )
             
-    def Calendario_Tarefas(
+    def calendario_tarefas(
             self, email_vend, calendar_key
             ) -> dict:
                 """"""
@@ -580,7 +970,7 @@ class CodigoAutoGerado(OmieBase):
 }
                 )
             
-    def Consultar_Tarefa(
+    def consultar_tarefa(
             self, nCodTarefa, nCodOp, cCodInt
             ) -> dict:
                 """Consulta uma tarefa da oportunidade."""
@@ -595,7 +985,7 @@ class CodigoAutoGerado(OmieBase):
 }
                 )
             
-    def Excluir_Tarefa(
+    def excluir_tarefa(
             self, nCodTarefa, nCodOp, cCodInt
             ) -> dict:
                 """Exclui um tarefa."""
@@ -610,7 +1000,7 @@ class CodigoAutoGerado(OmieBase):
 }
                 )
             
-    def Incluir_Tarefa(
+    def incluir_tarefa(
             self, nCodOp, cCodInt, nCodUsuario, dData, cHora, nCodNotif, nCodAtividade, cDescricao
             ) -> dict:
                 """Inclui uma tarefa na oportunidade."""
@@ -630,7 +1020,7 @@ class CodigoAutoGerado(OmieBase):
 }
                 )
             
-    def Listar_Emails_Tarefas(
+    def listar_emails_tarefas(
             self, pagina, registros_por_pagina
             ) -> dict:
                 """Lista os  emails tarefas."""
@@ -644,7 +1034,7 @@ class CodigoAutoGerado(OmieBase):
 }
                 )
             
-    def Listar_Tarefas(
+    def listar_tarefas(
             self, pagina, registros_por_pagina
             ) -> dict:
                 """Tarefas da oportunidade."""
@@ -658,7 +1048,7 @@ class CodigoAutoGerado(OmieBase):
 }
                 )
             
-    def Upsert_Tarefa(
+    def upsert_tarefa(
             self, nCodTarefa, nCodOp, cCodInt, nCodUsuario, dData, cHora, nCodNotif, nCodAtividade, cDescricao
             ) -> dict:
                 """"""
@@ -679,7 +1069,7 @@ class CodigoAutoGerado(OmieBase):
 }
                 )
             
-    def Obter_Detalhes_Tarefa(
+    def obter_detalhes_tarefa(
             self, nIdOportunidade, nIdTarefa
             ) -> dict:
                 """Consulta os detalhes de uma tafera."""
@@ -693,7 +1083,7 @@ class CodigoAutoGerado(OmieBase):
 }
                 )
             
-    def Obter_Lista_Tarefas(
+    def obter_lista_tarefas(
             self, dDia
             ) -> dict:
                 """"""
@@ -706,7 +1096,7 @@ class CodigoAutoGerado(OmieBase):
 }
                 )
             
-    def Obter_Resumo_Tarefas(
+    def obter_resumo_tarefas(
             self, dDataInicio, dDataFim, cTipoTarefa
             ) -> dict:
                 """Resumos das tarefas do CRM."""
@@ -721,7 +1111,7 @@ class CodigoAutoGerado(OmieBase):
 }
                 )
             
-    def Listar_Solucoes(
+    def listar_solucoes(
             self, pagina, registros_por_pagina
             ) -> dict:
                 """"""
@@ -735,7 +1125,7 @@ class CodigoAutoGerado(OmieBase):
 }
                 )
             
-    def Listar_Fases(
+    def listar_fases(
             self, pagina, registros_por_pagina
             ) -> dict:
                 """Fases da Oportunidade"""
@@ -749,7 +1139,7 @@ class CodigoAutoGerado(OmieBase):
 }
                 )
             
-    def Listar_Usuarios(
+    def listar_usuarios(
             self, pagina, registros_por_pagina
             ) -> dict:
                 """"""
@@ -763,7 +1153,7 @@ class CodigoAutoGerado(OmieBase):
 }
                 )
             
-    def Obter_Usuarios(
+    def obter_usuarios(
             self, cExibirTodos
             ) -> dict:
                 """"""
@@ -776,7 +1166,7 @@ class CodigoAutoGerado(OmieBase):
 }
                 )
             
-    def Listar_Status(
+    def listar_status(
             self, pagina, registros_por_pagina
             ) -> dict:
                 """Status da oportunidade."""
@@ -790,7 +1180,7 @@ class CodigoAutoGerado(OmieBase):
 }
                 )
             
-    def Listar_Motivos(
+    def listar_motivos(
             self, pagina, registros_por_pagina
             ) -> dict:
                 """Motivos da oportunidade."""
@@ -804,7 +1194,7 @@ class CodigoAutoGerado(OmieBase):
 }
                 )
             
-    def Listar_Tipos(
+    def listar_tipos(
             self, pagina, registros_por_pagina
             ) -> dict:
                 """Tipos de oportunidades."""
@@ -818,7 +1208,7 @@ class CodigoAutoGerado(OmieBase):
 }
                 )
             
-    def Listar_Parceiros(
+    def listar_parceiros(
             self, pagina, registros_por_pagina
             ) -> dict:
                 """Parceiros e equipes da oportunidade."""
@@ -832,7 +1222,7 @@ class CodigoAutoGerado(OmieBase):
 }
                 )
             
-    def Listar_Finders(
+    def listar_finders(
             self, pagina, registros_por_pagina
             ) -> dict:
                 """Finders da oportunidade."""
@@ -846,7 +1236,7 @@ class CodigoAutoGerado(OmieBase):
 }
                 )
             
-    def Listar_Origens(
+    def listar_origens(
             self, pagina, registros_por_pagina
             ) -> dict:
                 """Origens da oportunidade."""
@@ -860,7 +1250,7 @@ class CodigoAutoGerado(OmieBase):
 }
                 )
             
-    def Listar_Concorrentes(
+    def listar_concorrentes(
             self, pagina, registros_por_pagina
             ) -> dict:
                 """Concorrentes da oportunidade."""
@@ -874,7 +1264,7 @@ class CodigoAutoGerado(OmieBase):
 }
                 )
             
-    def Listar_Verticais(
+    def listar_verticais(
             self, pagina, registros_por_pagina
             ) -> dict:
                 """Lista as verticais cadastradas."""
@@ -888,7 +1278,7 @@ class CodigoAutoGerado(OmieBase):
 }
                 )
             
-    def Alterar_Vendedor(
+    def alterar_vendedor(
             self, codigo, codInt, nome, inativo, email, fatura_pedido, visualiza_pedido, comissao
             ) -> dict:
                 """Altera os dados de um vendedor"""
@@ -908,7 +1298,7 @@ class CodigoAutoGerado(OmieBase):
 }
                 )
             
-    def Consultar_Vendedor(
+    def consultar_vendedor(
             self, codigo, codInt
             ) -> dict:
                 """Consulta os dados de um vendedor"""
@@ -922,7 +1312,7 @@ class CodigoAutoGerado(OmieBase):
 }
                 )
             
-    def Excluir_Vendedor(
+    def excluir_vendedor(
             self, codigo, codInt
             ) -> dict:
                 """Exclui um vendedor"""
@@ -936,7 +1326,7 @@ class CodigoAutoGerado(OmieBase):
 }
                 )
             
-    def Incluir_Vendedor(
+    def incluir_vendedor(
             self, codInt, nome, inativo, email, fatura_pedido, visualiza_pedido, comissao
             ) -> dict:
                 """Inclui um vendedor"""
@@ -955,7 +1345,7 @@ class CodigoAutoGerado(OmieBase):
 }
                 )
             
-    def Listar_Vendedores(
+    def listar_vendedores(
             self, pagina, registros_por_pagina, apenas_importado_api
             ) -> dict:
                 """Listagem de Vendedores"""
@@ -970,7 +1360,7 @@ class CodigoAutoGerado(OmieBase):
 }
                 )
             
-    def Upsert_Vendedor(
+    def upsert_vendedor(
             self, codigo, codInt, nome, inativo, email, fatura_pedido, visualiza_pedido, comissao
             ) -> dict:
                 """Inclui / Altera um vendedor"""
@@ -990,7 +1380,7 @@ class CodigoAutoGerado(OmieBase):
 }
                 )
             
-    def Consultar_Tipo_Tarefa(
+    def consultar_tipo_tarefa(
             self, nIdTipoTarefa
             ) -> dict:
                 """Consulta tipo de tarefa"""
@@ -1003,7 +1393,7 @@ class CodigoAutoGerado(OmieBase):
 }
                 )
             
-    def Excluir_Tipo_Tarefa(
+    def excluir_tipo_tarefa(
             self, nIdTipoTarefa
             ) -> dict:
                 """Excluir tipo de tarefa"""
@@ -1016,7 +1406,7 @@ class CodigoAutoGerado(OmieBase):
 }
                 )
             
-    def Listar_Tipos_Tarefa(
+    def listar_tipos_tarefa(
             self, pagina, registros_por_pagina
             ) -> dict:
                 """Lista tipos de tarefa"""
@@ -1030,7 +1420,7 @@ class CodigoAutoGerado(OmieBase):
 }
                 )
             
-    def Alterar_Conta_Corrente(
+    def alterar_conta_corrente(
             self, cCodCCInt, tipo_conta_corrente, codigo_banco, descricao, saldo_inicial
             ) -> dict:
                 """Altera a Conta Corrente"""
@@ -1047,7 +1437,7 @@ class CodigoAutoGerado(OmieBase):
 }
                 )
             
-    def Consultar_Conta_Corrente(
+    def consultar_conta_corrente(
             self, nCodCC, cCodCCInt
             ) -> dict:
                 """Realiza a consulta de uma conta corrente"""
@@ -1061,7 +1451,7 @@ class CodigoAutoGerado(OmieBase):
 }
                 )
             
-    def Excluir_Conta_Corrente(
+    def excluir_conta_corrente(
             self, nCodCC, cCodCCInt
             ) -> dict:
                 """Excluir a Conta Corrente"""
@@ -1075,7 +1465,7 @@ class CodigoAutoGerado(OmieBase):
 }
                 )
             
-    def Incluir_Conta_Corrente(
+    def incluir_conta_corrente(
             self, cCodCCInt, tipo_conta_corrente, codigo_banco, descricao, saldo_inicial
             ) -> dict:
                 """Inclui uma conta corrente"""
@@ -1092,7 +1482,7 @@ class CodigoAutoGerado(OmieBase):
 }
                 )
             
-    def Listar_Contas_Correntes(
+    def listar_contas_correntes(
             self, pagina, registros_por_pagina, apenas_importado_api
             ) -> dict:
                 """Listar Contas Correntes"""
@@ -1107,7 +1497,7 @@ class CodigoAutoGerado(OmieBase):
 }
                 )
             
-    def Listar_Resumo_Contas_Correntes(
+    def listar_resumo_contas_correntes(
             self, pagina, registros_por_pagina, apenas_importado_api
             ) -> dict:
                 """Listar resumida de Contas correntes."""
@@ -1122,7 +1512,7 @@ class CodigoAutoGerado(OmieBase):
 }
                 )
             
-    def Pesquisar_Conta_Corrente(
+    def pesquisar_conta_corrente(
             self, pagina, registros_por_pagina, apenas_importado_api
             ) -> dict:
                 """DEPRECATED"""
@@ -1137,7 +1527,7 @@ class CodigoAutoGerado(OmieBase):
 }
                 )
             
-    def Upsert_Conta_Corrente(
+    def upsert_conta_corrente(
             self, cCodCCInt, tipo_conta_corrente, codigo_banco, descricao, saldo_inicial
             ) -> dict:
                 """Upsert da Conta Corrente"""
@@ -1154,7 +1544,7 @@ class CodigoAutoGerado(OmieBase):
 }
                 )
             
-    def Upsert_Conta_Corrente_Por_Lote(
+    def upsert_conta_corrente_por_lote(
             self, lote, fin_conta_corrente_cadastro
             ) -> dict:
                 """Upsert por lote de Conta Corrente"""
@@ -1168,7 +1558,7 @@ class CodigoAutoGerado(OmieBase):
 }
                 )
             
-    def Alterar_Lanc_C_C(
+    def alterar_lanc_c_c(
             self, cCodIntLanc, cabecalho, detalhes
             ) -> dict:
                 """"""
@@ -1183,7 +1573,7 @@ class CodigoAutoGerado(OmieBase):
 }
                 )
             
-    def Consulta_Lanc_C_C(
+    def consulta_lanc_c_c(
             self, nCodLanc, cCodIntLanc
             ) -> dict:
                 """"""
@@ -1197,7 +1587,7 @@ class CodigoAutoGerado(OmieBase):
 }
                 )
             
-    def Excluir_Lanc_C_C(
+    def excluir_lanc_c_c(
             self, nCodLanc, cCodIntLanc
             ) -> dict:
                 """"""
@@ -1211,7 +1601,7 @@ class CodigoAutoGerado(OmieBase):
 }
                 )
             
-    def Incluir_Lanc_C_C(
+    def incluir_lanc_c_c(
             self, cCodIntLanc, cabecalho, detalhes
             ) -> dict:
                 """"""
@@ -1226,7 +1616,7 @@ class CodigoAutoGerado(OmieBase):
 }
                 )
             
-    def Listar_Lanc_C_C(
+    def listar_lanc_c_c(
             self, nPagina, nRegPorPagina
             ) -> dict:
                 """"""
@@ -1240,7 +1630,7 @@ class CodigoAutoGerado(OmieBase):
 }
                 )
             
-    def Alterar_Conta_Pagar(
+    def alterar_conta_pagar(
             self, codigo_lancamento_integracao, codigo_cliente_fornecedor, data_vencimento, valor_documento, codigo_categoria, data_previsao, id_conta_corrente
             ) -> dict:
                 """Altera uma conta a pagar"""
@@ -1259,7 +1649,7 @@ class CodigoAutoGerado(OmieBase):
 }
                 )
             
-    def Cancelar_Pagamento(
+    def cancelar_pagamento(
             self, codigo_baixa
             ) -> dict:
                 """Cancela um pagamento realizado no Contas a Pagar"""
@@ -1272,7 +1662,7 @@ class CodigoAutoGerado(OmieBase):
 }
                 )
             
-    def Consultar_Conta_Pagar(
+    def consultar_conta_pagar(
             self, codigo_lancamento_omie, codigo_lancamento_integracao
             ) -> dict:
                 """Consulta uma conta a pagar"""
@@ -1286,7 +1676,7 @@ class CodigoAutoGerado(OmieBase):
 }
                 )
             
-    def Excluir_Conta_Pagar(
+    def excluir_conta_pagar(
             self, codigo_lancamento_omie, codigo_lancamento_integracao
             ) -> dict:
                 """Exclui uma conta a pagar"""
@@ -1300,7 +1690,7 @@ class CodigoAutoGerado(OmieBase):
 }
                 )
             
-    def Incluir_Conta_Pagar(
+    def incluir_conta_pagar(
             self, codigo_lancamento_integracao, codigo_cliente_fornecedor, data_vencimento, valor_documento, codigo_categoria, data_previsao, id_conta_corrente
             ) -> dict:
                 """Inclui uma conta a Pagar."""
@@ -1319,7 +1709,7 @@ class CodigoAutoGerado(OmieBase):
 }
                 )
             
-    def Incluir_Conta_Pagar_Por_Lote(
+    def incluir_conta_pagar_por_lote(
             self, lote, conta_pagar_cadastro
             ) -> dict:
                 """"""
@@ -1333,7 +1723,7 @@ class CodigoAutoGerado(OmieBase):
 }
                 )
             
-    def Lancar_Pagamento(
+    def lancar_pagamento(
             self, codigo_lancamento, codigo_lancamento_integracao, codigo_baixa_integracao, codigo_conta_corrente, valor, desconto, juros, multa, data, observacao
             ) -> dict:
                 """Efetua a baixa de um pagamento do contas a pagar."""
@@ -1355,7 +1745,7 @@ class CodigoAutoGerado(OmieBase):
 }
                 )
             
-    def Listar_Contas_Pagar(
+    def listar_contas_pagar(
             self, pagina, registros_por_pagina, apenas_importado_api
             ) -> dict:
                 """Listar as Contas a Pagar"""
@@ -1370,7 +1760,7 @@ class CodigoAutoGerado(OmieBase):
 }
                 )
             
-    def Upsert_Conta_Pagar(
+    def upsert_conta_pagar(
             self, codigo_lancamento_integracao, codigo_cliente_fornecedor, data_vencimento, valor_documento, codigo_categoria, data_previsao, id_conta_corrente
             ) -> dict:
                 """Upsert do Contas a Pagar"""
@@ -1389,7 +1779,7 @@ class CodigoAutoGerado(OmieBase):
 }
                 )
             
-    def Upsert_Conta_Pagar_Por_Lote(
+    def upsert_conta_pagar_por_lote(
             self, lote, conta_pagar_cadastro
             ) -> dict:
                 """Efetua o UPSERT do Contas a Pagar por Lote"""
@@ -1403,7 +1793,7 @@ class CodigoAutoGerado(OmieBase):
 }
                 )
             
-    def Alterar_Conta_Receber(
+    def alterar_conta_receber(
             self, codigo_lancamento_integracao, codigo_cliente_fornecedor, data_vencimento, valor_documento, codigo_categoria, data_previsao, id_conta_corrente
             ) -> dict:
                 """Altera um conta a receber"""
@@ -1422,7 +1812,7 @@ class CodigoAutoGerado(OmieBase):
 }
                 )
             
-    def Cancelar_Conta_Receber(
+    def cancelar_conta_receber(
             self, chave_lancamento
             ) -> dict:
                 """Cancelamento do boleto gerado de uma conta a receber"""
@@ -1435,7 +1825,7 @@ class CodigoAutoGerado(OmieBase):
 }
                 )
             
-    def Cancelar_Recebimento(
+    def cancelar_recebimento(
             self, codigo_baixa
             ) -> dict:
                 """Efetua o cancelamento de um recebimento de Contas a Receber."""
@@ -1448,7 +1838,7 @@ class CodigoAutoGerado(OmieBase):
 }
                 )
             
-    def Conciliar_Recebimento(
+    def conciliar_recebimento(
             self, codigo_baixa
             ) -> dict:
                 """"""
@@ -1461,7 +1851,7 @@ class CodigoAutoGerado(OmieBase):
 }
                 )
             
-    def Consultar_Conta_Receber(
+    def consultar_conta_receber(
             self, codigo_lancamento_omie, codigo_lancamento_integracao
             ) -> dict:
                 """Consulta uma Conta a Pagar"""
@@ -1475,7 +1865,7 @@ class CodigoAutoGerado(OmieBase):
 }
                 )
             
-    def Desconciliar_Recebimento(
+    def desconciliar_recebimento(
             self, codigo_baixa
             ) -> dict:
                 """Desconciliar o Recebimento"""
@@ -1488,7 +1878,7 @@ class CodigoAutoGerado(OmieBase):
 }
                 )
             
-    def Excluir_Conta_Receber(
+    def excluir_conta_receber(
             self, chave_lancamento
             ) -> dict:
                 """Exclui uma conta a receber"""
@@ -1501,7 +1891,7 @@ class CodigoAutoGerado(OmieBase):
 }
                 )
             
-    def Incluir_Conta_Receber(
+    def incluir_conta_receber(
             self, codigo_lancamento_integracao, codigo_cliente_fornecedor, data_vencimento, valor_documento, codigo_categoria, data_previsao, id_conta_corrente
             ) -> dict:
                 """Inclui uma conta a Receber"""
@@ -1520,7 +1910,7 @@ class CodigoAutoGerado(OmieBase):
 }
                 )
             
-    def Incluir_Conta_Receber_Por_Lote(
+    def incluir_conta_receber_por_lote(
             self, lote, conta_receber_cadastro
             ) -> dict:
                 """"""
@@ -1534,7 +1924,7 @@ class CodigoAutoGerado(OmieBase):
 }
                 )
             
-    def Lancar_Recebimento(
+    def lancar_recebimento(
             self, codigo_lancamento, codigo_baixa, codigo_conta_corrente, valor, data, observacao
             ) -> dict:
                 """"""
@@ -1552,7 +1942,7 @@ class CodigoAutoGerado(OmieBase):
 }
                 )
             
-    def Listar_Contas_Receber(
+    def listar_contas_receber(
             self, pagina, registros_por_pagina, apenas_importado_api
             ) -> dict:
                 """Lista as contas a receber cadastradas."""
@@ -1567,7 +1957,7 @@ class CodigoAutoGerado(OmieBase):
 }
                 )
             
-    def Upsert_Conta_Receber(
+    def upsert_conta_receber(
             self, codigo_lancamento_integracao, codigo_cliente_fornecedor, data_vencimento, valor_documento, codigo_categoria, data_previsao, id_conta_corrente
             ) -> dict:
                 """Executa o Upsert do Contas a receber"""
@@ -1586,7 +1976,7 @@ class CodigoAutoGerado(OmieBase):
 }
                 )
             
-    def Upsert_Conta_Receber_Por_Lote(
+    def upsert_conta_receber_por_lote(
             self, lote, conta_receber_cadastro
             ) -> dict:
                 """Efetua o UPSERT do Contas a Receber por Lote."""
@@ -1600,7 +1990,7 @@ class CodigoAutoGerado(OmieBase):
 }
                 )
             
-    def Cancelar_Boleto(
+    def cancelar_boleto(
             self, nCodTitulo, cCodIntTitulo
             ) -> dict:
                 """Cancela o Boleto."""
@@ -1614,7 +2004,7 @@ class CodigoAutoGerado(OmieBase):
 }
                 )
             
-    def Gerar_Boleto(
+    def gerar_boleto(
             self, nCodTitulo, cCodIntTitulo
             ) -> dict:
                 """Gera um Boleto referente a um Contas a Receber."""
@@ -1628,7 +2018,7 @@ class CodigoAutoGerado(OmieBase):
 }
                 )
             
-    def Obter_Boleto(
+    def obter_boleto(
             self, nCodTitulo, cCodIntTitulo
             ) -> dict:
                 """Disponibiliza o link de Download do Boleto."""
@@ -1642,7 +2032,7 @@ class CodigoAutoGerado(OmieBase):
 }
                 )
             
-    def Prorrogar_Boleto(
+    def prorrogar_boleto(
             self, nCodTitulo, cCodIntTitulo, dDtVenc
             ) -> dict:
                 """Prorroga o vencimento do Boleto."""
@@ -1657,7 +2047,7 @@ class CodigoAutoGerado(OmieBase):
 }
                 )
             
-    def Listar_Extrato(
+    def listar_extrato(
             self, nCodCC, cCodIntCC, dPeriodoInicial, dPeriodoFinal
             ) -> dict:
                 """Listagem do Extrato"""
@@ -1673,7 +2063,7 @@ class CodigoAutoGerado(OmieBase):
 }
                 )
             
-    def Listar_Orcamentos(
+    def listar_orcamentos(
             self, nAno, nMes
             ) -> dict:
                 """"""
@@ -1687,7 +2077,7 @@ class CodigoAutoGerado(OmieBase):
 }
                 )
             
-    def Obter_U_R_L_Boleto(
+    def obter_u_r_l_boleto(
             self, nCodTitulo, cCodIntTitulo
             ) -> dict:
                 """DEPRECATED"""
@@ -1701,7 +2091,7 @@ class CodigoAutoGerado(OmieBase):
 }
                 )
             
-    def Pesquisar_Excluidos(
+    def pesquisar_excluidos(
             self, nPagina, nRegPorPagina
             ) -> dict:
                 """"""
@@ -1715,7 +2105,7 @@ class CodigoAutoGerado(OmieBase):
 }
                 )
             
-    def Pesquisar_Lancamentos(
+    def pesquisar_lancamentos(
             self, nPagina, nRegPorPagina
             ) -> dict:
                 """"""
@@ -1729,7 +2119,7 @@ class CodigoAutoGerado(OmieBase):
 }
                 )
             
-    def Obter_Resumo_Contador(
+    def obter_resumo_contador(
             self, dDataInicio, dDataFim
             ) -> dict:
                 """Obtem o resumo do painel do contador."""
@@ -1743,7 +2133,7 @@ class CodigoAutoGerado(OmieBase):
 }
                 )
             
-    def Consultar_Banco(
+    def consultar_banco(
             self, codigo
             ) -> dict:
                 """"""
@@ -1756,7 +2146,7 @@ class CodigoAutoGerado(OmieBase):
 }
                 )
             
-    def Listar_Bancos(
+    def listar_bancos(
             self, pagina, registros_por_pagina
             ) -> dict:
                 """Exibe uma lista com os banco cadastrados."""
@@ -1770,7 +2160,7 @@ class CodigoAutoGerado(OmieBase):
 }
                 )
             
-    def Consultar_Tipo_Documento(
+    def consultar_tipo_documento(
             self, codigo
             ) -> dict:
                 """"""
@@ -1783,7 +2173,7 @@ class CodigoAutoGerado(OmieBase):
 }
                 )
             
-    def Pesquisar_Tipo_Documento(
+    def pesquisar_tipo_documento(
             self, codigo
             ) -> dict:
                 """Pesquisa o tipo de documento"""
@@ -1796,7 +2186,7 @@ class CodigoAutoGerado(OmieBase):
 }
                 )
             
-    def Listar_Tipos_C_C(
+    def listar_tipos_c_c(
             self, pagina, registros_por_pagina
             ) -> dict:
                 """Listar os tipos de contas correntes."""
@@ -1810,7 +2200,7 @@ class CodigoAutoGerado(OmieBase):
 }
                 )
             
-    def Listar_Cadastro_D_R_E(
+    def listar_cadastro_d_r_e(
             self, apenasContasAtivas
             ) -> dict:
                 """Lista as contas do DRE"""
@@ -1823,7 +2213,7 @@ class CodigoAutoGerado(OmieBase):
 }
                 )
             
-    def Consultar_Final_Transf(
+    def consultar_final_transf(
             self, banco, codigo
             ) -> dict:
                 """"""
@@ -1837,7 +2227,7 @@ class CodigoAutoGerado(OmieBase):
 }
                 )
             
-    def Listar_Final_Transf(
+    def listar_final_transf(
             self, pagina, registros_por_pagina
             ) -> dict:
                 """"""
@@ -1851,7 +2241,7 @@ class CodigoAutoGerado(OmieBase):
 }
                 )
             
-    def Alterar_Produto(
+    def alterar_produto(
             self, codigo_produto_integracao, codigo, descricao, unidade
             ) -> dict:
                 """"""
@@ -1867,7 +2257,7 @@ class CodigoAutoGerado(OmieBase):
 }
                 )
             
-    def Associar_Cod_Int_Produto(
+    def associar_cod_int_produto(
             self, codigo_produto, codigo_produto_integracao
             ) -> dict:
                 """"""
@@ -1881,7 +2271,7 @@ class CodigoAutoGerado(OmieBase):
 }
                 )
             
-    def Consultar_Produto(
+    def consultar_produto(
             self, codigo_produto, codigo_produto_integracao, codigo
             ) -> dict:
                 """Consulta um produto."""
@@ -1896,7 +2286,7 @@ class CodigoAutoGerado(OmieBase):
 }
                 )
             
-    def Excluir_Produto(
+    def excluir_produto(
             self, codigo_produto, codigo_produto_integracao, codigo
             ) -> dict:
                 """Exclui um produto"""
@@ -1911,7 +2301,7 @@ class CodigoAutoGerado(OmieBase):
 }
                 )
             
-    def Incluir_Produto(
+    def incluir_produto(
             self, codigo_produto_integracao, codigo, descricao, unidade
             ) -> dict:
                 """Incluir um produto."""
@@ -1927,7 +2317,7 @@ class CodigoAutoGerado(OmieBase):
 }
                 )
             
-    def Incluir_Produtos_Por_Lote(
+    def incluir_produtos_por_lote(
             self, lote, produto_servico_cadastro
             ) -> dict:
                 """DEPRECATED"""
@@ -1941,7 +2331,7 @@ class CodigoAutoGerado(OmieBase):
 }
                 )
             
-    def Listar_Produtos(
+    def listar_produtos(
             self, pagina, registros_por_pagina, apenas_importado_api, filtrar_apenas_omiepdv
             ) -> dict:
                 """Lista completa do cadastro de produtos"""
@@ -1957,7 +2347,7 @@ class CodigoAutoGerado(OmieBase):
 }
                 )
             
-    def Listar_Produtos_Resumido(
+    def listar_produtos_resumido(
             self, pagina, registros_por_pagina, apenas_importado_api, filtrar_apenas_omiepdv
             ) -> dict:
                 """Lista os produtos cadastrados"""
@@ -1973,7 +2363,7 @@ class CodigoAutoGerado(OmieBase):
 }
                 )
             
-    def Upsert_Produto(
+    def upsert_produto(
             self, codigo_produto_integracao, codigo, descricao, unidade
             ) -> dict:
                 """"""
@@ -1989,7 +2379,7 @@ class CodigoAutoGerado(OmieBase):
 }
                 )
             
-    def Upsert_Produtos_Por_Lote(
+    def upsert_produtos_por_lote(
             self, lote, produto_servico_cadastro
             ) -> dict:
                 """DEPRECATED"""
@@ -2003,7 +2393,7 @@ class CodigoAutoGerado(OmieBase):
 }
                 )
             
-    def Alterar_Caract_Produto(
+    def alterar_caract_produto(
             self, nCodProd, cCodIntProd, nCodCaract, cCodIntCaract, cConteudo, cExibirItemNF, cExibirItemPedido, cExibirOrdemProd
             ) -> dict:
                 """"""
@@ -2023,7 +2413,7 @@ class CodigoAutoGerado(OmieBase):
 }
                 )
             
-    def Consultar_Caract_Produto(
+    def consultar_caract_produto(
             self, nCodProd, cCodIntProd, nCodCaract, cCodIntCaract
             ) -> dict:
                 """"""
@@ -2039,7 +2429,7 @@ class CodigoAutoGerado(OmieBase):
 }
                 )
             
-    def Excluir_Caract_Produto(
+    def excluir_caract_produto(
             self, nCodProd, cCodIntProd, nCodCaract, cCodIntCaract
             ) -> dict:
                 """"""
@@ -2055,7 +2445,7 @@ class CodigoAutoGerado(OmieBase):
 }
                 )
             
-    def Incluir_Caract_Produto(
+    def incluir_caract_produto(
             self, nCodProd, cCodIntProd, nCodCaract, cCodIntCaract, cConteudo, cExibirItemNF, cExibirItemPedido, cExibirOrdemProd
             ) -> dict:
                 """"""
@@ -2075,7 +2465,7 @@ class CodigoAutoGerado(OmieBase):
 }
                 )
             
-    def Listar_Caract_Produto(
+    def listar_caract_produto(
             self, nPagina, nRegPorPagina, nCodProd
             ) -> dict:
                 """"""
@@ -2090,7 +2480,7 @@ class CodigoAutoGerado(OmieBase):
 }
                 )
             
-    def Alterar_Estrutura(
+    def alterar_estrutura(
             self, idProduto, intProduto, itemMalhaAlterar
             ) -> dict:
                 """Alterar a estrutura de um produto."""
@@ -2105,7 +2495,7 @@ class CodigoAutoGerado(OmieBase):
 }
                 )
             
-    def Consultar_Estrutura(
+    def consultar_estrutura(
             self, idProduto, intProduto, codProduto
             ) -> dict:
                 """Consulta a estrutura do produto."""
@@ -2120,7 +2510,7 @@ class CodigoAutoGerado(OmieBase):
 }
                 )
             
-    def Excluir_Estrutura(
+    def excluir_estrutura(
             self, idProduto, intProduto, idMalha, intMalha
             ) -> dict:
                 """Excluir item da estrutura de um produto."""
@@ -2136,7 +2526,7 @@ class CodigoAutoGerado(OmieBase):
 }
                 )
             
-    def Incluir_Estrutura(
+    def incluir_estrutura(
             self, idProduto, intProduto, itemMalhaIncluir
             ) -> dict:
                 """"""
@@ -2151,7 +2541,7 @@ class CodigoAutoGerado(OmieBase):
 }
                 )
             
-    def Listar_Estruturas(
+    def listar_estruturas(
             self, nPagina, nRegPorPagina
             ) -> dict:
                 """Lista as estruturas de produtos."""
@@ -2165,7 +2555,7 @@ class CodigoAutoGerado(OmieBase):
 }
                 )
             
-    def Alterar_Componentes_Kit(
+    def alterar_componentes_kit(
             self, codigo_produto, componentes_kit
             ) -> dict:
                 """Inclui/Altera/Exclui os componentes do KIT."""
@@ -2179,7 +2569,7 @@ class CodigoAutoGerado(OmieBase):
 }
                 )
             
-    def Alterar_Req(
+    def alterar_req(
             self, codCateg, codIntReqCompra, codProj, codReqCompra, dtSugestao, obsIntReqCompra, obsReqCompra, ItensReqCompra
             ) -> dict:
                 """"""
@@ -2199,7 +2589,7 @@ class CodigoAutoGerado(OmieBase):
 }
                 )
             
-    def Consultar_Req(
+    def consultar_req(
             self, codIntReqCompra, codReqCompra
             ) -> dict:
                 """"""
@@ -2213,7 +2603,7 @@ class CodigoAutoGerado(OmieBase):
 }
                 )
             
-    def Excluir_Req(
+    def excluir_req(
             self, codIntReqCompra, codReqCompra
             ) -> dict:
                 """"""
@@ -2227,7 +2617,7 @@ class CodigoAutoGerado(OmieBase):
 }
                 )
             
-    def Incluir_Req(
+    def incluir_req(
             self, codCateg, codIntReqCompra, codProj, codReqCompra, dtSugestao, obsIntReqCompra, obsReqCompra, ItensReqCompra
             ) -> dict:
                 """"""
@@ -2247,7 +2637,7 @@ class CodigoAutoGerado(OmieBase):
 }
                 )
             
-    def Pesquisar_Req(
+    def pesquisar_req(
             self, pagina, registros_por_pagina
             ) -> dict:
                 """"""
@@ -2261,7 +2651,7 @@ class CodigoAutoGerado(OmieBase):
 }
                 )
             
-    def Upsert_Req(
+    def upsert_req(
             self, codCateg, codIntReqCompra, codProj, codReqCompra, dtSugestao, obsIntReqCompra, obsReqCompra, ItensReqCompra
             ) -> dict:
                 """"""
@@ -2281,7 +2671,7 @@ class CodigoAutoGerado(OmieBase):
 }
                 )
             
-    def Altera_Ped_Compra(
+    def altera_ped_compra(
             self, cabecalho_alterar, frete_alterar, departamentos_alterar, produtos_alterar
             ) -> dict:
                 """"""
@@ -2297,7 +2687,7 @@ class CodigoAutoGerado(OmieBase):
 }
                 )
             
-    def Consultar_Ped_Compra(
+    def consultar_ped_compra(
             self, nCodPed, cCodIntPed, cNumero
             ) -> dict:
                 """"""
@@ -2312,7 +2702,7 @@ class CodigoAutoGerado(OmieBase):
 }
                 )
             
-    def Excluir_Ped_Compra(
+    def excluir_ped_compra(
             self, nCodPed, cCodIntPed
             ) -> dict:
                 """Excluir um Pedido de Compra"""
@@ -2326,7 +2716,7 @@ class CodigoAutoGerado(OmieBase):
 }
                 )
             
-    def Incluir_Ped_Compra(
+    def incluir_ped_compra(
             self, cabecalho_incluir, frete_incluir, departamentos_incluir, produtos_incluir
             ) -> dict:
                 """Incluir um Pedido de Compra"""
@@ -2342,7 +2732,7 @@ class CodigoAutoGerado(OmieBase):
 }
                 )
             
-    def Pesquisar_Ped_Compra(
+    def pesquisar_ped_compra(
             self, nPagina, nRegsPorPagina, lApenasImportadoApi, lExibirPedidosPendentes, lExibirPedidosFaturados, lExibirPedidosRecebidos, lExibirPedidosCancelados, lExibirPedidosEncerrados, lExibirPedidosRecParciais, lExibirPedidosFatParciais, dDataInicial, dDataFinal, lApenasAlterados
             ) -> dict:
                 """"""
@@ -2367,7 +2757,7 @@ class CodigoAutoGerado(OmieBase):
 }
                 )
             
-    def Upsert_Ped_Compra(
+    def upsert_ped_compra(
             self, cabecalho_upsert, frete_upsert, departamentos_upsert, produtos_upsert
             ) -> dict:
                 """"""
@@ -2383,7 +2773,7 @@ class CodigoAutoGerado(OmieBase):
 }
                 )
             
-    def Alterar_Ordem_Producao(
+    def alterar_ordem_producao(
             self, identificacao
             ) -> dict:
                 """"""
@@ -2396,7 +2786,7 @@ class CodigoAutoGerado(OmieBase):
 }
                 )
             
-    def Concluir_Ordem_Producao(
+    def concluir_ordem_producao(
             self, cCodIntOP, nCodOP, dDtConclusao, nQtdeProduzida, cObsConclusao
             ) -> dict:
                 """"""
@@ -2413,7 +2803,7 @@ class CodigoAutoGerado(OmieBase):
 }
                 )
             
-    def Consultar_Ordem_Producao(
+    def consultar_ordem_producao(
             self, cCodIntOP, nCodOP
             ) -> dict:
                 """"""
@@ -2427,7 +2817,7 @@ class CodigoAutoGerado(OmieBase):
 }
                 )
             
-    def Excluir_Ordem_Producao(
+    def excluir_ordem_producao(
             self, cCodIntOP, nCodOP
             ) -> dict:
                 """"""
@@ -2441,7 +2831,7 @@ class CodigoAutoGerado(OmieBase):
 }
                 )
             
-    def Incluir_Ordem_Producao(
+    def incluir_ordem_producao(
             self, identificacao
             ) -> dict:
                 """"""
@@ -2454,7 +2844,7 @@ class CodigoAutoGerado(OmieBase):
 }
                 )
             
-    def Listar_Ordem_Producao(
+    def listar_ordem_producao(
             self, pagina, registros_por_pagina
             ) -> dict:
                 """"""
@@ -2468,7 +2858,7 @@ class CodigoAutoGerado(OmieBase):
 }
                 )
             
-    def Reverter_Ordem_Producao(
+    def reverter_ordem_producao(
             self, cCodIntOP, nCodOP
             ) -> dict:
                 """"""
@@ -2482,7 +2872,7 @@ class CodigoAutoGerado(OmieBase):
 }
                 )
             
-    def Upsert_Ordem_Producao(
+    def upsert_ordem_producao(
             self, identificacao
             ) -> dict:
                 """"""
@@ -2495,7 +2885,7 @@ class CodigoAutoGerado(OmieBase):
 }
                 )
             
-    def Alterar_Nota_Ent(
+    def alterar_nota_ent(
             self, cabec, infAdic, produtos
             ) -> dict:
                 """Alterar nota de entrada"""
@@ -2510,7 +2900,7 @@ class CodigoAutoGerado(OmieBase):
 }
                 )
             
-    def Consultar_Nota_Ent(
+    def consultar_nota_ent(
             self, nCodNotaEnt, cCodIntNotaEnt
             ) -> dict:
                 """Consultar nota de entrada"""
@@ -2524,7 +2914,7 @@ class CodigoAutoGerado(OmieBase):
 }
                 )
             
-    def Excluir_Nota_Ent(
+    def excluir_nota_ent(
             self, nCodNotaEnt, cCodIntNotaEnt
             ) -> dict:
                 """Excluir nota de entrada"""
@@ -2538,7 +2928,7 @@ class CodigoAutoGerado(OmieBase):
 }
                 )
             
-    def Incluir_Nota_Ent(
+    def incluir_nota_ent(
             self, cabec, infAdic, produtos
             ) -> dict:
                 """Incluir nota de entrada"""
@@ -2553,7 +2943,7 @@ class CodigoAutoGerado(OmieBase):
 }
                 )
             
-    def Listar_Nota_Ent(
+    def listar_nota_ent(
             self, nPagina, nRegistrosPorPagina
             ) -> dict:
                 """Listagem de nota de entrada"""
@@ -2567,7 +2957,7 @@ class CodigoAutoGerado(OmieBase):
 }
                 )
             
-    def Status_Nota_Ent(
+    def status_nota_ent(
             self, nCodNotaEnt, cCodIntNotaEnt
             ) -> dict:
                 """Status de nota de entrada"""
@@ -2581,7 +2971,7 @@ class CodigoAutoGerado(OmieBase):
 }
                 )
             
-    def Cancelar_Nota_Ent(
+    def cancelar_nota_ent(
             self, nCodNotaEnt, cCodIntNotaEnt
             ) -> dict:
                 """Cancelar nota de entrada"""
@@ -2595,7 +2985,7 @@ class CodigoAutoGerado(OmieBase):
 }
                 )
             
-    def Concluir_Nota_Ent(
+    def concluir_nota_ent(
             self, nCodNotaEnt, cCodIntNotaEnt
             ) -> dict:
                 """Concluir nota de entrada"""
@@ -2609,7 +2999,7 @@ class CodigoAutoGerado(OmieBase):
 }
                 )
             
-    def Conferir_Nota_Ent(
+    def conferir_nota_ent(
             self, nCodNotaEnt, cCodIntNotaEnt
             ) -> dict:
                 """Conferir nota de entrada"""
@@ -2623,7 +3013,7 @@ class CodigoAutoGerado(OmieBase):
 }
                 )
             
-    def Duplicar_Nota_Ent(
+    def duplicar_nota_ent(
             self, nCodNotaEnt, cCodIntNotaEnt
             ) -> dict:
                 """Duplicar nota de entrada"""
@@ -2637,7 +3027,7 @@ class CodigoAutoGerado(OmieBase):
 }
                 )
             
-    def Alterar_Etapa_Recebimento(
+    def alterar_etapa_recebimento(
             self, nIdReceb, cChaveNfe, cEtapa
             ) -> dict:
                 """Alterar etapa recebimento NFe"""
@@ -2652,7 +3042,7 @@ class CodigoAutoGerado(OmieBase):
 }
                 )
             
-    def Alterar_Recebimento(
+    def alterar_recebimento(
             self, ide, itensRecebimentoEditar
             ) -> dict:
                 """Alterar recebimento de NFe"""
@@ -2666,7 +3056,7 @@ class CodigoAutoGerado(OmieBase):
 }
                 )
             
-    def Concluir_Recebimento(
+    def concluir_recebimento(
             self, nIdReceb, cChaveNfe, cEtapa
             ) -> dict:
                 """Concluir recebimento de NFe"""
@@ -2681,7 +3071,7 @@ class CodigoAutoGerado(OmieBase):
 }
                 )
             
-    def Consultar_Recebimento(
+    def consultar_recebimento(
             self, nIdReceb, cChaveNfe
             ) -> dict:
                 """Consultar recebimento de NFe"""
@@ -2695,7 +3085,7 @@ class CodigoAutoGerado(OmieBase):
 }
                 )
             
-    def Listar_Recebimentos(
+    def listar_recebimentos(
             self, nPagina, nRegistrosPorPagina
             ) -> dict:
                 """Listar recebimento de NFe"""
@@ -2709,7 +3099,7 @@ class CodigoAutoGerado(OmieBase):
 }
                 )
             
-    def Reverter_Recebimento(
+    def reverter_recebimento(
             self, nIdReceb, cChaveNfe, cEtapa
             ) -> dict:
                 """Reverter recebimento NFe"""
@@ -2724,7 +3114,7 @@ class CodigoAutoGerado(OmieBase):
 }
                 )
             
-    def Alterar_Familia(
+    def alterar_familia(
             self, codigo, codInt, codFamilia, nomeFamilia, inativo
             ) -> dict:
                 """Altera uma familia de produto"""
@@ -2741,7 +3131,7 @@ class CodigoAutoGerado(OmieBase):
 }
                 )
             
-    def Consultar_Familia(
+    def consultar_familia(
             self, codigo, codInt
             ) -> dict:
                 """Consulta uma familia de produto"""
@@ -2755,7 +3145,7 @@ class CodigoAutoGerado(OmieBase):
 }
                 )
             
-    def Excluir_Familia(
+    def excluir_familia(
             self, codigo, codInt
             ) -> dict:
                 """Exclui uma familia de produto"""
@@ -2769,7 +3159,7 @@ class CodigoAutoGerado(OmieBase):
 }
                 )
             
-    def Incluir_Familia(
+    def incluir_familia(
             self, codInt, codFamilia, nomeFamilia, inativo
             ) -> dict:
                 """Inclui uma familia de produto"""
@@ -2785,7 +3175,7 @@ class CodigoAutoGerado(OmieBase):
 }
                 )
             
-    def Pesquisar_Familias(
+    def pesquisar_familias(
             self, pagina, registros_por_pagina
             ) -> dict:
                 """Listagem de familias cadastradas"""
@@ -2799,7 +3189,7 @@ class CodigoAutoGerado(OmieBase):
 }
                 )
             
-    def Upsert_Familia(
+    def upsert_familia(
             self, codigo, codInt, codFamilia, nomeFamilia, inativo
             ) -> dict:
                 """Inclui / Altera uma familia de produto"""
@@ -2816,7 +3206,7 @@ class CodigoAutoGerado(OmieBase):
 }
                 )
             
-    def Listar_Unidades(
+    def listar_unidades(
             self, codigo
             ) -> dict:
                 """Lista as unidades de medidas"""
@@ -2829,7 +3219,7 @@ class CodigoAutoGerado(OmieBase):
 }
                 )
             
-    def Listar_Compradores(
+    def listar_compradores(
             self, pagina, registros_por_pagina
             ) -> dict:
                 """Lista os compradores cadastrados."""
@@ -2843,7 +3233,7 @@ class CodigoAutoGerado(OmieBase):
 }
                 )
             
-    def Listar_Produto_Fornecedor(
+    def listar_produto_fornecedor(
             self, pagina, registros_por_pagina
             ) -> dict:
                 """Listar os produtos por fornecedores."""
@@ -2857,7 +3247,7 @@ class CodigoAutoGerado(OmieBase):
 }
                 )
             
-    def Listar_Formas_Pag_Vendas(
+    def listar_formas_pag_vendas(
             self, pagina, registros_por_pagina
             ) -> dict:
                 """Lista as formas de pagmento de vendas."""
@@ -2871,7 +3261,7 @@ class CodigoAutoGerado(OmieBase):
 }
                 )
             
-    def Consultar_N_C_M(
+    def consultar_n_c_m(
             self, cCodigo
             ) -> dict:
                 """Consulta um NCM"""
@@ -2884,7 +3274,7 @@ class CodigoAutoGerado(OmieBase):
 }
                 )
             
-    def Listar_N_C_M(
+    def listar_n_c_m(
             self, nPagina, nRegPorPagina
             ) -> dict:
                 """Lista os NCMs cadastrados."""
@@ -2898,7 +3288,7 @@ class CodigoAutoGerado(OmieBase):
 }
                 )
             
-    def Listar_Cenarios(
+    def listar_cenarios(
             self, nPagina, nRegPorPagina
             ) -> dict:
                 """"""
@@ -2912,7 +3302,7 @@ class CodigoAutoGerado(OmieBase):
 }
                 )
             
-    def Listar_Impostos_Cenario(
+    def listar_impostos_cenario(
             self, codigo_cliente_integracao, consumo_final, codigo_produto_integracao, codigo_cenario
             ) -> dict:
                 """"""
@@ -2928,7 +3318,7 @@ class CodigoAutoGerado(OmieBase):
 }
                 )
             
-    def Listar_C_F_O_P(
+    def listar_c_f_o_p(
             self, pagina, registros_por_pagina
             ) -> dict:
                 """Listar as CFOPs"""
@@ -2942,7 +3332,7 @@ class CodigoAutoGerado(OmieBase):
 }
                 )
             
-    def Listar_C_S_T(
+    def listar_c_s_t(
             self, pagina, registros_por_pagina
             ) -> dict:
                 """Listar os CSTs do ICMS"""
@@ -2956,7 +3346,7 @@ class CodigoAutoGerado(OmieBase):
 }
                 )
             
-    def Listar_C_S_O_S_N(
+    def listar_c_s_o_s_n(
             self, pagina, registros_por_pagina
             ) -> dict:
                 """Listar os CSOSN do ICMS."""
@@ -2970,7 +3360,7 @@ class CodigoAutoGerado(OmieBase):
 }
                 )
             
-    def Listar_Orig_Merc(
+    def listar_orig_merc(
             self, pagina, registros_por_pagina
             ) -> dict:
                 """Listar a origem da mercadoria do ICMS."""
@@ -2984,7 +3374,7 @@ class CodigoAutoGerado(OmieBase):
 }
                 )
             
-    def Listar_Cst_Pis(
+    def listar_cst_pis(
             self, pagina, registros_por_pagina
             ) -> dict:
                 """Listar o CST do PIS."""
@@ -2998,7 +3388,7 @@ class CodigoAutoGerado(OmieBase):
 }
                 )
             
-    def Listar_Cst_Cofins(
+    def listar_cst_cofins(
             self, pagina, registros_por_pagina
             ) -> dict:
                 """Listar CST do COFINS."""
@@ -3012,7 +3402,7 @@ class CodigoAutoGerado(OmieBase):
 }
                 )
             
-    def Listar_Cst_Ipi(
+    def listar_cst_ipi(
             self, pagina, registros_por_pagina
             ) -> dict:
                 """Listar CST do IPI."""
@@ -3026,7 +3416,7 @@ class CodigoAutoGerado(OmieBase):
 }
                 )
             
-    def Listar_Enq_Ipi(
+    def listar_enq_ipi(
             self, pagina, registros_por_pagina
             ) -> dict:
                 """Listar Enquadramento do IPI."""
@@ -3040,7 +3430,7 @@ class CodigoAutoGerado(OmieBase):
 }
                 )
             
-    def Listar_Tp_Calc(
+    def listar_tp_calc(
             self, pagina, registros_por_pagina
             ) -> dict:
                 """"""
@@ -3054,7 +3444,7 @@ class CodigoAutoGerado(OmieBase):
 }
                 )
             
-    def Listar_C_E_S_T(
+    def listar_c_e_s_t(
             self, pagina, registros_por_pagina
             ) -> dict:
                 """Listar CEST."""
@@ -3068,7 +3458,7 @@ class CodigoAutoGerado(OmieBase):
 }
                 )
             
-    def Alterar_Estoque_Minimo(
+    def alterar_estoque_minimo(
             self, codigo_local_estoque, id_prod, cod_int, quan_min
             ) -> dict:
                 """"""
@@ -3084,7 +3474,7 @@ class CodigoAutoGerado(OmieBase):
 }
                 )
             
-    def Excluir_Ajuste_Estoque(
+    def excluir_ajuste_estoque(
             self, id_ajuste
             ) -> dict:
                 """Excluir um Movimento de Ajuste de Estoque"""
@@ -3097,7 +3487,7 @@ class CodigoAutoGerado(OmieBase):
 }
                 )
             
-    def Incluir_Ajuste_Estoque(
+    def incluir_ajuste_estoque(
             self, codigo_local_estoque, id_prod, data, quan, obs, origem, tipo, motivo, valor
             ) -> dict:
                 """Incluir um Ajuste de Estoque"""
@@ -3118,7 +3508,7 @@ class CodigoAutoGerado(OmieBase):
 }
                 )
             
-    def Listar_Ajuste_Estoque(
+    def listar_ajuste_estoque(
             self, pagina, registros_por_pagina, apenas_importado_api
             ) -> dict:
                 """Listar os ajuste de estoque."""
@@ -3133,7 +3523,7 @@ class CodigoAutoGerado(OmieBase):
 }
                 )
             
-    def Listar_Movimento_Estoque(
+    def listar_movimento_estoque(
             self, nPagina, nRegPorPagina, codigo_local_estoque, idProd, dDtInicial, dDtFinal, lista_local_estoque
             ) -> dict:
                 """"""
@@ -3152,7 +3542,7 @@ class CodigoAutoGerado(OmieBase):
 }
                 )
             
-    def Listar_Pos_Estoque(
+    def listar_pos_estoque(
             self, nPagina, nRegPorPagina, dDataPosicao, cExibeTodos, codigo_local_estoque
             ) -> dict:
                 """"""
@@ -3169,7 +3559,7 @@ class CodigoAutoGerado(OmieBase):
 }
                 )
             
-    def Listar_Saldo_Pendente(
+    def listar_saldo_pendente(
             self, pagina, registros_por_pagina, codigo_local_estoque, id_prod, tipo
             ) -> dict:
                 """Lista o saldo pendente de estoque."""
@@ -3186,7 +3576,7 @@ class CodigoAutoGerado(OmieBase):
 }
                 )
             
-    def Movimento_Estoque(
+    def movimento_estoque(
             self, codigo_local_estoque, id_prod, cod_int, dataInicial, dataFinal
             ) -> dict:
                 """Consulta do Movimento de Estoque"""
@@ -3203,7 +3593,7 @@ class CodigoAutoGerado(OmieBase):
 }
                 )
             
-    def Posicao_Estoque(
+    def posicao_estoque(
             self, codigo_local_estoque, id_prod, cod_int, data
             ) -> dict:
                 """"""
@@ -3219,7 +3609,7 @@ class CodigoAutoGerado(OmieBase):
 }
                 )
             
-    def Consultar_Previsao(
+    def consultar_previsao(
             self, nCodProd
             ) -> dict:
                 """"""
@@ -3232,7 +3622,7 @@ class CodigoAutoGerado(OmieBase):
 }
                 )
             
-    def Listar_Movimentos(
+    def listar_movimentos(
             self, pagina, registros_por_pagina, codigo_local_estoque
             ) -> dict:
                 """"""
@@ -3247,7 +3637,7 @@ class CodigoAutoGerado(OmieBase):
 }
                 )
             
-    def Listar_Locais_Estoque(
+    def listar_locais_estoque(
             self, nPagina, nRegPorPagina
             ) -> dict:
                 """Lista os Locais de Estoque encontrados."""
@@ -3261,7 +3651,7 @@ class CodigoAutoGerado(OmieBase):
 }
                 )
             
-    def Obter_Estoque_Produto(
+    def obter_estoque_produto(
             self, cEAN, nIdProduto, cCodigo, dDia
             ) -> dict:
                 """"""
@@ -3277,7 +3667,7 @@ class CodigoAutoGerado(OmieBase):
 }
                 )
             
-    def Alterar_Ped_Faturado(
+    def alterar_ped_faturado(
             self, codigo_pedido, codigo_pedido_integracao, codigo_rastreio, previsao_entrega, obs_venda
             ) -> dict:
                 """"""
@@ -3294,7 +3684,7 @@ class CodigoAutoGerado(OmieBase):
 }
                 )
             
-    def Alterar_Pedido_Venda(
+    def alterar_pedido_venda(
             self, cabecalho, det, informacoes_adicionais, lista_parcelas, total_pedido
             ) -> dict:
                 """"""
@@ -3311,7 +3701,7 @@ class CodigoAutoGerado(OmieBase):
 }
                 )
             
-    def Consultar_Pedido(
+    def consultar_pedido(
             self, codigo_pedido
             ) -> dict:
                 """Consulta de Pedido de Venda de Produto"""
@@ -3324,7 +3714,7 @@ class CodigoAutoGerado(OmieBase):
 }
                 )
             
-    def Excluir_Pedido(
+    def excluir_pedido(
             self, codigo_pedido, codigo_pedido_integracao
             ) -> dict:
                 """Excluir pedido de venda de produto"""
@@ -3338,7 +3728,7 @@ class CodigoAutoGerado(OmieBase):
 }
                 )
             
-    def Incluir_Pedido(
+    def incluir_pedido(
             self, cabecalho, det, frete, informacoes_adicionais, lista_parcelas
             ) -> dict:
                 """Inclui um pedido de venda de produto"""
@@ -3355,7 +3745,7 @@ class CodigoAutoGerado(OmieBase):
 }
                 )
             
-    def Listar_Pedidos(
+    def listar_pedidos(
             self, pagina, registros_por_pagina, apenas_importado_api
             ) -> dict:
                 """Listar os pedidos de venda de produto"""
@@ -3370,7 +3760,7 @@ class CodigoAutoGerado(OmieBase):
 }
                 )
             
-    def Simular_Impostos(
+    def simular_impostos(
             self, codigo_cliente, consumidor_final, frete_simul, det_simul
             ) -> dict:
                 """Simula os impostos de um pedido de venda."""
@@ -3386,7 +3776,7 @@ class CodigoAutoGerado(OmieBase):
 }
                 )
             
-    def Status_Pedido(
+    def status_pedido(
             self, codigo_pedido, codigo_pedido_integracao
             ) -> dict:
                 """Consulta do Status do Pedido"""
@@ -3400,7 +3790,7 @@ class CodigoAutoGerado(OmieBase):
 }
                 )
             
-    def Trocar_Etapa_Pedido(
+    def trocar_etapa_pedido(
             self, codigo_pedido, codigo_pedido_integracao, etapa
             ) -> dict:
                 """Troca etapa do pedido."""
@@ -3415,7 +3805,7 @@ class CodigoAutoGerado(OmieBase):
 }
                 )
             
-    def Associar_Cod_Int_Pedido_Venda(
+    def associar_cod_int_pedido_venda(
             self, cCodIntPed, nCodPed
             ) -> dict:
                 """"""
@@ -3429,7 +3819,7 @@ class CodigoAutoGerado(OmieBase):
 }
                 )
             
-    def Cancelar_Pedido_Venda(
+    def cancelar_pedido_venda(
             self, cCodIntPed, nCodPed
             ) -> dict:
                 """Cancela um pedido de venda de produto."""
@@ -3443,7 +3833,7 @@ class CodigoAutoGerado(OmieBase):
 }
                 )
             
-    def Duplicar_Pedido_Venda(
+    def duplicar_pedido_venda(
             self, cCodIntPed, nCodPed
             ) -> dict:
                 """Duplica um pedido de venda de produto."""
@@ -3457,7 +3847,7 @@ class CodigoAutoGerado(OmieBase):
 }
                 )
             
-    def Faturar_Pedido_Venda(
+    def faturar_pedido_venda(
             self, cCodIntPed, nCodPed
             ) -> dict:
                 """Fatura um pedido de venda de produto."""
@@ -3471,7 +3861,7 @@ class CodigoAutoGerado(OmieBase):
 }
                 )
             
-    def Obter_Pedidos_Venda(
+    def obter_pedidos_venda(
             self, cEtapa
             ) -> dict:
                 """Retorna a lista de pedidos de venda a serem faturados."""
@@ -3484,7 +3874,7 @@ class CodigoAutoGerado(OmieBase):
 }
                 )
             
-    def Validar_Pedido_Venda(
+    def validar_pedido_venda(
             self, cCodIntPed, nCodPed
             ) -> dict:
                 """Valida um pedido de venda de produto para faturamento."""
@@ -3498,7 +3888,7 @@ class CodigoAutoGerado(OmieBase):
 }
                 )
             
-    def Listar_Etapas_Pedido(
+    def listar_etapas_pedido(
             self, nPagina, nRegPorPagina
             ) -> dict:
                 """Lista as etapas do Pedido de Venda de Produtos."""
@@ -3512,7 +3902,7 @@ class CodigoAutoGerado(OmieBase):
 }
                 )
             
-    def Averbacao_C_Te(
+    def averbacao_c_te(
             self, cAppNome, cAppVersao, cAppId, cChaveCte, cXmlCteAverb, cMd5CteAverb
             ) -> dict:
                 """"""
@@ -3530,7 +3920,7 @@ class CodigoAutoGerado(OmieBase):
 }
                 )
             
-    def Cancelar_C_Te(
+    def cancelar_c_te(
             self, cAppNome, cAppVersao, cAppId, cChaveCte, cXmlCteCanc, cMd5CteCanc
             ) -> dict:
                 """Cancela um CT-e."""
@@ -3548,7 +3938,7 @@ class CodigoAutoGerado(OmieBase):
 }
                 )
             
-    def Carta_Correcao_C_Te(
+    def carta_correcao_c_te(
             self, cAppNome, cAppVersao, cAppId, cChaveCte, cXmlCteCC, cMd5CteCC
             ) -> dict:
                 """"""
@@ -3566,7 +3956,7 @@ class CodigoAutoGerado(OmieBase):
 }
                 )
             
-    def Excluir_Fatura_C_Te(
+    def excluir_fatura_c_te(
             self, cAppNome, cAppVersao, cAppId, nIdFaturamento
             ) -> dict:
                 """Exclui uma fatura de um grupo de CT-es."""
@@ -3582,7 +3972,7 @@ class CodigoAutoGerado(OmieBase):
 }
                 )
             
-    def Faturar_C_Te(
+    def faturar_c_te(
             self, cAppNome, cAppVersao, cAppId, CNPJCliente, cCategoria, nContaCorrente, dVencimento, nValorFatura, itensFatura
             ) -> dict:
                 """Gera uma fatura para um grupo de CT-es."""
@@ -3603,7 +3993,7 @@ class CodigoAutoGerado(OmieBase):
 }
                 )
             
-    def Faturar_Lote_C_Te(
+    def faturar_lote_c_te(
             self, cAppNome, cAppVersao, cAppId, nIdFaturamento, CNPJCliente, cConcluirFatura, itensFatura
             ) -> dict:
                 """Gera uma fatura por lote para um grupo de CT-es."""
@@ -3622,7 +4012,7 @@ class CodigoAutoGerado(OmieBase):
 }
                 )
             
-    def Importar_C_Te(
+    def importar_c_te(
             self, cAppNome, cAppVersao, cAppId, cChaveCte, cXmlCte, cMd5Cte, cCategoria, nContaCorrente
             ) -> dict:
                 """Importar o XML de um CT-e."""
@@ -3642,7 +4032,7 @@ class CodigoAutoGerado(OmieBase):
 }
                 )
             
-    def Listar_N_Fe_Transp(
+    def listar_n_fe_transp(
             self, nPagina, nRegPorPagina
             ) -> dict:
                 """"""
@@ -3656,7 +4046,7 @@ class CodigoAutoGerado(OmieBase):
 }
                 )
             
-    def Status_Fatura(
+    def status_fatura(
             self, cAppNome, cAppVersao, cAppId, nIdFaturamento
             ) -> dict:
                 """Retorna o Status da Fatura inclusa."""
@@ -3672,7 +4062,7 @@ class CodigoAutoGerado(OmieBase):
 }
                 )
             
-    def Alterar_Remessa(
+    def alterar_remessa(
             self, cabec, email, frete, infAdic, obs, produtos
             ) -> dict:
                 """Altera uma remessa"""
@@ -3690,7 +4080,7 @@ class CodigoAutoGerado(OmieBase):
 }
                 )
             
-    def Consultar_Remessa(
+    def consultar_remessa(
             self, nCodRem, cCodIntRem
             ) -> dict:
                 """Consulta uma remessa."""
@@ -3704,7 +4094,7 @@ class CodigoAutoGerado(OmieBase):
 }
                 )
             
-    def Incluir_Remessa(
+    def incluir_remessa(
             self, cabec, email, frete, infAdic, obs, produtos
             ) -> dict:
                 """Inclui uma nova remessa"""
@@ -3722,7 +4112,7 @@ class CodigoAutoGerado(OmieBase):
 }
                 )
             
-    def Listar_Remessas(
+    def listar_remessas(
             self, nPagina
             ) -> dict:
                 """Lista as remessas cadastradas."""
@@ -3735,7 +4125,7 @@ class CodigoAutoGerado(OmieBase):
 }
                 )
             
-    def Status_Remessa(
+    def status_remessa(
             self, nCodRem, cCodIntRem
             ) -> dict:
                 """Retorna o status da remessa"""
@@ -3749,7 +4139,7 @@ class CodigoAutoGerado(OmieBase):
 }
                 )
             
-    def Cancelar_Remessa(
+    def cancelar_remessa(
             self, nCodRem, cCodIntRem
             ) -> dict:
                 """Cancelar remessa de produto"""
@@ -3763,7 +4153,7 @@ class CodigoAutoGerado(OmieBase):
 }
                 )
             
-    def Concluir_Remessa(
+    def concluir_remessa(
             self, nCodRem, cCodIntRem
             ) -> dict:
                 """Concluir remessa de produto"""
@@ -3777,7 +4167,7 @@ class CodigoAutoGerado(OmieBase):
 }
                 )
             
-    def Conferir_Remessa(
+    def conferir_remessa(
             self, nCodRem, cCodIntRem
             ) -> dict:
                 """Conferir remessa de produto"""
@@ -3791,7 +4181,7 @@ class CodigoAutoGerado(OmieBase):
 }
                 )
             
-    def Duplicar_Remessa(
+    def duplicar_remessa(
             self, nCodRem, cCodIntRem
             ) -> dict:
                 """Duplicar remessa de produto"""
@@ -3805,7 +4195,7 @@ class CodigoAutoGerado(OmieBase):
 }
                 )
             
-    def Fechar_Caixa(
+    def fechar_caixa(
             self, emissor, seqCaixa
             ) -> dict:
                 """Efetua o fechamento de um determinado caixa."""
@@ -3819,7 +4209,7 @@ class CodigoAutoGerado(OmieBase):
 }
                 )
             
-    def Inutilizar_Nfce(
+    def inutilizar_nfce(
             self, emissor, nfceInut
             ) -> dict:
                 """Inutiliza um lote de NFC-e."""
@@ -3833,7 +4223,7 @@ class CodigoAutoGerado(OmieBase):
 }
                 )
             
-    def Cancelar_Cupom(
+    def cancelar_cupom(
             self, nIdCupom
             ) -> dict:
                 """Cancela um cupom Fiscal"""
@@ -3846,7 +4236,7 @@ class CodigoAutoGerado(OmieBase):
 }
                 )
             
-    def Cancelar_N_F_C_E(
+    def cancelar_n_f_c_e(
             self, nCodigoPDV, nNumeroCaixa, cDataEmissao, IdenticacaoNFCE, DadosCancNFCE
             ) -> dict:
                 """Cancelar NFC-e."""
@@ -3863,7 +4253,7 @@ class CodigoAutoGerado(OmieBase):
 }
                 )
             
-    def Cancelar_S_A_T(
+    def cancelar_s_a_t(
             self, nCodigoPDV, nNumeroCaixa, cDataEmissao, IdenticacaoSAT, DadosCancSAT
             ) -> dict:
                 """Cancelar CF-e-SAT."""
@@ -3880,7 +4270,7 @@ class CodigoAutoGerado(OmieBase):
 }
                 )
             
-    def Excluir_Cupom(
+    def excluir_cupom(
             self, nIdCupom
             ) -> dict:
                 """Exclui um Cupom Fiscal."""
@@ -3893,7 +4283,7 @@ class CodigoAutoGerado(OmieBase):
 }
                 )
             
-    def Excluir_Cupons_Por_Numero(
+    def excluir_cupons_por_numero(
             self, nCodigoPDV, nNumeroCaixa, cDataEmissao, nNumCupom
             ) -> dict:
                 """"""
@@ -3909,7 +4299,7 @@ class CodigoAutoGerado(OmieBase):
 }
                 )
             
-    def Excluir_Lote(
+    def excluir_lote(
             self, nNumLote
             ) -> dict:
                 """Excluir o lote"""
@@ -3922,7 +4312,7 @@ class CodigoAutoGerado(OmieBase):
 }
                 )
             
-    def Listar_Cupons(
+    def listar_cupons(
             self, nPagina, nRegPorPagina, dDtEmisInicial, dDtEmisFinal
             ) -> dict:
                 """Lista os Cupons Fiscais."""
@@ -3938,7 +4328,7 @@ class CodigoAutoGerado(OmieBase):
 }
                 )
             
-    def Obter_Proximo_Lote(
+    def obter_proximo_lote(
             self, nCodigoPDV
             ) -> dict:
                 """"""
@@ -3951,7 +4341,7 @@ class CodigoAutoGerado(OmieBase):
 }
                 )
             
-    def Cupons_Fiscais(
+    def cupons_fiscais(
             self, nPagina, nRegPorPagina
             ) -> dict:
                 """Listagem dos cupons fiscais."""
@@ -3965,7 +4355,7 @@ class CodigoAutoGerado(OmieBase):
 }
                 )
             
-    def Cupons_Itens(
+    def cupons_itens(
             self, nPagina, nRegPorPagina
             ) -> dict:
                 """Listagem dos itens dos cupons fiscais"""
@@ -3979,7 +4369,7 @@ class CodigoAutoGerado(OmieBase):
 }
                 )
             
-    def Cupons_Pagamentos(
+    def cupons_pagamentos(
             self, nPagina, nRegPorPagina
             ) -> dict:
                 """Listagem dos pagamentos dos cupons fiscais"""
@@ -3993,7 +4383,7 @@ class CodigoAutoGerado(OmieBase):
 }
                 )
             
-    def Importar_N_F_Ce(
+    def importar_n_f_ce(
             self, emiNome, emiVersao, emiId, chNFe, nfceXml, nfceMd5, cAcaoCliente, idCliente, idVendedor, idProjeto, idLocalEstoque, cNaoMovEstoque, cNaoGerarTitulo, cIncluirProduto
             ) -> dict:
                 """"""
@@ -4019,7 +4409,7 @@ class CodigoAutoGerado(OmieBase):
 }
                 )
             
-    def Importar_Cfe_Sat(
+    def importar_cfe_sat(
             self, emiNome, emiVersao, emiId, chNFe, satXml, satMd5, cAcaoCliente, idCliente, idVendedor, idProjeto, idLocalEstoque, cNaoMovEstoque, cNaoGerarTitulo, cIncluirProduto
             ) -> dict:
                 """Importa o XML de um CF-e SAT."""
@@ -4045,7 +4435,7 @@ class CodigoAutoGerado(OmieBase):
 }
                 )
             
-    def Alterar_Preco_Item(
+    def alterar_preco_item(
             self, nCodTabPreco, nCodProd, nValorTabela
             ) -> dict:
                 """"""
@@ -4060,7 +4450,7 @@ class CodigoAutoGerado(OmieBase):
 }
                 )
             
-    def Alterar_Tabela_Preco(
+    def alterar_tabela_preco(
             self, nCodTabPreco, cCodIntTabPreco, cNome, cCodigo, cOrigem, produtos, clientes, outrasInfo, caracteristicas
             ) -> dict:
                 """"""
@@ -4081,7 +4471,7 @@ class CodigoAutoGerado(OmieBase):
 }
                 )
             
-    def Ativar_Tabela_Preco(
+    def ativar_tabela_preco(
             self, nCodTabPreco, cCodIntTabPreco
             ) -> dict:
                 """"""
@@ -4095,7 +4485,7 @@ class CodigoAutoGerado(OmieBase):
 }
                 )
             
-    def Atualizar_Produtos(
+    def atualizar_produtos(
             self, nCodTabPreco, cCodIntTabPreco
             ) -> dict:
                 """"""
@@ -4109,7 +4499,7 @@ class CodigoAutoGerado(OmieBase):
 }
                 )
             
-    def Consultar_Tabela_Preco(
+    def consultar_tabela_preco(
             self, nCodTabPreco, cCodIntTabPreco
             ) -> dict:
                 """"""
@@ -4123,7 +4513,7 @@ class CodigoAutoGerado(OmieBase):
 }
                 )
             
-    def Excluir_Tabela_Preco(
+    def excluir_tabela_preco(
             self, nCodTabPreco, cCodIntTabPreco
             ) -> dict:
                 """"""
@@ -4137,7 +4527,7 @@ class CodigoAutoGerado(OmieBase):
 }
                 )
             
-    def Incluir_Tabela_Preco(
+    def incluir_tabela_preco(
             self, cCodIntTabPreco, cNome, cCodigo, cOrigem, produtos, clientes, outrasInfo, caracteristicas
             ) -> dict:
                 """"""
@@ -4157,7 +4547,7 @@ class CodigoAutoGerado(OmieBase):
 }
                 )
             
-    def Listar_Tabela_Itens(
+    def listar_tabela_itens(
             self, nPagina, nRegPorPagina, nCodTabPreco, cCodIntTabPreco
             ) -> dict:
                 """"""
@@ -4173,7 +4563,7 @@ class CodigoAutoGerado(OmieBase):
 }
                 )
             
-    def Listar_Tabelas_Preco(
+    def listar_tabelas_preco(
             self, nPagina, nRegPorPagina
             ) -> dict:
                 """"""
@@ -4187,7 +4577,7 @@ class CodigoAutoGerado(OmieBase):
 }
                 )
             
-    def Suspender_Tabela_Preco(
+    def suspender_tabela_preco(
             self, nCodTabPreco, cCodIntTabPreco
             ) -> dict:
                 """"""
@@ -4201,7 +4591,7 @@ class CodigoAutoGerado(OmieBase):
 }
                 )
             
-    def Alterar_Caracteristica(
+    def alterar_caracteristica(
             self, nCodCaract, cCodIntCaract, cNomeCaract
             ) -> dict:
                 """"""
@@ -4216,7 +4606,7 @@ class CodigoAutoGerado(OmieBase):
 }
                 )
             
-    def Consultar_Caracteristica(
+    def consultar_caracteristica(
             self, nCodCaract, cCodIntCaract
             ) -> dict:
                 """"""
@@ -4230,7 +4620,7 @@ class CodigoAutoGerado(OmieBase):
 }
                 )
             
-    def Excluir_Caracteristica(
+    def excluir_caracteristica(
             self, nCodCaract, cCodIntCaract
             ) -> dict:
                 """"""
@@ -4244,7 +4634,7 @@ class CodigoAutoGerado(OmieBase):
 }
                 )
             
-    def Incluir_Caracteristica(
+    def incluir_caracteristica(
             self, cCodIntCaract, cNomeCaract
             ) -> dict:
                 """"""
@@ -4258,7 +4648,7 @@ class CodigoAutoGerado(OmieBase):
 }
                 )
             
-    def Listar_Caracteristicas(
+    def listar_caracteristicas(
             self, nPagina, nRegPorPagina
             ) -> dict:
                 """"""
@@ -4272,7 +4662,7 @@ class CodigoAutoGerado(OmieBase):
 }
                 )
             
-    def Listar_Etapas_Faturamento(
+    def listar_etapas_faturamento(
             self, pagina, registros_por_pagina
             ) -> dict:
                 """Lista as etapas do faturamento"""
@@ -4286,7 +4676,7 @@ class CodigoAutoGerado(OmieBase):
 }
                 )
             
-    def Listar_Meios_Pagamento(
+    def listar_meios_pagamento(
             self, codigo
             ) -> dict:
                 """Listagem de meios de pagamento"""
@@ -4299,7 +4689,7 @@ class CodigoAutoGerado(OmieBase):
 }
                 )
             
-    def Listar_Origem(
+    def listar_origem(
             self, codigo
             ) -> dict:
                 """Lista Origem de pedidos."""
@@ -4312,7 +4702,7 @@ class CodigoAutoGerado(OmieBase):
 }
                 )
             
-    def Listar_N_F_S_Es(
+    def listar_n_f_s_es(
             self, nPagina, nRegPorPagina
             ) -> dict:
                 """Lista de NFS-es."""
@@ -4326,7 +4716,7 @@ class CodigoAutoGerado(OmieBase):
 }
                 )
             
-    def Get_Url_Danfe(
+    def get_url_danfe(
             self, nCodNF, cCodNFInt
             ) -> dict:
                 """"""
@@ -4340,7 +4730,7 @@ class CodigoAutoGerado(OmieBase):
 }
                 )
             
-    def Get_Url_Logo(
+    def get_url_logo(
             self, nCodEmpr, cCodEmprInt
             ) -> dict:
                 """Retorna a URL do Logotipo"""
@@ -4354,7 +4744,7 @@ class CodigoAutoGerado(OmieBase):
 }
                 )
             
-    def Get_Url_Nota_Fiscal(
+    def get_url_nota_fiscal(
             self, nCodNF, cCodNFInt
             ) -> dict:
                 """Retorna a URL da Nota Fiscal"""
@@ -4368,7 +4758,7 @@ class CodigoAutoGerado(OmieBase):
 }
                 )
             
-    def Excluir_N_Fe(
+    def excluir_n_fe(
             self, cChaveNFe, nIdImportacao, nIdNFe
             ) -> dict:
                 """"""
@@ -4383,7 +4773,7 @@ class CodigoAutoGerado(OmieBase):
 }
                 )
             
-    def Importar_Canc_N_Fe(
+    def importar_canc_n_fe(
             self, cAppNome, cAppVersao, cAppId, cChaveNFe, cXmlNFeCanc, cMd5NFeCanc
             ) -> dict:
                 """"""
@@ -4401,7 +4791,7 @@ class CodigoAutoGerado(OmieBase):
 }
                 )
             
-    def Listar_N_Fe(
+    def listar_n_fe(
             self, nPagina, nRegPorPagina, dDataEmissaoInicial, dDataEmissaoFinal
             ) -> dict:
                 """Lista as NFes importadas."""
@@ -4417,7 +4807,7 @@ class CodigoAutoGerado(OmieBase):
 }
                 )
             
-    def Associar_Cod_Int_Servico(
+    def associar_cod_int_servico(
             self, nCodServ, cCodIntServ
             ) -> dict:
                 """"""
@@ -4431,7 +4821,7 @@ class CodigoAutoGerado(OmieBase):
 }
                 )
             
-    def Consultar_Cadastro_Servico(
+    def consultar_cadastro_servico(
             self, cCodIntServ, nCodServ
             ) -> dict:
                 """"""
@@ -4445,7 +4835,7 @@ class CodigoAutoGerado(OmieBase):
 }
                 )
             
-    def Excluir_Cadastro_Servico(
+    def excluir_cadastro_servico(
             self, cCodIntServ, nCodServ
             ) -> dict:
                 """"""
@@ -4459,7 +4849,7 @@ class CodigoAutoGerado(OmieBase):
 }
                 )
             
-    def Listar_Cadastro_Servico(
+    def listar_cadastro_servico(
             self, nPagina, nRegPorPagina
             ) -> dict:
                 """"""
@@ -4473,7 +4863,7 @@ class CodigoAutoGerado(OmieBase):
 }
                 )
             
-    def Alterar_O_S(
+    def alterar_o_s(
             self, Cabecalho, Departamentos, Email, InformacoesAdicionais, ServicosPrestados
             ) -> dict:
                 """"""
@@ -4490,7 +4880,7 @@ class CodigoAutoGerado(OmieBase):
 }
                 )
             
-    def Consultar_O_S(
+    def consultar_o_s(
             self, cCodIntOS, nCodOS, cNumOS
             ) -> dict:
                 """"""
@@ -4505,7 +4895,7 @@ class CodigoAutoGerado(OmieBase):
 }
                 )
             
-    def Excluir_O_S(
+    def excluir_o_s(
             self, cCodIntOS, nCodOS, cNumOS
             ) -> dict:
                 """"""
@@ -4520,7 +4910,7 @@ class CodigoAutoGerado(OmieBase):
 }
                 )
             
-    def Incluir_O_S(
+    def incluir_o_s(
             self, Cabecalho, Departamentos, Email, InformacoesAdicionais, ServicosPrestados
             ) -> dict:
                 """"""
@@ -4537,7 +4927,7 @@ class CodigoAutoGerado(OmieBase):
 }
                 )
             
-    def Listar_O_S(
+    def listar_o_s(
             self, pagina, registros_por_pagina, apenas_importado_api
             ) -> dict:
                 """"""
@@ -4552,7 +4942,7 @@ class CodigoAutoGerado(OmieBase):
 }
                 )
             
-    def Status_O_S(
+    def status_o_s(
             self, cCodIntOS, nCodOS
             ) -> dict:
                 """"""
@@ -4566,7 +4956,7 @@ class CodigoAutoGerado(OmieBase):
 }
                 )
             
-    def Trocar_Etapa_O_S(
+    def trocar_etapa_o_s(
             self, cCodIntOS, nCodOS, cNumOS, cEtapa
             ) -> dict:
                 """"""
@@ -4582,7 +4972,7 @@ class CodigoAutoGerado(OmieBase):
 }
                 )
             
-    def Associar_Cod_Int_O_S(
+    def associar_cod_int_o_s(
             self, cCodIntOS, nCodOS
             ) -> dict:
                 """"""
@@ -4596,7 +4986,7 @@ class CodigoAutoGerado(OmieBase):
 }
                 )
             
-    def Cancelar_O_S(
+    def cancelar_o_s(
             self, cCodIntOS, nCodOS
             ) -> dict:
                 """"""
@@ -4610,7 +5000,7 @@ class CodigoAutoGerado(OmieBase):
 }
                 )
             
-    def Duplicar_O_S(
+    def duplicar_o_s(
             self, cCodIntOS, nCodOS
             ) -> dict:
                 """"""
@@ -4624,7 +5014,7 @@ class CodigoAutoGerado(OmieBase):
 }
                 )
             
-    def Faturar_O_S(
+    def faturar_o_s(
             self, cCodIntOS, nCodOS
             ) -> dict:
                 """"""
@@ -4638,7 +5028,7 @@ class CodigoAutoGerado(OmieBase):
 }
                 )
             
-    def Obter_O_S(
+    def obter_o_s(
             self, cEtapa
             ) -> dict:
                 """"""
@@ -4651,7 +5041,7 @@ class CodigoAutoGerado(OmieBase):
 }
                 )
             
-    def Reenviar_O_S(
+    def reenviar_o_s(
             self, cCodIntOS, nCodOS
             ) -> dict:
                 """"""
@@ -4665,7 +5055,7 @@ class CodigoAutoGerado(OmieBase):
 }
                 )
             
-    def Validar_O_S(
+    def validar_o_s(
             self, cCodIntOS, nCodOS
             ) -> dict:
                 """"""
@@ -4679,7 +5069,7 @@ class CodigoAutoGerado(OmieBase):
 }
                 )
             
-    def Alterar_Contrato(
+    def alterar_contrato(
             self, cabecalho, departamentos, emailCliente, infAdic, itensContrato, observacoes, vencTextos
             ) -> dict:
                 """Alterar um Contrato"""
@@ -4698,7 +5088,7 @@ class CodigoAutoGerado(OmieBase):
 }
                 )
             
-    def Consultar_Contrato(
+    def consultar_contrato(
             self, contratoChave
             ) -> dict:
                 """"""
@@ -4711,7 +5101,7 @@ class CodigoAutoGerado(OmieBase):
 }
                 )
             
-    def Excluir_Item(
+    def excluir_item(
             self, contratoChave, ItensExclusao
             ) -> dict:
                 """"""
@@ -4725,7 +5115,7 @@ class CodigoAutoGerado(OmieBase):
 }
                 )
             
-    def Incluir_Contrato(
+    def incluir_contrato(
             self, cabecalho, departamentos, emailCliente, infAdic, itensContrato, observacoes, vencTextos
             ) -> dict:
                 """"""
@@ -4744,7 +5134,7 @@ class CodigoAutoGerado(OmieBase):
 }
                 )
             
-    def Listar_Contratos(
+    def listar_contratos(
             self, pagina, registros_por_pagina, apenas_importado_api
             ) -> dict:
                 """Lista os contratos cadastrados."""
@@ -4759,7 +5149,7 @@ class CodigoAutoGerado(OmieBase):
 }
                 )
             
-    def Upsert_Contrato(
+    def upsert_contrato(
             self, cabecalho, departamentos, emailCliente, infAdic, itensContrato, observacoes, vencTextos
             ) -> dict:
                 """Inclui / Altera um contrato"""
@@ -4778,7 +5168,7 @@ class CodigoAutoGerado(OmieBase):
 }
                 )
             
-    def Ativar_Contrato(
+    def ativar_contrato(
             self, nCodCtr
             ) -> dict:
                 """Ativa um contrato"""
@@ -4791,7 +5181,7 @@ class CodigoAutoGerado(OmieBase):
 }
                 )
             
-    def Cancelar_Contrato(
+    def cancelar_contrato(
             self, nCodCtr
             ) -> dict:
                 """Cancela contrato"""
@@ -4804,7 +5194,7 @@ class CodigoAutoGerado(OmieBase):
 }
                 )
             
-    def Faturar_Contrato(
+    def faturar_contrato(
             self, nCodCtr
             ) -> dict:
                 """Fatura um contrato."""
@@ -4817,7 +5207,7 @@ class CodigoAutoGerado(OmieBase):
 }
                 )
             
-    def Obter_Contratos(
+    def obter_contratos(
             self, cEtapa
             ) -> dict:
                 """"""
@@ -4830,7 +5220,7 @@ class CodigoAutoGerado(OmieBase):
 }
                 )
             
-    def Reativar_Contrato(
+    def reativar_contrato(
             self, nCodCtr
             ) -> dict:
                 """Reativar contrato"""
@@ -4843,7 +5233,7 @@ class CodigoAutoGerado(OmieBase):
 }
                 )
             
-    def Suspender_Contrato(
+    def suspender_contrato(
             self, nCodCtr
             ) -> dict:
                 """Suspende contrato"""
@@ -4856,7 +5246,7 @@ class CodigoAutoGerado(OmieBase):
 }
                 )
             
-    def Validar_Contrato(
+    def validar_contrato(
             self, nCodCtr
             ) -> dict:
                 """Valida os dados de um contrato para faturamento."""
@@ -4869,7 +5259,7 @@ class CodigoAutoGerado(OmieBase):
 }
                 )
             
-    def Listar_Serv_Munic(
+    def listar_serv_munic(
             self, pagina, registros_por_pagina
             ) -> dict:
                 """"""
@@ -4883,7 +5273,7 @@ class CodigoAutoGerado(OmieBase):
 }
                 )
             
-    def Listar_Tipos_Trib(
+    def listar_tipos_trib(
             self, pagina, registros_por_pagina
             ) -> dict:
                 """"""
@@ -4897,7 +5287,7 @@ class CodigoAutoGerado(OmieBase):
 }
                 )
             
-    def Listar_L_C116(
+    def listar_l_c116(
             self, pagina, registros_por_pagina
             ) -> dict:
                 """"""
@@ -4911,7 +5301,7 @@ class CodigoAutoGerado(OmieBase):
 }
                 )
             
-    def Listar_N_B_S(
+    def listar_n_b_s(
             self, pagina, registros_por_pagina
             ) -> dict:
                 """"""
@@ -4925,7 +5315,7 @@ class CodigoAutoGerado(OmieBase):
 }
                 )
             
-    def Listar_Produtos_I_B_P_T(
+    def listar_produtos_i_b_p_t(
             self, pagina, registros_por_pagina
             ) -> dict:
                 """Lista os produtos da Tabela do IBPT."""
@@ -4939,7 +5329,7 @@ class CodigoAutoGerado(OmieBase):
 }
                 )
             
-    def Listar_Servicos_I_B_P_T(
+    def listar_servicos_i_b_p_t(
             self, pagina, registros_por_pagina
             ) -> dict:
                 """"""
@@ -4953,7 +5343,7 @@ class CodigoAutoGerado(OmieBase):
 }
                 )
             
-    def Listar_Tipo_Fat_Contrato(
+    def listar_tipo_fat_contrato(
             self, pagina, registros_por_pagina
             ) -> dict:
                 """Lista os tipos de faturamento de contrato."""
@@ -4967,7 +5357,7 @@ class CodigoAutoGerado(OmieBase):
 }
                 )
             
-    def Listar_Tipo_Utilizacao(
+    def listar_tipo_utilizacao(
             self, pagina, registros_por_pagina
             ) -> dict:
                 """"""
@@ -4981,7 +5371,7 @@ class CodigoAutoGerado(OmieBase):
 }
                 )
             
-    def Listar_Classificacao_Servico(
+    def listar_classificacao_servico(
             self, pagina, registros_por_pagina
             ) -> dict:
                 """"""
@@ -4995,7 +5385,7 @@ class CodigoAutoGerado(OmieBase):
 }
                 )
             
-    def Listar_Documentos(
+    def listar_documentos(
             self, nPagina, nRegPorPagina, cModelo, dEmiInicial, dEmiFinal
             ) -> dict:
                 """Lista de XMLs de Documentos Fiscais."""

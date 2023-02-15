@@ -67,8 +67,8 @@ def constroe_parametro(parametros: dict):
 
 
 def sanitiza_metodo(metodo: str) -> str:
-    lista_palavras = re.sub( r"([A-Z])", r" \1", metodo).split()
-    return '_'.join(lista_palavras)
+    lista_palavras = re.sub(r"([A-Z])", r" \1", metodo).split()
+    return ('_'.join(lista_palavras)).lower()
 
 
 def gerar_codigo_automatico(dicionario: dict):
