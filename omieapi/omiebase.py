@@ -22,9 +22,9 @@ class OmieBase:
 
     def conectar_api(self, metodo: str, endpoint: str, parametros: dict) -> dict:
         """
-        ## Metdodo geral para chamar a api
-         > Para usar este metodo use como referencia a documentação originao do omie Link
-         https://developer.omie.com.br/
+         ##> Metdodo geral para chamar a api
+         > Para usar este metodo tenha como referencia a documentação oficial do omie
+         > link: https://developer.omie.com.br/
 
         :param metodo:       Função a ser realizada disponivel na api omie EX:  'AssociarCodIntServico'
         :param endpoint:     Endpiot url da api EX:      'servicos/servico/'
