@@ -1,12 +1,12 @@
 import pydoc
 from flask import Flask
-from omieapi import Conta, Produtos, Omie, Geral
+from omieapi import Conta, Produtos, OmieBase, Geral
 from omieapi.cod_automatico import CodigoAutoGerado
 
 app = Flask(__name__)
 
 doc = f'<h1 aling="center" > APi Omie  </h1>'\
-      f'{pydoc.html.docclass(Omie)}' \
+      f'{pydoc.html.docclass( OmieBase )}' \
       f'{pydoc.html.docclass(Produtos)}' \
       f'{pydoc.html.docclass(Conta)}' \
       f'{pydoc.html.docclass(Geral)}' \

@@ -1,7 +1,7 @@
-from omieapi.omie import Omie
+from omieapi.omiebase import OmieBase
 
 
-class Geral(Omie):
+class Geral(OmieBase):
     """ Classe que possiu metodos listados na aba geral """
     def consulta_empresa(self, codigo_empresa: int) -> dict:
         """

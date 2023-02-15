@@ -1,5 +1,4 @@
 from setuptools import setup
-import os
 
 
 with open('README.md', 'rt') as arq:

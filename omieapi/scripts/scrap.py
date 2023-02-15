@@ -65,16 +65,18 @@ def constroe_parametro(parametros: dict):
         codigo += f'                "{key}":{value},\n'
     return '{\n' + codigo + '\n}'
 
+
 def sanitiza_metodo(metodo: str) -> str:
     lista_palavras = re.sub( r"([A-Z])", r" \1", metodo).split()
     return '_'.join(lista_palavras)
 
+
 def gerar_codigo_automatico(dicionario: dict):
     codigo = 'from omieapi import Omie \n\n' \
-             '# Aviso -> antes de usar confira se não a oq vc precisa já feito no codigo principal,' \
-             '# o codigo autogerdo pode conter erros não detectados ainda' \
-             'class CodigoAutogerado(Omie):' \
-             '\n    """ Este codigo foi automaticamente geredo por um script de scrap """ \n'
+             '# Aviso -> antes de usar confira se não a oq vc precisa já feito no codigo principal,\n' \
+             '# o codigo autogerdo pode conter erros não detectados ainda\n' \
+             'class CodigoAutogerado(Omie):\n' \
+             '     """Este codigo foi automaticamente geredo por um script de scrap """ \n'
     for metodo, valor in dicionario.items():
 
         lista_atributos = [x[0] for x in valor["exemplo_de_uso"].items()]
@@ -97,12 +99,13 @@ def gerar_codigo_automatico(dicionario: dict):
                     param = {constroe_parametro(param)}
                 )
             '''
-    with open( '../cod_automatico.py', 'w' ) as w:
+    with open('../cod_automatico.py', 'w') as w:
         w.write(codigo)
 
-def gerar_codigo() -> None:
-    metodos = metodos()
+
+def gerar_codigo(metodos) -> None:
     gerar_codigo_automatico(metodos)
 
+
 if __name__ == '__main__':
-    gerar_codigo()
+    gerar_codigo(metodos())

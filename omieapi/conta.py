@@ -1,7 +1,7 @@
-from omieapi.omie import Omie
+from omieapi.omiebase import OmieBase
 
 
-class Conta(Omie):
+class Conta( OmieBase ):
     """ Classe que possui todos os metodos ralacionados a contas no Omie """
     def _chamada_api_conta(self, call: str = '', param: dict | tuple | list = None) -> dict:
         """ Metodo feito para carregar o endpoint padrão da classe """
@@ -195,7 +195,7 @@ class Conta(Omie):
             valor_documento: float, codigo_categoria: str, data_previsao: str, id_conta_corrente: int
     ) -> dict:
         """
-        :param metodo:            'AlterarContaPagar' , 'IncluirContaPagar', 'UpsertContaPagar',
+        :param metodo:                                 'AlterarContaPagar' , 'IncluirContaPagar', 'UpsertContaPagar',
         :param codigo_lancamento_integracao:           string60	Código de Integração do Lançamento de Contas a Pagar.
         :param codigo_cliente_fornecedor:              integer	Código do Favorecido / Fornecedor.
         :param data_vencimento:            dd/mm/yyyy  string10	Data de Vencimento.

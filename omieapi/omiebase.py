@@ -3,7 +3,8 @@ from json import JSONDecodeError
 from omieapi.scripts import pega_links_api
 
 
-class Omie:
+
+class OmieBase:
 
     def __init__(self, omie_app_key: str, omie_app_secret: str):
         """
@@ -105,7 +106,7 @@ class Omie:
         return self._post_request(url, json)
 
 
-class Produtos(Omie):
+class Produtos(OmieBase):
     def listar_produtos(
             self, registros: int = 100, filtrar_pdv: bool = True, pagina: int = 1,
             apenas_importado_api: bool = False
@@ -126,7 +127,7 @@ class Produtos(Omie):
         )
 
 
-class CupomFiscal(Omie):
+class CupomFiscal(OmieBase):
     def listar_cupomfiscal(self, metodo: str, nPagina: int, nRegPorPagina: int) -> dict:
         """
         :param metodo:           CuponsFiscais or CuponsItens or CuponsPagamentos    Meio de listagem
