@@ -1,7 +1,7 @@
 import pydoc
 from flask import Flask
 from omieapi import Conta, Produtos, OmieBase, Geral
-from omieapi.cod_automatico import CodigoAutoGerado
+from omieapi.scripts.cod_automatico import CodigoAutoGerado
 
 app = Flask(__name__)
 

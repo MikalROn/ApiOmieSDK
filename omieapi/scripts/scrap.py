@@ -99,7 +99,7 @@ def gerar_codigo_automatico(dicionario: dict):
                     param = {constroe_parametro(param)}
                 )
             '''
-    with open('../cod_automatico.py', 'w') as w:
+    with open('cod_automatico.py', 'w') as w:
         w.write(codigo)
 
 

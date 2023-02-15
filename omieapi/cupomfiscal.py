@@ -14,7 +14,7 @@ class CupomFiscal(OmieBase):
         :param nPagina:         integer                                             numero da pagina
         :param nRegPorPagina:   integer                                             registros por página
         """
-        self._gerencia_metodo(['CuponsFiscais', 'CuponsItens', 'CuponsPagamentos'], metodo )
+        self._gerencia_metodo(['CuponsFiscais', 'CuponsItens', 'CuponsPagamentos'], metodo)
         return self._chamar_api(
             call=metodo,
             endpoint='produtos/cupomfiscalconsultar/',

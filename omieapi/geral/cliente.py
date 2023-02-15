@@ -1,4 +1,4 @@
-from omiebase import OmieBase
+from omieapi.omiebase import OmieBase
 
 
 class Cliente(OmieBase):
@@ -14,8 +14,7 @@ class Cliente(OmieBase):
                 "codigo_cliente_integracao": codigo_cliente_integracao,
                 "email": email,
                 "razao_social": razao_social,
-                "nome_fantasia": nome_fantasia,
-
+                "nome_fantasia": nome_fantasia
             }
         )
 
@@ -28,7 +27,7 @@ class Cliente(OmieBase):
             endpoint='geral/clientes/',
             param={
                 "codigo_cliente_omie": codigo_cliente_omie,
-                "codigo_cliente_integracao": codigo_cliente_integracao,
+                "codigo_cliente_integracao": codigo_cliente_integracao
             }
         )
 
@@ -41,8 +40,7 @@ class Cliente(OmieBase):
             endpoint='geral/clientes/',
             param={
                 "codigo_cliente_omie": codigo_cliente_omie,
-                "codigo_cliente_integracao": codigo_cliente_integracao,
-
+                "codigo_cliente_integracao": codigo_cliente_integracao
             }
         )
 
@@ -55,8 +53,7 @@ class Cliente(OmieBase):
             endpoint='geral/clientes/',
             param={
                 "codigo_cliente_omie": codigo_cliente_omie,
-                "codigo_cliente_integracao": codigo_cliente_integracao,
-
+                "codigo_cliente_integracao": codigo_cliente_integracao
             }
         )
 
@@ -71,8 +68,7 @@ class Cliente(OmieBase):
                 "codigo_cliente_integracao": codigo_cliente_integracao,
                 "email": email,
                 "razao_social": razao_social,
-                "nome_fantasia": nome_fantasia,
-
+                "nome_fantasia": nome_fantasia
             }
         )
 
@@ -85,8 +81,7 @@ class Cliente(OmieBase):
             endpoint='geral/clientes/',
             param={
                 "clientes_cadastro": clientes_cadastro,
-                "lote": lote,
-
+                "lote": lote
             }
         )
 
@@ -100,8 +95,7 @@ class Cliente(OmieBase):
             param={
                 "pagina": pagina,
                 "registros_por_pagina": registros_por_pagina,
-                "apenas_importado_api": apenas_importado_api,
-
+                "apenas_importado_api": apenas_importado_api
             }
         )
 
@@ -115,8 +109,7 @@ class Cliente(OmieBase):
             param={
                 "pagina": pagina,
                 "registros_por_pagina": registros_por_pagina,
-                "apenas_importado_api": apenas_importado_api,
-
+                "apenas_importado_api": apenas_importado_api
             }
         )
 
@@ -131,8 +124,7 @@ class Cliente(OmieBase):
                 "codigo_cliente_integracao": codigo_cliente_integracao,
                 "email": email,
                 "razao_social": razao_social,
-                "nome_fantasia": nome_fantasia,
-
+                "nome_fantasia": nome_fantasia
             }
         )
 
@@ -147,8 +139,7 @@ class Cliente(OmieBase):
                 "cnpj_cpf": cnpj_cpf,
                 "email": email,
                 "razao_social": razao_social,
-                "nome_fantasia": nome_fantasia,
-
+                "nome_fantasia": nome_fantasia
             }
         )
 
@@ -161,8 +152,7 @@ class Cliente(OmieBase):
             endpoint='geral/clientes/',
             param={
                 "clientes_cadastro": clientes_cadastro,
-                "lote": lote,
-
+                "lote": lote
             }
         )
 
@@ -177,8 +167,7 @@ class Cliente(OmieBase):
                 "codigo_cliente_omie": codigo_cliente_omie,
                 "codigo_cliente_integracao": codigo_cliente_integracao,
                 "campo": campo,
-                "conteudo": conteudo,
-
+                "conteudo": conteudo
             }
         )
 
@@ -191,8 +180,7 @@ class Cliente(OmieBase):
             endpoint='geral/clientescaract/',
             param={
                 "codigo_cliente_omie": codigo_cliente_omie,
-                "codigo_cliente_integracao": codigo_cliente_integracao,
-
+                "codigo_cliente_integracao": codigo_cliente_integracao
             }
         )
 
@@ -206,8 +194,7 @@ class Cliente(OmieBase):
             param={
                 "codigo_cliente_omie": codigo_cliente_omie,
                 "codigo_cliente_integracao": codigo_cliente_integracao,
-                "campo": campo,
-
+                "campo": campo
             }
         )
 
@@ -220,8 +207,7 @@ class Cliente(OmieBase):
             endpoint='geral/clientescaract/',
             param={
                 "codigo_cliente_omie": codigo_cliente_omie,
-                "codigo_cliente_integracao": codigo_cliente_integracao,
-
+                "codigo_cliente_integracao": codigo_cliente_integracao
             }
         )
 
@@ -236,7 +222,6 @@ class Cliente(OmieBase):
                 "codigo_cliente_omie": codigo_cliente_omie,
                 "codigo_cliente_integracao": codigo_cliente_integracao,
                 "campo": campo,
-                "conteudo": conteudo,
-
+                "conteudo": conteudo
             }
         )
