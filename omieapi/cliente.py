@@ -1,6 +1,7 @@
 from omiebase import OmieBase
 
-class Cliente( OmieBase ):
+
+class Cliente(OmieBase):
     """ Todos os metodos relacionados """
     def alterar_cliente(
             self, codigo_cliente_integracao, email, razao_social, nome_fantasia
@@ -18,7 +19,7 @@ class Cliente( OmieBase ):
             }
         )
 
-    def AssociarCodIntCliente(
+    def associar_cod_int_cliente(
             self, codigo_cliente_omie, codigo_cliente_integracao
     ) -> dict:
         """"""
@@ -31,7 +32,7 @@ class Cliente( OmieBase ):
             }
         )
 
-    def Consultar_Cliente(
+    def consultar_cliente(
             self, codigo_cliente_omie, codigo_cliente_integracao
     ) -> dict:
         """Consulta os dados de um cliente"""
@@ -45,7 +46,7 @@ class Cliente( OmieBase ):
             }
         )
 
-    def Excluir_Cliente(
+    def excluir_cliente(
             self, codigo_cliente_omie, codigo_cliente_integracao
     ) -> dict:
         """Exclui um cliente da base de dados."""
@@ -59,7 +60,7 @@ class Cliente( OmieBase ):
             }
         )
 
-    def Incluir_Cliente(
+    def incluir_cliente(
             self, codigo_cliente_integracao, email, razao_social, nome_fantasia
     ) -> dict:
         """Inclui o cliente no Omie"""
@@ -75,7 +76,7 @@ class Cliente( OmieBase ):
             }
         )
 
-    def Incluir_Clientes_Por_Lote(
+    def incluir_clientes_por_lote(
             self, clientes_cadastro, lote
     ) -> dict:
         """DEPRECATED"""
@@ -89,7 +90,7 @@ class Cliente( OmieBase ):
             }
         )
 
-    def Listar_Clientes(
+    def listar_clientes(
             self, pagina, registros_por_pagina, apenas_importado_api
     ) -> dict:
         """Lista os clientes cadastrados"""
@@ -104,7 +105,7 @@ class Cliente( OmieBase ):
             }
         )
 
-    def Listar_Clientes_Resumido(
+    def listar_clientes_resumido(
             self, pagina, registros_por_pagina, apenas_importado_api
     ) -> dict:
         """Realiza pesquisa dos clientes"""
@@ -119,7 +120,7 @@ class Cliente( OmieBase ):
             }
         )
 
-    def Upsert_Cliente(
+    def upsert_cliente(
             self, codigo_cliente_integracao, email, razao_social, nome_fantasia
     ) -> dict:
         """"""
@@ -135,7 +136,7 @@ class Cliente( OmieBase ):
             }
         )
 
-    def Upsert_Cliente_Cpf_Cnpj(
+    def upsert_cliente_cpf_cnpj(
             self, cnpj_cpf, email, razao_social, nome_fantasia
     ) -> dict:
         """"""
@@ -151,7 +152,7 @@ class Cliente( OmieBase ):
             }
         )
 
-    def Upsert_Clientes_Por_Lote(
+    def upsert_clientes_por_lote(
             self, clientes_cadastro, lote
     ) -> dict:
         """DEPRECATED"""
@@ -165,7 +166,7 @@ class Cliente( OmieBase ):
             }
         )
 
-    def Alterar_Caract_Cliente(
+    def alterar_caract_cliente(
             self, codigo_cliente_omie, codigo_cliente_integracao, campo, conteudo
     ) -> dict:
         """"""
@@ -181,7 +182,7 @@ class Cliente( OmieBase ):
             }
         )
 
-    def Consultar_Caract_Cliente(
+    def consultar_caract_cliente(
             self, codigo_cliente_omie, codigo_cliente_integracao
     ) -> dict:
         """"""
@@ -195,7 +196,7 @@ class Cliente( OmieBase ):
             }
         )
 
-    def Excluir_Caract_Cliente(
+    def excluir_caract_cliente(
             self, codigo_cliente_omie, codigo_cliente_integracao, campo
     ) -> dict:
         """"""
@@ -210,7 +211,7 @@ class Cliente( OmieBase ):
             }
         )
 
-    def Excluir_Todas_Caract_Cliente(
+    def excluir_todas_caract_cliente(
             self, codigo_cliente_omie, codigo_cliente_integracao
     ) -> dict:
         """"""
@@ -224,7 +225,7 @@ class Cliente( OmieBase ):
             }
         )
 
-    def Incluir_Caract_Cliente(
+    def incluir_caract_cliente(
             self, codigo_cliente_omie, codigo_cliente_integracao, campo, conteudo
     ) -> dict:
         """"""
