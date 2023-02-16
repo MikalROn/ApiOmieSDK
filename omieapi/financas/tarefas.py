@@ -1,4 +1,4 @@
-from omieapi.omiebase import OmieBase
+from ..core.omiebase import OmieBase
 
 
 class Tarefas(OmieBase):

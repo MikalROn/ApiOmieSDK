@@ -1,4 +1,4 @@
-from omieapi.omiebase import OmieBase
+from omieapi.core.omiebase import OmieBase
 
 # Aviso -> antes de usar confira se n�o a oq vc precisa j� feito no codigo principal,
 # o codigo autogerdo pode conter erros n�o detectados ainda

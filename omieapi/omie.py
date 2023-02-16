@@ -1,7 +1,7 @@
-from omiebase import OmieBase
-from omie_geral import Geral
-from omie_financas import Financas
-from omie_estoque import Estoque
+from omieapi.core.omiebase import OmieBase
+from omieapi.omie_geral import Geral
+from omieapi.omie_financas import Financas
+from omieapi.omie_estoque import Estoque
 
 
 class Omie(OmieBase):

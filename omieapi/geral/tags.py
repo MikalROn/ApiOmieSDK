@@ -1,4 +1,4 @@
-from omiebase import OmieBase
+from ..core.omiebase import OmieBase
 
 
 class Tags(OmieBase):

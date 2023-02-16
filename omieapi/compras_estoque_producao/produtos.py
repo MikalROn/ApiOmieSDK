@@ -1,11 +1,11 @@
-from omieapi.omiebase import OmieBase
+from ..core.omiebase import OmieBase
 
 
 class Produtos(OmieBase):
     """ Todos os metodos relacionados a produtos """
     def listar_produtos(
-            self, registros: int, filtrar_pdv: bool, pagina: int,
-            apenas_importado_api: bool
+            self, registros: int = None, filtrar_pdv: bool = None, pagina: int = None,
+            apenas_importado_api: bool = None
     ) -> dict:
 
         apenas_importado_api = self._bool_para_sn(apenas_importado_api)

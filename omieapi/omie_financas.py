@@ -1,5 +1,5 @@
-from omieapi.omiebase import OmieBase
-from financas import *
+from omieapi.core.omiebase import OmieBase
+from omieapi.financas import Conta, CupomFiscal
 
 
 class Financas(OmieBase):

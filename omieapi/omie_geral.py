@@ -1,5 +1,6 @@
-from omieapi.omiebase import OmieBase
-from geral import *
+from omieapi.core.omiebase import OmieBase
+from omieapi.geral import Cliente, Categorias, Empresa, Projeto, Tags
+
 
 class Geral(OmieBase):
     """ Classe que possiu metodos listados na aba geral """

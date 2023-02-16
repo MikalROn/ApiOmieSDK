@@ -1,1 +1,1 @@
-from produtos import Produtos
+from omieapi.compras_estoque_producao.produtos import Produtos

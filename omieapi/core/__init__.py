@@ -1,0 +1,1 @@
+from omieapi.core.omiebase import OmieBase

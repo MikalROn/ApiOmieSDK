@@ -1,6 +1,6 @@
 from PySimpleGUI import Window, Text, Input, Button, Multiline, Push, Column, popup_error
 from pysimpleevent import EventSimpleGUI
-from omieapi import OmieBase
+from omieapi import Omie
 import ast
 
 eventos = EventSimpleGUI()
@@ -29,7 +29,7 @@ layout = [
 @eventos.event('Executar')
 def event_buscar(event, values, window: Window):
     try:
-        omie = OmieBase(
+        omie = Omie(
             values['-OMIE_APP_KEY-'],
             values['-OMIE_APP_SECRET-']
         )

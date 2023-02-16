@@ -1,4 +1,4 @@
-from omieapi import OmieBase
+from ..core.omiebase import OmieBase
 
 
 class CupomFiscal(OmieBase):

@@ -1,5 +1,5 @@
-from omieapi.omiebase import OmieBase
-from compras_estoque_producao import Produtos
+from omieapi.core.omiebase import OmieBase
+from omieapi.compras_estoque_producao import Produtos
 
 
 class Estoque(OmieBase):
