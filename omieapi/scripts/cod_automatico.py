@@ -249,12 +249,11 @@ class CodigoAutogerado(OmieBase):
                 return self._chamar_api(
                     call='ExcluirTags',
                     endpoint='geral/clientetag/',
-                    param = {
+                    param={
                 "nCodCliente":nCodCliente,
                 "cCodIntCliente":cCodIntCliente,
-                "tags":tags,
-
-}
+                "tags":tags
+                    }
                 )
             
     def excluir_todas(
@@ -857,7 +856,7 @@ class CodigoAutogerado(OmieBase):
                 return self._chamar_api(
                     call='ConsultarOportunidade',
                     endpoint='crm/oportunidades/',
-                    param = {
+                    param={
                 "nCodOp":nCodOp,
                 "cCodIntOp":cCodIntOp,
 
@@ -1026,8 +1025,7 @@ class CodigoAutogerado(OmieBase):
                     endpoint='crm/tarefas/',
                     param = {
                 "pagina":pagina,
-                "registros_por_pagina":registros_por_pagina,
-
+                "registros_por_pagina":registros_por_pagina
 }
                 )
             
@@ -1397,9 +1395,8 @@ class CodigoAutogerado(OmieBase):
                 return self._chamar_api(
                     call='ExcluirTipoTarefa',
                     endpoint='crm/tipostarefa/',
-                    param = {
-                "nIdTipoTarefa":nIdTipoTarefa,
-
+                    param={
+                "nIdTipoTarefa": nIdTipoTarefa
 }
                 )
             

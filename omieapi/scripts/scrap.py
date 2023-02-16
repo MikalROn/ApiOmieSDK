@@ -94,10 +94,10 @@ def gerar_codigo_automatico(dicionario: dict):
             .replace("]", "")
             }
             ) -> dict:
-                """{valor['descricao']}"""
+                """ {valor['descricao']} """
                 return self._chamar_api(
-                    call='{metodo}',
-                    endpoint='{valor['endpoint']}',
+                    call= '{metodo}',
+                    endpoint= '{valor['endpoint']}',
                     param = {constroe_parametro(param)}
                 )
             '''
