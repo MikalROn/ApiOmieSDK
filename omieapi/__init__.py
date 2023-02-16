@@ -1,2 +1,1 @@
-from omieapi.omiebase import OmieBase
-from omieapi.financas.conta import Conta
+from omieapi.omie import Omie

@@ -5,6 +5,8 @@ import re
 
 # Atenção -> Ao rodar este codigo é gerado um novo codigo automatico
 # Não roda ao importar
+
+
 def pega_links_api():
     """ Captura todos os links da api atravez do link """
     def retquest_devpageomie() -> BeautifulSoup:
@@ -99,7 +101,7 @@ def gerar_codigo_automatico(dicionario: dict):
                     param = {constroe_parametro(param)}
                 )
             '''
-    with open('cod_automatico.py', 'w') as w:
+    with open('cod_automatico.py', 'w', encoding='latin-1') as w:
         w.write(codigo)
 
 

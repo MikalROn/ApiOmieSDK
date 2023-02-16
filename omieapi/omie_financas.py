@@ -1,4 +1,4 @@
-from omieapi import OmieBase
+from omieapi.omiebase import OmieBase
 from financas import *
 
 

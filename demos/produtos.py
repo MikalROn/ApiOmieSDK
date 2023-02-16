@@ -1,7 +1,7 @@
 import pandas as pd
 import PySimpleGUI as sg
 from pysimpleevent import EventSimpleGUI
-from omieapi import Produtos
+from omieapi import O
 
 app = EventSimpleGUI()
 

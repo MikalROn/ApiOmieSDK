@@ -1,6 +1,6 @@
 from omiebase import OmieBase
 from omie_geral import Geral
-
+from omie_financas import Financas
 
 class Omie(OmieBase):
     """
@@ -10,3 +10,6 @@ class Omie(OmieBase):
     """
     def Geral(self) -> Geral:
         return Geral(self._appkey, self._appsecret)
+
+    def Financas(self) -> Financas:
+        return Financas(self._appkey, self._appsecret)
