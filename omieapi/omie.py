@@ -1,6 +1,7 @@
 from omiebase import OmieBase
 from omie_geral import Geral
 from omie_financas import Financas
+from omie_estoque import Estoque
 
 
 class Omie(OmieBase):
@@ -14,3 +15,6 @@ class Omie(OmieBase):
 
     def Financas(self) -> Financas:
         return Financas(self._appkey, self._appsecret)
+
+    def Estoque(self) -> Estoque:
+        return Estoque(self._appkey, self._appsecret)
