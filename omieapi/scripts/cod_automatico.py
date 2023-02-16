@@ -1,10 +1,9 @@
-from omieapi import Omie 
+from omieapi.omiebase import OmieBase
 
-# Aviso -> antes de usar confira se não a oq vc precisa já feito no codigo principal,
-# o codigo autogerdo pode conter erros não detectados ainda
-class CodigoAutogerado(Omie):
-     """Este codigo foi automaticamente geredo por um script de scrap """ 
-
+# Aviso -> antes de usar confira se nï¿½o a oq vc precisa jï¿½ feito no codigo principal,
+# o codigo autogerdo pode conter erros nï¿½o detectados ainda
+class CodigoAutogerado(OmieBase):
+    """Este codigo foi automaticamente geredo por um script de scrap """
     def alterar_cliente(
             self, codigo_cliente_integracao, email, razao_social, nome_fantasia
             ) -> dict:
@@ -14,11 +13,10 @@ class CodigoAutogerado(Omie):
                     endpoint='geral/clientes/',
                     param = {
                 "codigo_cliente_integracao":codigo_cliente_integracao,
-                "email":email,
-                "razao_social":razao_social,
-                "nome_fantasia":nome_fantasia,
-
-}
+                "email": email,
+                "razao_social": razao_social,
+                "nome_fantasia": nome_fantasia
+                    }
                 )
             
     def associar_cod_int_cliente(
@@ -571,9 +569,8 @@ class CodigoAutogerado(Omie):
                 "cNomeArquivo":cNomeArquivo,
                 "cTipoArquivo":cTipoArquivo,
                 "cArquivo":cArquivo,
-                "cMd5":cMd5,
-
-}
+                "cMd5":cMd5
+            }
                 )
             
     def alterar_tipo_entrega(

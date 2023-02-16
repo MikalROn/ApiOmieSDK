@@ -1,7 +1,7 @@
 from omieapi.omiebase import OmieBase
 
 
-class Conta( OmieBase ):
+class Conta(OmieBase):
     """ Classe que possui todos os metodos ralacionados a contas no Omie """
     def _chamada_api_conta(self, call: str = '', param: dict | tuple | list = None) -> dict:
         """ Metodo feito para carregar o endpoint padrão da classe """
@@ -267,5 +267,7 @@ class Conta( OmieBase ):
                 "apenas_importado_api": apenas_importado_api
             }
         )
+
+
 
 
