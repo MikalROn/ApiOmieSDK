@@ -2,6 +2,7 @@ from omiebase import OmieBase
 from omie_geral import Geral
 from omie_financas import Financas
 
+
 class Omie(OmieBase):
     """
     Classe que carrega todos os metodos da api
