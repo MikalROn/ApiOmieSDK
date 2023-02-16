@@ -1,11 +1,11 @@
 import pandas as pd
 import PySimpleGUI as sg
 from pysimpleevent import EventSimpleGUI
-from omieapi import O
+from omieapi import Omie
 
 app = EventSimpleGUI()
 
-produtos = Produtos('', '')
+produtos = Omie('', '').Financas().
 lista_de_produtos = produtos.listar_produtos(filtrar_pdv=True)['produto_servico_cadastro']
 data = pd.DataFrame(lista_de_produtos)
 
