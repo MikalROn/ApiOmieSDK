@@ -64,7 +64,8 @@ class Estoque(OmieBase):
         )
 
     def listar_movimento_estoque(
-            self, nPagina, nRegPorPagina, codigo_local_estoque, idProd, dDtInicial, dDtFinal, lista_local_estoque
+            self, nPagina, nRegPorPagina, codigo_local_estoque,
+            idProd, dDtInicial, dDtFinal, lista_local_estoque
     ) -> dict:
         """"""
         return self._chamar_api(
