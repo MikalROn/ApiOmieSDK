@@ -46,12 +46,12 @@ class OmieBase:
             "param": [*param]
         }
 
-    def _gerencia_metodo(self, lista_de_metodos: list, metodo):
+    def _gerencia_metodo(self, lista_de_metodos: list, metodo: str) -> None:
         if metodo not in lista_de_metodos:
             raise ValueError(f'{metodo} Não existe!')
 
     @staticmethod
-    def _bool_para_sn(boolean: bool):
+    def _bool_para_sn(boolean: bool) -> str:
         return 'S' if boolean else 'N'
 
     def _post_request(self, url: str, json: dict) -> dict:
@@ -91,7 +91,7 @@ class OmieBase:
             }
         )
 
-    def _chamar_api(self, endpoint: str = '', call: str = '', param: dict | tuple | list = None) -> dict:
+    def _chamar_api(self, endpoint: str = None, call: str = None, param: dict | tuple | list = None) -> dict:
         """
         :keyword endpoint:         Final da url EX: geral/contacorrente/
         :keyword call:             Chamada para api  EX: ListarContasCorrentes
