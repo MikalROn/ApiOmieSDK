@@ -1,3 +1,3 @@
 # ApiOmie (NÃO OFICIAL)
 
-> Status da aplicação: Em desenvolvimento....
+# Use a documentação oficial

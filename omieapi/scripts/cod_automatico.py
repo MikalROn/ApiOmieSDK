@@ -1,8 +1,8 @@
-from omieapi.core import omiebase
+from omieapi.core.omiebase import OmieBase
 
 # Aviso -> antes de usar confira se n�o a oq vc precisa j� feito no codigo principal,
 # o codigo autogerdo pode conter erros n�o detectados ainda
-class CodigoAutogerado(omiebase):
+class CodigoAutogerado(OmieBase):
     """ Este codigo foi automaticamente geredo por um script de scrap """
 
     def alterar_cliente(self, **kargs) -> dict:
