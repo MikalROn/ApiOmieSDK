@@ -74,31 +74,23 @@ def sanitiza_metodo(metodo: str) -> str:
 
 
 def gerar_codigo_automatico(dicionario: dict):
-    codigo = 'from omieapi import Omie \n\n' \
+    codigo = 'from  import Omie \n\n' \
              '# Aviso -> antes de usar confira se não a oq vc precisa já feito no codigo principal,\n' \
              '# o codigo autogerdo pode conter erros não detectados ainda\n' \
              'class CodigoAutogerado(Omie):\n' \
-             '     """Este codigo foi automaticamente geredo por um script de scrap """ \n'
+             '     """ Este codigo foi automaticamente geredo por um script de scrap """ \n'
     for metodo, valor in dicionario.items():
 
         lista_atributos = [x[0] for x in valor["exemplo_de_uso"].items()]
         param = dict(zip(lista_atributos, lista_atributos))
 
         codigo += \
-            f'''\n    def {sanitiza_metodo(metodo)}(
-            self, {
-            str(lista_atributos)
-            .replace("'", "")
-            .replace("'", "")
-            .replace("[", "")
-            .replace("]", "")
-            }
-            ) -> dict:
+            f'''\n    def {sanitiza_metodo(metodo)}(self, **kargs) -> dict:
                 """ {valor['descricao']} """
                 return self._chamar_api(
                     call= '{metodo}',
                     endpoint= '{valor['endpoint']}',
-                    param = {constroe_parametro(param)}
+                    param = kargs
                 )
             '''
     with open('cod_automatico.py', 'w', encoding='latin-1') as w:

@@ -1,5 +1,0 @@
-from omieapi.compras_estoque_producao.produtos import Produtos
-from omieapi.compras_estoque_producao.estoque import Estoque
-from omieapi.compras_estoque_producao.req_compra import ReqCompra
-from omieapi.compras_estoque_producao.pedido_compra import PedidoCompra
-from omieapi.compras_estoque_producao.ordens_producao import OrdensProducao
