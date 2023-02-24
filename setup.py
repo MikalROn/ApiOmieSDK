@@ -7,7 +7,8 @@ with open('README.md', 'rt', encoding='latin-1') as arq:
 keywords = ['Api omie', 'omie', 'api do omie', 'omieapi']
 
 setup(name='api-omie',
-      version='0.1.1',
+      url='https://github.com/MikalROn/ApiOmie-nao-oficial',
+      version='0.1.8',
       license='MIT license',
       author='Daniel Coêlho',
       long_description=readme,
@@ -16,5 +17,9 @@ setup(name='api-omie',
       keywords=keywords,
       description='Ferramenta para api do omie não oficial',
       packages=['omieapi'],
-      install_requires=['requests']
+      install_requires=['requests'],
+      python_requires='>=3',
+      project_urls={
+            'Demonstrações': 'https://github.com/MikalROn/ApiOmie-nao-oficial/tree/main/demonstrcoes',
+      }
 )
