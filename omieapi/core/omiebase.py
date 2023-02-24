@@ -43,7 +43,7 @@ class OmieBase:
             "call": call,
             "app_key": self._appkey,
             "app_secret": self._appsecret,
-            "param": [*param]
+            "param": [param]
         }
 
     def _gerencia_metodo(self, lista_de_metodos: list, metodo: str) -> None:

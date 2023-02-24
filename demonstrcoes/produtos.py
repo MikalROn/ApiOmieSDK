@@ -8,7 +8,7 @@ def janela_produtos(key: str, secreet: str):
     app = EventSimpleGUI()
 
 
-    produtos = Omie(key, secreet).Estoque().Produtos()
+    produtos = Omie(key, secreet)
     lista_de_produtos = produtos.listar_produtos(
         registros=100, filtrar_pdv=True, apenas_importado_api=False,
         pagina=1

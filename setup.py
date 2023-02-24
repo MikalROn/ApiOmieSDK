@@ -1,13 +1,13 @@
 from setuptools import setup
 
 
-with open('README.md', 'rt') as arq:
+with open('README.md', 'rt', encoding='latin-1') as arq:
       readme = arq.read()
 
 keywords = ['Api omie', 'omie', 'api do omie', 'omieapi']
 
-setup(name='omieapi',
-      version='0.0.1',
+setup(name='api-omie',
+      version='0.1.1',
       license='MIT license',
       author='Daniel Coêlho',
       long_description=readme,
