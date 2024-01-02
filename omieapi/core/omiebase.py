@@ -69,7 +69,7 @@ class OmieBase:
                 return {
                     'Error': r.status_code,
                     'headers':  r.headers,
-                    'Mensagem': r.text
+                    'Mensagem': r.json()
                 }
         except Exception as erro:
             return {

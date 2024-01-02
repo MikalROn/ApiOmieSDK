@@ -1,7 +1,7 @@
 import pandas as pd
 import PySimpleGUI as sg
 from pysimpleevent import EventSimpleGUI
-from omieapi import Omie
+from .omieapi import Omie
 
 
 def janela_produtos(key: str, secreet: str):
