@@ -1,4 +1,6 @@
-from setuptools import setup
+from setuptools import setup, find_packages
+
+VERSION =  '0.2.7'
 
 
 with open('README.md', 'rt', encoding='latin-1') as arq:
@@ -8,15 +10,19 @@ keywords = ['Api omie', 'omie', 'api do omie', 'omieapi']
 
 setup(name='api-omie',
       url='https://github.com/MikalROn/ApiOmie-nao-oficial',
-      version='0.2.53',
+      version= VERSION,
       license='MIT license',
       author='Daniel Coêlho',
       long_description=readme,
       long_description_content_type='text/markdown',
       author_email='heromon.9010@gmail.com',
       keywords=keywords,
+      classifiers=[
+            "Development Status :: 3 - Alpha",
+            "Api :: Developer"
+      ],
       description='Ferramenta para api do omie não oficial',
-      packages=['omieapi'],
+      packages=find_packages(),
       install_requires=['requests', 'beautifulsoup4'],
       python_requires='>=3',
       project_urls={
