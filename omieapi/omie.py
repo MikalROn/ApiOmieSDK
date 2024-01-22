@@ -1,4 +1,4 @@
-from .scripts import CodigoAutogerado
+from omieapi.scripts.cod_automatico import CodigoAutogerado
 
 
 class Omie(CodigoAutogerado):
