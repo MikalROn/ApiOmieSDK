@@ -18,8 +18,7 @@ setup(name='api-omie',
       author_email='heromon.9010@gmail.com',
       keywords=keywords,
       classifiers=[
-            "Development Status :: 3 - Alpha",
-            "Api :: Developer"
+            "Development Status :: 3 - Alpha"
       ],
       description='Ferramenta para api do omie não oficial',
       packages=find_packages(),
