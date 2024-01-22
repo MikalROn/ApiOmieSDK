@@ -8,7 +8,7 @@ keywords = ['Api omie', 'omie', 'api do omie', 'omieapi']
 
 setup(name='api-omie',
       url='https://github.com/MikalROn/ApiOmie-nao-oficial',
-      version='0.2.1',
+      version='0.2.4',
       license='MIT license',
       author='Daniel Coêlho',
       long_description=readme,

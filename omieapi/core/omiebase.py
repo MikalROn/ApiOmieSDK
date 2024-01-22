@@ -1,11 +1,11 @@
-from requests import post
+from requests import post, Session
 from json import JSONDecodeError
 from omieapi.scripts import pega_links_api
 
 
 class OmieBase:
 
-    def __init__(self, omie_app_key: str, omie_app_secret: str):
+    def __init__(self, omie_app_key: str, omie_app_secret: str, session: bool=False):
         """
         :param omie_app_key:              Chave api da omie
         :param omie_app_secret:           APi Secret da omie
@@ -14,6 +14,10 @@ class OmieBase:
         self._appkey = omie_app_key
         self._appsecret = omie_app_secret
         self._head = {'Content-type': 'application/json'}
+        self._has_session = False
+        
+        if session:
+            self._session = Session()
 
     @property
     def endpoint_api(self):
@@ -55,27 +59,31 @@ class OmieBase:
         return 'S' if boolean else 'N'
 
     def _post_request(self, url: str, json: dict) -> dict:
-        try:
-            r = post(url, headers=self._head, json=json)
-            if r.status_code == 200:
-                try:
-                    return r.json()
-                except JSONDecodeError as erro:
+            try:
+                if self._has_session:
+                    r = self._session.post(url, headers=self._head, json=json)
+                else:
+                    r = post(url, headers=self._head, json=json)
+                    
+                if r.status_code == 200:
+                    try:
+                        return r.json()
+                    except JSONDecodeError as erro:
+                        return {
+                            'Error': 'JSON Decode Error',
+                            'Message': f'{erro}'
+                        }
+                else:
                     return {
-                        'Error': 'JSON Decode Error',
-                        'Message': f'{erro}'
+                        'Error': r.status_code,
+                        'headers':  r.headers,
+                        'Mensagem': r.json()
                     }
-            else:
+            except Exception as erro:
                 return {
-                    'Error': r.status_code,
-                    'headers':  r.headers,
-                    'Mensagem': r.json()
-                }
-        except Exception as erro:
-            return {
-                    'Error': 'Erro ao fazer requisição ',
-                    'Mensagem': f'{erro}'
-                }
+                        'Error': 'Erro ao fazer requisição ',
+                        'Mensagem': f'{erro}'
+                    }
 
     def _listar_padrao(
             self, call: str, endpoint: str, pagina: int, registros_por_pagina: int, apenas_importado_api: bool
