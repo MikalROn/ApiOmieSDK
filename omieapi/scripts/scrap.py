@@ -38,29 +38,47 @@ def retorna_divs_de_metodos(url: str):
 
 
 def pegar_todos_os_metodos(urls: list[str]):
+    acerto_erro = [0, 0]
     dicionario_final = {}
     for url in urls:
         for item in retorna_divs_de_metodos(url):
+            
+            def pegar_descricao(item) -> str | None:
+                try:
+                    return item.p.text.strip()
+                except:
+                    return None
+                
+            def pegar_retorno(item):
+                try:
+                    return item.find('span', {'class': 'lightBlue'}).text
+                except:
+                    return None
+                
             try:
                 
                 metodo = item.h3.text.strip()
-                descricao = item.p.text.strip()
-                retorno = item.find('span', {'class': 'lightBlue'}).text
+                descricao = pegar_descricao(item) if pegar_descricao(item) else ""
+                retorno = pegar_retorno(item) if pegar_retorno(item) else ""
                 exemplo_de_uso = item.find('pre', {'class': 'method-example-code'}).text.strip()
                 resultado = {
                     metodo: {
                         'url': url,
                         'endpoint': url.replace('https://app.omie.com.br/api/v1/', ''),
                         'descricao': descricao,
-                        'exemplo_de_uso': ast.literal_eval(exemplo_de_uso),
+                        'exemplo_de_uso': ast.literal_eval(exemplo_de_uso.replace("false", "False").replace("true", "True")),
                         'retorno': retorno if retorno else ""
                         }
                     }
                 dicionario_final.update(resultado)
-                print(metodo, " -> ", retorno)
+                acerto_erro[0] += 1
+                print("\033[92m", metodo, " -> ", retorno)
             except Exception as Error:
-                print(metodo, "deu erro")
+                print("\033[91m", metodo, "deu erro", Error)
+                acerto_erro[1] += 1
+        print("\033[90m", f"Concluidos e Falhas {acerto_erro}")
 
+    print("\033[90m", f"Concluidos e Falhas {acerto_erro}")
     return dicionario_final
 
 
@@ -83,13 +101,13 @@ def sanitiza_metodo(metodo: str) -> str:
 def gerar_codigo_automatico(dicionario: dict):
     
     def tratar_json(data: dict):
-        return json.dumps(data, indent=4)
+        return json.dumps(data, indent=16).replace("}", '').replace("{", '')
         
     
     codigo = 'from omieapi.core.omiebase import OmieBase \n\n' \
              '# Aviso -> antes de usar confira se não a oq vc precisa já feito no codigo principal,\n' \
              '# o codigo autogerdo pode conter erros não detectados ainda\n' \
-             'class CodigoAutogerado(OmieBase):\n' \
+             'class CodigoAutogerado(OmieBase):\n'\
              '  """ Este codigo foi automaticamente geredo por um script de scrap """'
     for metodo, valor in dicionario.items():
 
@@ -101,7 +119,10 @@ def gerar_codigo_automatico(dicionario: dict):
                 """ 
                 {valor['descricao']} 
                 :exemplo de uso:
+                {"{"}
                 {tratar_json(valor['exemplo_de_uso'])}
+                {"}"}
+                
                 :link metodo: {valor['url']}
                 :retorno:  {valor['retorno']}
                 """
