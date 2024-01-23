@@ -3,8 +3,7 @@ from omieapi.core.omiebase import OmieBase
 # Aviso -> antes de usar confira se n�o a oq vc precisa j� feito no codigo principal,
 # o codigo autogerdo pode conter erros n�o detectados ainda
 class CodigoAutogerado(OmieBase):
-    """ Este codigo foi automaticamente geredo por um script de scrap """
-
+    """ Este côdigo foi gerado de forma automatica por um script de scrap """     
     def alterar_cliente(self, **kargs) -> dict:
                 """ Altera os dados do cliente """
                 return self._chamar_api(
@@ -998,7 +997,7 @@ class CodigoAutogerado(OmieBase):
                 )
             
     def consultar_conta_receber(self, **kargs) -> dict:
-                """ Consulta uma Conta a Pagar """
+                """ Consulta uma Conta a Receber """
                 return self._chamar_api(
                     call= 'ConsultarContaReceber',
                     endpoint= 'financas/contareceber/',
@@ -1101,6 +1100,62 @@ class CodigoAutogerado(OmieBase):
                     param = kargs
                 )
             
+    def cancelar_pix(self, **kargs) -> dict:
+                """ Efetua o cancelamento de um PIX """
+                return self._chamar_api(
+                    call= 'CancelarPix',
+                    endpoint= 'financas/pix/',
+                    param = kargs
+                )
+            
+    def gerar_pix(self, **kargs) -> dict:
+                """ Gera o QrCode de um PIX. """
+                return self._chamar_api(
+                    call= 'GerarPix',
+                    endpoint= 'financas/pix/',
+                    param = kargs
+                )
+            
+    def gerar_qr_code_pix(self, **kargs) -> dict:
+                """  """
+                return self._chamar_api(
+                    call= 'GerarQrCodePix',
+                    endpoint= 'financas/pix/',
+                    param = kargs
+                )
+            
+    def listar_pix(self, **kargs) -> dict:
+                """  """
+                return self._chamar_api(
+                    call= 'ListarPix',
+                    endpoint= 'financas/pix/',
+                    param = kargs
+                )
+            
+    def listar_status_pix(self, **kargs) -> dict:
+                """  """
+                return self._chamar_api(
+                    call= 'ListarStatusPix',
+                    endpoint= 'financas/pix/',
+                    param = kargs
+                )
+            
+    def obter_pix(self, **kargs) -> dict:
+                """  """
+                return self._chamar_api(
+                    call= 'ObterPix',
+                    endpoint= 'financas/pix/',
+                    param = kargs
+                )
+            
+    def obter_status_pix(self, **kargs) -> dict:
+                """  """
+                return self._chamar_api(
+                    call= 'ObterStatusPix',
+                    endpoint= 'financas/pix/',
+                    param = kargs
+                )
+            
     def listar_extrato(self, **kargs) -> dict:
                 """ Listagem do Extrato """
                 return self._chamar_api(
@@ -1126,7 +1181,7 @@ class CodigoAutogerado(OmieBase):
                 )
             
     def pesquisar_excluidos(self, **kargs) -> dict:
-                """  """
+                """ DEPRECATED """
                 return self._chamar_api(
                     call= 'PesquisarExcluidos',
                     endpoint= 'financas/pesquisartitulos/',
@@ -1210,6 +1265,14 @@ class CodigoAutogerado(OmieBase):
                 return self._chamar_api(
                     call= 'ListarFinalTransf',
                     endpoint= 'geral/finaltransf/',
+                    param = kargs
+                )
+            
+    def listar_bandeiras(self, **kargs) -> dict:
+                """  """
+                return self._chamar_api(
+                    call= 'ListarBandeiras',
+                    endpoint= 'geral/bandeiracartao/',
                     param = kargs
                 )
             
@@ -1949,6 +2012,22 @@ class CodigoAutogerado(OmieBase):
                     param = kargs
                 )
             
+    def alterar_local_estoque(self, **kargs) -> dict:
+                """ Alterar local de Estoque """
+                return self._chamar_api(
+                    call= 'AlterarLocalEstoque',
+                    endpoint= 'estoque/local/',
+                    param = kargs
+                )
+            
+    def incluir_local_estoque(self, **kargs) -> dict:
+                """ Adiciona um local de estoque """
+                return self._chamar_api(
+                    call= 'IncluirLocalEstoque',
+                    endpoint= 'estoque/local/',
+                    param = kargs
+                )
+            
     def listar_locais_estoque(self, **kargs) -> dict:
                 """ Lista os Locais de Estoque encontrados. """
                 return self._chamar_api(
@@ -1962,6 +2041,54 @@ class CodigoAutogerado(OmieBase):
                 return self._chamar_api(
                     call= 'ObterEstoqueProduto',
                     endpoint= 'estoque/resumo/',
+                    param = kargs
+                )
+            
+    def adicionar_pedido(self, **kargs) -> dict:
+                """  """
+                return self._chamar_api(
+                    call= 'AdicionarPedido',
+                    endpoint= 'produtos/pedidovenda/',
+                    param = kargs
+                )
+            
+    def alterar_item_pedido(self, **kargs) -> dict:
+                """ Altera um item no pedido de venda. """
+                return self._chamar_api(
+                    call= 'AlterarItemPedido',
+                    endpoint= 'produtos/pedidovenda/',
+                    param = kargs
+                )
+            
+    def excluir_item_pedido(self, **kargs) -> dict:
+                """ Exclui um item no pedido de venda. """
+                return self._chamar_api(
+                    call= 'ExcluirItemPedido',
+                    endpoint= 'produtos/pedidovenda/',
+                    param = kargs
+                )
+            
+    def excluir_itens_pedido(self, **kargs) -> dict:
+                """ Exclui todos os itens do pedido de venda. """
+                return self._chamar_api(
+                    call= 'ExcluirItensPedido',
+                    endpoint= 'produtos/pedidovenda/',
+                    param = kargs
+                )
+            
+    def incluir_item_pedido(self, **kargs) -> dict:
+                """ Inclui um item no pedido de venda. """
+                return self._chamar_api(
+                    call= 'IncluirItemPedido',
+                    endpoint= 'produtos/pedidovenda/',
+                    param = kargs
+                )
+            
+    def totalizar_pedido(self, **kargs) -> dict:
+                """ Recalcula os totais do pedido de venda. """
+                return self._chamar_api(
+                    call= 'TotalizarPedido',
+                    endpoint= 'produtos/pedidovenda/',
                     param = kargs
                 )
             
@@ -2117,6 +2244,14 @@ class CodigoAutogerado(OmieBase):
                     param = kargs
                 )
             
+    def excluir_c_te(self, **kargs) -> dict:
+                """  """
+                return self._chamar_api(
+                    call= 'ExcluirCTe',
+                    endpoint= 'produtos/cte/',
+                    param = kargs
+                )
+            
     def excluir_fatura_c_te(self, **kargs) -> dict:
                 """ Exclui uma fatura de um grupo de CT-es. """
                 return self._chamar_api(
@@ -2237,6 +2372,54 @@ class CodigoAutogerado(OmieBase):
                     param = kargs
                 )
             
+    def obter_demonst(self, **kargs) -> dict:
+                """  """
+                return self._chamar_api(
+                    call= 'ObterDemonst',
+                    endpoint= 'servicos/osdocs/',
+                    param = kargs
+                )
+            
+    def obter_n_f_se(self, **kargs) -> dict:
+                """  """
+                return self._chamar_api(
+                    call= 'ObterNFSe',
+                    endpoint= 'servicos/osdocs/',
+                    param = kargs
+                )
+            
+    def obter_o_s(self, **kargs) -> dict:
+                """  """
+                return self._chamar_api(
+                    call= 'ObterOS',
+                    endpoint= 'servicos/osp/',
+                    param = kargs
+                )
+            
+    def obter_r_p_s(self, **kargs) -> dict:
+                """  """
+                return self._chamar_api(
+                    call= 'ObterRPS',
+                    endpoint= 'servicos/osdocs/',
+                    param = kargs
+                )
+            
+    def obter_recibo(self, **kargs) -> dict:
+                """  """
+                return self._chamar_api(
+                    call= 'ObterRecibo',
+                    endpoint= 'servicos/osdocs/',
+                    param = kargs
+                )
+            
+    def obter_via_unica(self, **kargs) -> dict:
+                """  """
+                return self._chamar_api(
+                    call= 'ObterViaUnica',
+                    endpoint= 'servicos/osdocs/',
+                    param = kargs
+                )
+            
     def fechar_caixa(self, **kargs) -> dict:
                 """ Efetua o fechamento de um determinado caixa. """
                 return self._chamar_api(
@@ -2273,6 +2456,14 @@ class CodigoAutogerado(OmieBase):
                 """ Cancelar CF-e-SAT. """
                 return self._chamar_api(
                     call= 'CancelarSAT',
+                    endpoint= 'produtos/cupomfiscal/',
+                    param = kargs
+                )
+            
+    def devolver_cupom(self, **kargs) -> dict:
+                """  """
+                return self._chamar_api(
+                    call= 'DevolverCupom',
                     endpoint= 'produtos/cupomfiscal/',
                     param = kargs
                 )
@@ -2501,6 +2692,14 @@ class CodigoAutogerado(OmieBase):
                     param = kargs
                 )
             
+    def listar_motivos_devol(self, **kargs) -> dict:
+                """  """
+                return self._chamar_api(
+                    call= 'ListarMotivosDevol',
+                    endpoint= 'geral/motivodevolucao/',
+                    param = kargs
+                )
+            
     def listar_n_f_s_es(self, **kargs) -> dict:
                 """ Lista de NFS-es. """
                 return self._chamar_api(
@@ -2677,14 +2876,6 @@ class CodigoAutogerado(OmieBase):
                     param = kargs
                 )
             
-    def obter_o_s(self, **kargs) -> dict:
-                """  """
-                return self._chamar_api(
-                    call= 'ObterOS',
-                    endpoint= 'servicos/osp/',
-                    param = kargs
-                )
-            
     def reenviar_o_s(self, **kargs) -> dict:
                 """  """
                 return self._chamar_api(
@@ -2698,6 +2889,38 @@ class CodigoAutogerado(OmieBase):
                 return self._chamar_api(
                     call= 'ValidarOS',
                     endpoint= 'servicos/osp/',
+                    param = kargs
+                )
+            
+    def faturar_lote_o_s(self, **kargs) -> dict:
+                """  """
+                return self._chamar_api(
+                    call= 'FaturarLoteOS',
+                    endpoint= 'servicos/oslote/',
+                    param = kargs
+                )
+            
+    def listar_lote_nfse(self, **kargs) -> dict:
+                """  """
+                return self._chamar_api(
+                    call= 'ListarLoteNfse',
+                    endpoint= 'servicos/oslote/',
+                    param = kargs
+                )
+            
+    def listar_lotes_o_s(self, **kargs) -> dict:
+                """  """
+                return self._chamar_api(
+                    call= 'ListarLotesOS',
+                    endpoint= 'servicos/oslote/',
+                    param = kargs
+                )
+            
+    def status_lote_o_s(self, **kargs) -> dict:
+                """ Status do lote faturado a partir do ID. """
+                return self._chamar_api(
+                    call= 'StatusLoteOS',
+                    endpoint= 'servicos/oslote/',
                     param = kargs
                 )
             
@@ -2802,6 +3025,30 @@ class CodigoAutogerado(OmieBase):
                 return self._chamar_api(
                     call= 'ValidarContrato',
                     endpoint= 'servicos/contratofat/',
+                    param = kargs
+                )
+            
+    def faturar_lote_contrato(self, **kargs) -> dict:
+                """  """
+                return self._chamar_api(
+                    call= 'FaturarLoteContrato',
+                    endpoint= 'servicos/contratolote/',
+                    param = kargs
+                )
+            
+    def listar_lotes_contrato(self, **kargs) -> dict:
+                """  """
+                return self._chamar_api(
+                    call= 'ListarLotesContrato',
+                    endpoint= 'servicos/contratolote/',
+                    param = kargs
+                )
+            
+    def status_lote_contrato(self, **kargs) -> dict:
+                """ Status do lote faturado a partir do ID. """
+                return self._chamar_api(
+                    call= 'StatusLoteContrato',
+                    endpoint= 'servicos/contratolote/',
                     param = kargs
                 )
             

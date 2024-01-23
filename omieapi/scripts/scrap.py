@@ -2,6 +2,8 @@ from requests import get
 from bs4 import BeautifulSoup
 import ast
 import re
+import pandas
+import json
 
 # Atenção -> Ao rodar este codigo é gerado um novo codigo automatico
 # Não roda ao importar
@@ -40,19 +42,24 @@ def pegar_todos_os_metodos(urls: list[str]):
     for url in urls:
         for item in retorna_divs_de_metodos(url):
             try:
+                
                 metodo = item.h3.text.strip()
                 descricao = item.p.text.strip()
+                retorno = item.find('span', {'class': 'lightBlue'}).text
                 exemplo_de_uso = item.find('pre', {'class': 'method-example-code'}).text.strip()
                 resultado = {
                     metodo: {
+                        'url': url,
                         'endpoint': url.replace('https://app.omie.com.br/api/v1/', ''),
                         'descricao': descricao,
-                        'exemplo_de_uso': ast.literal_eval(exemplo_de_uso)
+                        'exemplo_de_uso': ast.literal_eval(exemplo_de_uso),
+                        'retorno': retorno if retorno else ""
                         }
                     }
                 dicionario_final.update(resultado)
-            except:
-                pass
+                print(metodo, " -> ", retorno)
+            except Exception as Error:
+                print(metodo, "deu erro")
 
     return dicionario_final
 
@@ -74,11 +81,16 @@ def sanitiza_metodo(metodo: str) -> str:
 
 
 def gerar_codigo_automatico(dicionario: dict):
-    codigo = 'from  import Omie \n\n' \
+    
+    def tratar_json(data: dict):
+        return json.dumps(data, indent=4)
+        
+    
+    codigo = 'from omieapi.core.omiebase import OmieBase \n\n' \
              '# Aviso -> antes de usar confira se não a oq vc precisa já feito no codigo principal,\n' \
              '# o codigo autogerdo pode conter erros não detectados ainda\n' \
-             'class CodigoAutogerado(Omie):\n' \
-             '     """ Este codigo foi automaticamente geredo por um script de scrap """ \n'
+             'class CodigoAutogerado(OmieBase):\n' \
+             '  """ Este codigo foi automaticamente geredo por um script de scrap """'
     for metodo, valor in dicionario.items():
 
         lista_atributos = [x[0] for x in valor["exemplo_de_uso"].items()]
@@ -86,14 +98,20 @@ def gerar_codigo_automatico(dicionario: dict):
 
         codigo += \
             f'''\n    def {sanitiza_metodo(metodo)}(self, **kargs) -> dict:
-                """ {valor['descricao']} """
+                """ 
+                {valor['descricao']} 
+                :exemplo de uso:
+                {tratar_json(valor['exemplo_de_uso'])}
+                :link metodo: {valor['url']}
+                :retorno:  {valor['retorno']}
+                """
                 return self._chamar_api(
                     call= '{metodo}',
                     endpoint= '{valor['endpoint']}',
                     param = kargs
                 )
             '''
-    with open('cod_automatico.py', 'w', encoding='latin-1') as w:
+    with open('cod_automatico.py', 'w', encoding='utf-8') as w:
         w.write(codigo)
 
 
