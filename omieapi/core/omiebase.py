@@ -1,6 +1,5 @@
 from requests import post, Session
 from json import JSONDecodeError
-from omieapi.scripts import pega_links_api
 
 
 class OmieBase:
@@ -18,11 +17,6 @@ class OmieBase:
         
         if session:
             self._session = Session()
-
-    @property
-    def endpoint_api(self):
-        """ Metodo que busca online todos os endpoints da api """
-        return [link.replace('https://app.omie.com.br/api/v1/') for link in pega_links_api()]
 
     def conectar_api(self, metodo: str, endpoint: str, parametros: dict) -> dict:
         """
@@ -54,10 +48,6 @@ class OmieBase:
         if metodo not in lista_de_metodos:
             raise ValueError(f'{metodo} Não existe!')
 
-    @staticmethod
-    def _bool_para_sn(boolean: bool) -> str:
-        return 'S' if boolean else 'N'
-
     def _post_request(self, url: str, json: dict) -> dict:
             try:
                 if self._has_session:
@@ -84,20 +74,6 @@ class OmieBase:
                         'Error': 'Erro ao fazer requisição ',
                         'Mensagem': f'{erro}'
                     }
-
-    def _listar_padrao(
-            self, call: str, endpoint: str, pagina: int, registros_por_pagina: int, apenas_importado_api: bool
-    ) -> dict:
-        apenas_importado_api = self._bool_para_sn(apenas_importado_api)
-        return self._chamar_api(
-            call=call,
-            endpoint=endpoint,
-            param={
-                "pagina": pagina,
-                "registros_por_pagina": registros_por_pagina,
-                "apenas_importado_api": apenas_importado_api
-            }
-        )
 
     def _chamar_api(self, endpoint: str = None, call: str = None, param: dict | tuple | list = None) -> dict:
         """
