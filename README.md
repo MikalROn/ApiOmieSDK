@@ -35,3 +35,9 @@ r = meu_app.listar_produtos(
 
 print(r)
 ``````
+
+# Contribua com este projeto
+
+> Existe já um script na parte de scrap que extrai os tipos compléxos, bastando apenas fazer a parte do codigo.
+
+> Um dos objetivos futuros e se tornar multi-linguagens usando o script para fazer a parte repetitiva do trabalho.
