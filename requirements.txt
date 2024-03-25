@@ -6,3 +6,4 @@ idna==3.6
 requests==2.28.2
 soupsieve==2.5
 urllib3==1.26.18
+pandas
