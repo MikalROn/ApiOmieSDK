@@ -25,8 +25,8 @@ public  class OmieObject {
     }
 
     protected JSONObject chamarApi(String endpoint, String call, JSONArray parametros) throws URISyntaxException, IOException, InterruptedException {
+        // Conecta com api e devolve um JSON
         String jsonEmString = gerarJson(call, parametros);
-        System.out.println(jsonEmString);
         HttpRequest request = HttpRequest.newBuilder()
                 .uri(new URI(this.url + endpoint))
                 .header("Content-type", "application/json")
@@ -37,7 +37,6 @@ public  class OmieObject {
                 .build();
         HttpResponse<String> response =  this.client.send(request,
                         HttpResponse.BodyHandlers.ofString());
-        System.out.println(response.body());
         return new JSONObject(response.body());
     }
 

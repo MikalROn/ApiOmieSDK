@@ -1,5 +1,7 @@
 # Entenda as nomeclaturas
 
+## Omie
+- objeto principal, interseção de  todos os outros
 
 ## OmieApi
 
@@ -7,9 +9,6 @@
 
 ## OmieObject
 - Objeto mais bascio onde tem toda logica usada nos metodos
-
-## Omie
-- objeto principal, une todos os outros
 
 ## OmieAuto
 - extende o objeto mais basico
