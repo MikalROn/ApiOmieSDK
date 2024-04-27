@@ -148,30 +148,12 @@ def gerar_codigo_automatico(dicionario: dict):
     with open('cod_automatico.py', 'w', encoding='utf-8') as w:
         w.write(codigo)
 
-
-def gerar_codigo(metodos) -> None:
-    gerar_codigo_automatico(metodos)
-
-def gerar_codigo_tipos_automatico_em_python(lista_tipos: list):
-    codigo = 'from dataclasses import dataclass \n\n' \
-             '# Aviso -> antes de usar confira se não a oq vc precisa já feito no codigo principal,\n' \
-             '# o codigo autogerdo pode conter erros não detectados ainda\n\n'
-    for tipo in lista_tipos:
-        codigo += f'''@dataclass\nclass {tipo["nome"]}:\n    """{tipo["descricao"]}"""\n'''
-    
-        for parametro in tipo['parametros']:
-            codigo += f'    {parametro["nome_parametro"]} #{parametro["tipo_parametro"]}\n'
-        
-    with open('tipos_complexos.py', 'w', encoding='utf-8') as w:
-        w.write(codigo)
-
-
 def pega_todos_tipos_complexos(urls: list[str]) -> list:
-    
+
     remove_numero = lambda x: ''.join([i for i in x if not i.isdigit()])
-    
+
     lista_tipos: list = []
-    
+
     for url in urls:
         for item in retorna_tipos_complexos(url):
             parametros = []
@@ -180,7 +162,7 @@ def pega_todos_tipos_complexos(urls: list[str]) -> list:
                 descricao = item.p.text
 
                 for parametro in item.table.find_all("tr"):
-                    
+
                     nome_parametro = parametro.find("td", {"class": "parameter-name"})
                     tipo = parametro.find("td", {"class": "parameter-type"})
                     descricao_parametro = parametro.find("td", {"class": "parameter-docs"})
@@ -191,7 +173,7 @@ def pega_todos_tipos_complexos(urls: list[str]) -> list:
                             "descricao_parametro": descricao_parametro.text if descricao_parametro else ""
                         }
                     )
-                    
+
                 lista_tipos.append(
                     {
                         "nome": nome,
@@ -206,6 +188,70 @@ def pega_todos_tipos_complexos(urls: list[str]) -> list:
     print(lista_tipos)
     return lista_tipos
 
+
+def gerar_codigo_automatico_java(dicionario: dict):
+
+    def lower_first_letter(string) -> str:
+        if len(string) > 0:
+            return string[0].lower() + string[1:]
+        else:
+            return string
+    def sanitiza_metodo_java(metodo: str) -> str:
+        lista_palavras = re.sub(r"([A-Z])", r" \1", metodo).split()
+        nome_final = ''.join(lista_palavras)
+        return lower_first_letter(nome_final)
+
+    def tratar_json(data: dict):
+        return json.dumps(data, indent=16).replace("}", '').replace("{", '')
+
+
+    codigo = 'package org; \n\n' \
+             'import org.json.JSONObject;\n' \
+             'import java.io.IOException;\n' \
+             'import java.net.URISyntaxException;\n\n' \
+             'public class OmieAuto extends OmieObject{\n' \
+             '    public OmieAuto(String appKey, String appSecreet) {\n' \
+             '    super(appKey, appSecreet);\n' \
+             '}\n'
+    for metodo, valor in dicionario.items():
+
+        lista_atributos = [x[0] for x in valor["exemplo_de_uso"].items()]
+        param = dict(zip(lista_atributos, lista_atributos))
+        codigo += \
+            f'''\n    public JSONObject {sanitiza_metodo_java(metodo)}(JSONArray parametros) throws URISyntaxException, IOException, InterruptedException{"{"} 
+                    //{valor['descricao']} 
+    
+                    return this.chamarApi(
+                        "{valor['endpoint']}",
+                        "{metodo}",
+                        parametros
+                    );
+            {"}"}
+                '''
+    codigo += "\n}"
+    with open('java/apiomie/src/main/java/org/OmieAuto.java', 'w', encoding='utf-8') as w:
+        w.write(codigo)
+
+def gerar_codigo(metodos) -> None:
+    gerar_codigo_automatico(metodos)
+
+def gerar_codigo_java(metodos) -> None:
+    gerar_codigo_automatico_java(metodos)
+
+def gerar_codigo_tipos_automatico_em_python(lista_tipos: list):
+    codigo = 'from dataclasses import dataclass \n\n' \
+             '# Aviso -> antes de usar confira se não a oq vc precisa já feito no codigo principal,\n' \
+             '# o codigo autogerdo pode conter erros não detectados ainda\n\n'
+    for tipo in lista_tipos:
+        codigo += f'''@dataclass\nclass {tipo["nome"]}:\n    """{tipo["descricao"]}"""\n'''
+
+        for parametro in tipo['parametros']:
+            codigo += f'    {parametro["nome_parametro"]} #{parametro["tipo_parametro"]}\n'
+
+    with open('tipos_complexos.py', 'w', encoding='utf-8') as w:
+        w.write(codigo)
+
 if __name__ == '__main__':
     #gerar_codigo(metodos())
-    gerar_codigo_tipos_automatico_em_python(tipos())
+    gerar_codigo_automatico_java(metodos())
+    #gerar_codigo_tipos_automatico_em_python(tipos())

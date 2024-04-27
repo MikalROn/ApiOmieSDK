@@ -9,8 +9,8 @@ class Omie(CodigoAutogerado):
         
 
 CREDENCIAIS_PARA_HOMOLOGACAO_E_TESTE =  (
-        OMIE_APP_KEY  := "38333295000",
-        OMIE_APP_SECRET := "fed2163e2e8dccb53ff914ce9e2f1258"
+        OMIE_APP_KEY  := "1560731700",
+        OMIE_APP_SECRET := "226dcf372489bb45ceede61bfd98f0f1"
 )
 
 OmieHomologacao: Omie = Omie(*CREDENCIAIS_PARA_HOMOLOGACAO_E_TESTE) 

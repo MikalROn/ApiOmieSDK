@@ -1,6 +1,6 @@
 from setuptools import setup, find_packages
 
-VERSION =  '0.3.0'
+VERSION =  '0.3.4'
 
 
 with open('README.md', 'rt', encoding='latin-1') as arq:
@@ -22,7 +22,7 @@ setup(name='api-omie',
       ],
       description='Ferramenta para api do omie não oficial',
       packages=find_packages(exclude=('scrap.py')),
-      install_requires=['requests', 'beautifulsoup4'],
+      install_requires=['requests', 'beautifulsoup4', 'pandas'],
       python_requires='>=3',
       project_urls={
             'Demonstrações': 'https://github.com/MikalROn/ApiOmie-nao-oficial/tree/main/demos',
