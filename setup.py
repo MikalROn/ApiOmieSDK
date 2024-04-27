@@ -1,6 +1,6 @@
 from setuptools import setup, find_packages
 
-VERSION =  '0.3.12'
+VERSION =  '0.3.8'
 
 
 with open('README.md', 'rt', encoding='latin-1') as arq:
@@ -21,7 +21,7 @@ setup(name='api-omie',
             "Development Status :: 3 - Alpha"
       ],
       description='Ferramenta para api do omie não oficial',
-      packages=find_packages(exclude=('scrap.py')),
+      packages=find_packages(exclude=('scrap.py', 'java/*', 'php/*')),
       install_requires=['requests', 'beautifulsoup4', 'pandas'],
       python_requires='>=3',
       project_urls={
