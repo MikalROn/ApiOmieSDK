@@ -202,7 +202,7 @@ def gerar_codigo_automatico_php(dicionario: dict):
         return lower_first_letter(nome_final)
 
     codigo = '<?php\n' \
-             'use Omiebase; \n\n' \
+             'include(omieBase.php); \n\n' \
              'class OmieAuto extends OmieBase{\n'
     for metodo, valor in dicionario.items():
 
@@ -288,6 +288,6 @@ def gerar_codigo_tipos_automatico_em_python(lista_tipos: list):
 if __name__ == '__main__':
     #gerar_codigo(metodos())
     #gerar_codigo_automatico_java(metodos())
-    gerar_codigo_automatico_php(metodos())
+    #gerar_codigo_automatico_php(metodos())
     #gerar_codigo_tipos_automatico_em_python(tipos())
     ...
