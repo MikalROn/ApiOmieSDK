@@ -1,6 +1,6 @@
 <?php
 
-use Omiebase;
+include("omieBase.php");
 
 class OmieAuto extends OmieBase{
 

@@ -1,5 +1,5 @@
 <?php
-
+  
 class OmieBase {
     private $appKey;
     private $appSecret;
@@ -18,19 +18,20 @@ class OmieBase {
                 "call" => $call,
                 "app_key" => $this->appKey,
                 "app_secret" => $this->appSecret,
-                "params" => $params
+                "param" => [$params]
             ]
         );
     }
 
-    protected function chamarApi(string $endpoint, string $call, array $params): array{
-        $urlCompleta = $this->url + $endpoint;
+    protected function chamarApi(string $endpoint, string $call, array $params): array {
+        $urlCompleta = $this->url.$endpoint;
         $session = curl_init($urlCompleta);
+        $json = $this->gerarJson($call, $params);
 
         curl_setopt($session, CURLOPT_HTTPHEADER, ['Content-Type: application/json']);
         curl_setopt($session, CURLOPT_POST, true);
         curl_setopt($session, CURLOPT_RETURNTRANSFER, true);
-        curl_setopt($session, CURLOPT_POSTFIELDS, $this->gerarJson($call, $params));
-        return json_decode(curl_exec($session));
+        curl_setopt($session, CURLOPT_POSTFIELDS, $json);
+        return json_decode(curl_exec($session), true);
     }
 }
