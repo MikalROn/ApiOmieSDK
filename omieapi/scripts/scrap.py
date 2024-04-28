@@ -188,6 +188,40 @@ def pega_todos_tipos_complexos(urls: list[str]) -> list:
     print(lista_tipos)
     return lista_tipos
 
+def gerar_codigo_automatico_php(dicionario: dict):
+
+    def lower_first_letter(string) -> str:
+        if len(string) > 0:
+            return string[0].lower() + string[1:]
+        else:
+            return string
+        
+    def sanitiza_metodo_php(metodo: str) -> str:
+        lista_palavras = re.sub(r"([A-Z])", r" \1", metodo).split()
+        nome_final = ''.join(lista_palavras)
+        return lower_first_letter(nome_final)
+
+    codigo = '<?php\n' \
+             'use Omiebase; \n\n' \
+             'class OmieAuto extends OmieBase{\n'
+    for metodo, valor in dicionario.items():
+
+        lista_atributos = [x[0] for x in valor["exemplo_de_uso"].items()]
+        param = dict(zip(lista_atributos, lista_atributos))
+        codigo += \
+            f'''\n    public function {sanitiza_metodo_php(metodo)}(array $parametros): array {"{"} 
+                    //{valor['descricao']} 
+                    return $this->chamarApi(
+                        "{valor['endpoint']}",
+                        "{metodo}",
+                        $parametros
+                    );
+            {"}"}
+                '''
+    codigo += "\n}"
+    with open('php/omieAuto.php', 'w', encoding='utf-8') as w:
+        w.write(codigo)
+
 
 def gerar_codigo_automatico_java(dicionario: dict):
 
@@ -253,5 +287,7 @@ def gerar_codigo_tipos_automatico_em_python(lista_tipos: list):
 
 if __name__ == '__main__':
     #gerar_codigo(metodos())
-    gerar_codigo_automatico_java(metodos())
+    #gerar_codigo_automatico_java(metodos())
+    gerar_codigo_automatico_php(metodos())
     #gerar_codigo_tipos_automatico_em_python(tipos())
+    ...
