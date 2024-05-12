@@ -4,7 +4,7 @@
 
 <em> *Aviso: este projeto nao tem ligacao nenhuma com a omie</em>
 
-    Projeto Multi Linguagem Omie Api SDK
+> Projeto Multi Linguagem Omie Api SDK
 
 ![!license](https://img.shields.io/github/license/MikalROn/ApiOmie-nao-oficial.svg)
 <a href="https://github.com/MikalROn/ApiOmie-nao-oficial">
