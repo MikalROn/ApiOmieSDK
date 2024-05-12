@@ -15,13 +15,15 @@
 
 https://developer.omie.com.br/service-list/
 
-## Download
+## Python
+
+### Download
 
 ``````shell
 pip install api-omie
 ``````
 
-## Como usar
+### Como usar
 
 <p> Para usar basta chamar o metodo, 
 e passar os argumentos-chave que seram empacotados e transmitidos para api como no exemplo</p>
