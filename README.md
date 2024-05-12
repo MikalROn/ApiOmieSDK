@@ -1,6 +1,6 @@
 <!-- -*- coding: latin-1 -*- -->
 
-# Api Omie (NAO OFICIAL)
+# Api Omie SDK
 
 <em> *Aviso: este projeto nao tem ligacao nenhuma com a omie</em>
 
