@@ -2004,7 +2004,7 @@ class CodigoAutogerado(OmieBase):
                     param = kargs
                 )
             
-    def listar_movimentos(self, **kargs) -> dict:
+    def listar_movimentos_estoque(self, **kargs) -> dict:
                 """  """
                 return self._chamar_api(
                     call= 'ListarMovimentos',
@@ -3131,13 +3131,13 @@ class CodigoAutogerado(OmieBase):
                     endpoint= 'contador/xml/',
                     param = kargs
                 )
-    def listar_todos_movimentos(self, **kargs) -> dict:
+    def listar_movimentos_financas(self, **kargs) -> dict:
                 """ 	
                 Solicitação de Listagem da movimentação financeira (Contas a Pagar, Contas a Receber e Lançamentos do Conta Corrente).
                 """
                 return self._chamar_api(
                     call= 'ListarMovimentos',
-                    endpoint= 'financas/mf',
+                    endpoint= 'financas/mf/',
                     param = kargs
                 )
             
