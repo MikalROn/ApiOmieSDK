@@ -1,9 +1,9 @@
 from setuptools import setup, find_packages
 
-VERSION =  '0.3.8'
+VERSION =  '0.4.0'
 
 
-with open('README.md', 'rt', encoding='latin-1') as arq:
+with open('README.md', 'rt', encoding='utf-8') as arq:
       readme = arq.read()
 
 keywords = ['Api omie', 'omie', 'api do omie', 'omieapi']

@@ -2,16 +2,18 @@
 
 # Api Omie SDK
 
-<em> *Aviso: este projeto nao tem ligacao nenhuma com a omie</em>
+<em> *Aviso: este projeto nao tem ligaçãpo nenhuma com a omie</em>
 
 > Projeto Multi Linguagem Omie Api SDK
 
 ![!license](https://img.shields.io/github/license/MikalROn/ApiOmie-nao-oficial.svg)
-<a href="https://github.com/MikalROn/ApiOmie-nao-oficial">
-<img alt="GitHub" src="https://img.shields.io/badge/Github-Open%20source-green?style=for-the-badge&amp;logo=github"/>
-</a>
+![PyPI - Downloads](https://img.shields.io/pypi/dd/api-omie)
+![GitHub License](https://img.shields.io/github/license/MikalROn/ApiOmieSDK)
+![GitHub contributors](https://img.shields.io/github/contributors/MikalROn/ApiOmieSDK)
+![GitHub Repo stars](https://img.shields.io/github/stars/MikalROn/ApiOmieSDK)
 
-#   Use a documentacao oficial!
+
+#   Use a documentação oficial!
 
 https://developer.omie.com.br/service-list/
 
