@@ -9,6 +9,7 @@
 name: Upload Python Package
 
 on:
+  workflow_dispatch:
   pull_request:
       types: [closed]
       branches: [ "main" ]
