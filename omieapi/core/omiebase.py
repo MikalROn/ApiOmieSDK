@@ -1,10 +1,12 @@
+import httpx
+
 from requests import post, Session
 from json import JSONDecodeError
 
 
 class OmieBase:
 
-    def __init__(self, omie_app_key: str, omie_app_secret: str, session: bool=False):
+    def __init__(self, omie_app_key: str, omie_app_secret: str, session: bool=False, httpx=False):
         """
         :param omie_app_key:              Chave api da omie
         :param omie_app_secret:           APi Secret da omie
@@ -13,7 +15,8 @@ class OmieBase:
         self._appkey = omie_app_key
         self._appsecret = omie_app_secret
         self._head = {'Content-type': 'application/json'}
-        self._has_session = False
+        self._has_session = session
+        self._httpx = httpx
         
         if session:
             self._session = Session()
@@ -50,6 +53,7 @@ class OmieBase:
 
     def _post_request(self, url: str, json: dict) -> dict:
             try:
+                
                 if self._has_session:
                     r = self._session.post(url, headers=self._head, json=json)
                 else:
