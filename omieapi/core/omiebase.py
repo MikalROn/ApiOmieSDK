@@ -1,10 +1,12 @@
+import httpx
+
 from requests import post, Session
 from json import JSONDecodeError
 
 
 class OmieBase:
 
-    def __init__(self, omie_app_key: str, omie_app_secret: str, session: bool=False):
+    def __init__(self, omie_app_key: str, omie_app_secret: str, session: bool=False, use_httpx: bool=False):
         """
         :param omie_app_key:              Chave api da omie
         :param omie_app_secret:           APi Secret da omie
@@ -13,10 +15,52 @@ class OmieBase:
         self._appkey = omie_app_key
         self._appsecret = omie_app_secret
         self._head = {'Content-type': 'application/json'}
-        self._has_session = False
+        self._has_session = session
+        self._httpx = use_httpx
         
+
         if session:
-            self._session = Session()
+            if self._httpx:
+                self._session = httpx.Client()
+            else:
+                self._session = Session()
+                
+    def __enter__(self):
+        if self._has_session:
+            return self
+        else:
+            self.abrir_session()
+            return self
+    
+    
+    def __exit__(self, exc_type, exc_value, trace):
+        self.fechar_session()
+    
+    
+    def fechar_session(self):
+        """
+        Fecha a sessão aberta na inicialização
+        """
+        if self._has_session:
+            self._has_session = False
+            self._session.close()
+        
+        else:
+            raise RuntimeError("Não exite sessão aberta")
+    
+    
+    def abrir_session(self):
+        """ Cria nova  session """
+        if not self._has_session:
+            self._has_session = True
+            
+            if self._httpx:
+                self._session = httpx.Client()
+            else:
+                self._session = Session()
+        else:
+            raise RuntimeError("Session já está aberta")
+        
 
     def conectar_api(self, metodo: str, endpoint: str, parametros: dict) -> dict:
         """
@@ -50,10 +94,13 @@ class OmieBase:
 
     def _post_request(self, url: str, json: dict) -> dict:
             try:
+                
                 if self._has_session:
                     r = self._session.post(url, headers=self._head, json=json)
                 else:
-                    r = post(url, headers=self._head, json=json)
+                    if self._httpx:
+                        r = httpx.post(url, headers=self._headers, json=json)
+                        r = post(url, headers=self._head, json=json)
                     
                 if r.status_code == 200:
                     try:

@@ -2,48 +2,85 @@
 
 # Api Omie SDK
 
-<em> *Aviso: este projeto nao tem ligaçãpo nenhuma com a omie</em>
+<em>*Aviso: Este projeto não tem ligação oficial com a Omie</em>
 
-> Projeto Multi Linguagem Omie Api SDK
+> SDK Multi Linguagem para integrar com a Omie API
 
-![!license](https://img.shields.io/github/license/MikalROn/ApiOmie-nao-oficial.svg)
+![License](https://img.shields.io/github/license/MikalROn/ApiOmie-nao-oficial.svg)
 ![PyPI - Downloads](https://img.shields.io/pypi/dd/api-omie)
 ![GitHub License](https://img.shields.io/github/license/MikalROn/ApiOmieSDK)
 ![GitHub contributors](https://img.shields.io/github/contributors/MikalROn/ApiOmieSDK)
 ![GitHub Repo stars](https://img.shields.io/github/stars/MikalROn/ApiOmieSDK)
+[![Documentation Status](https://img.shields.io/badge/docs-latest-blue)](https://MikalROn.github.io/ApiOmieSDK/)
 
 
-#   Use a documentação oficial!
+## Documentação Oficial da Omie
 
-https://developer.omie.com.br/service-list/
+Recomendamos sempre consultar a documentação oficial da Omie para detalhes completos das funções disponíveis:
 
-## Python
+[Omie API - Documentação Oficial](https://developer.omie.com.br/service-list/)
 
-### Download
+## Instalação (Python)
 
-``````shell
+Para instalar o pacote da Omie via `pip`, use o seguinte comando:
+
+```bash
 pip install api-omie
-``````
+```
 
-### Como usar
+## Como usar
 
-<p> Para usar basta chamar o metodo, 
-e passar os argumentos-chave que seram empacotados e transmitidos para api como no exemplo</p>
+Veja abaixo como fazer uma chamada básica para listar produtos usando a Omie API.
 
-``````python
+### Exemplo de uso básico
+
+```python
 from omieapi import Omie
 
-meu_app = Omie('key#######', 'secreet######')
+omie_app = Omie('sua_app_key', 'seu_app_secret')
+response = omie_app.listar_produtos(pagina=1)
 
-r = meu_app.listar_produtos(
-    pagina=1
-)
+print(response)
+```
 
-print(r)
-``````
+Os metodos se encontram neste formato `nome_da_chamada(**argumentos)`
 
-# Contribua com este projeto
 
-> Existe já um script na parte de scrap que extrai os tipos compléxos, bastando apenas fazer a parte do codigo.
+## Usando Sessões para Melhor Desempenho
 
-> Um dos objetivos futuros e se tornar multi-linguagens usando o script para fazer a parte repetitiva do trabalho.
+Se você for fazer várias requisições à API, é altamente recomendado usar uma sessão para reutilizar a conexão e reduzir o overhead de abrir novas conexões a cada chamada. Veja como abrir e fechar uma sessão:
+
+```python
+from omieapi import Omie
+
+omie_app = Omie('sua_app_key', 'seu_app_secret', session=True)
+response = omie_app.listar_produtos(pagina=1)
+omie_app.fechar_session()
+
+print(response)
+```
+O SDK também oferece suporte ao uso de gerenciador de contexto para abrir e fechar sessões automaticamente. Todas as chamadas com gerenciador de contexto tem por padrão o uso da sessão.
+
+```python
+from omieapi import Omie
+omie_app = Omie('sua_app_key', 'seu_app_secret')
+
+with omie_app as r:
+    response = r.listar_produtos(pagina=1)
+
+print(response)
+```
+
+É possível abrir uma sessão utilizando o metodo `Omie.abrir_sessão()`
+
+## Contribua com este Projeto
+
+Estamos sempre em busca de melhorias! Um dos próximos passos para este SDK é torná-lo realmente multi-linguagem, com suporte a diferentes linguagens de programação. Já existe um script de scraping que extrai os tipos complexos da API, mas ainda precisamos de ajuda para gerar o código de maneira automatizada.
+
+### Como Contribuir
+- Clone o repositório
+- Crie uma nova branch para suas mudanças
+- Envie um pull request
+
+
+
