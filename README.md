@@ -42,6 +42,25 @@ r = meu_app.listar_produtos(
 print(r)
 ``````
 
+
+### Performance
+
+<p> Fazer varias chamadas pode ficar caro se não for aberto uma session antes </p>
+
+``````python
+from omieapi import Omie
+
+meu_app = Omie('key#######', 'secreet######' , session=True)
+
+r = meu_app.listar_produtos(
+    pagina=1
+)
+
+meui_app.fechar_session()
+
+print(r)
+``````
+
 # Contribua com este projeto
 
 > Existe já um script na parte de scrap que extrai os tipos compléxos, bastando apenas fazer a parte do codigo.

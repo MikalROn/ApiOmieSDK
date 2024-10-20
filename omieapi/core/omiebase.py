@@ -6,7 +6,7 @@ from json import JSONDecodeError
 
 class OmieBase:
 
-    def __init__(self, omie_app_key: str, omie_app_secret: str, session: bool=False, httpx: bool=False):
+    def __init__(self, omie_app_key: str, omie_app_secret: str, session: bool=False, use_httpx: bool=False):
         """
         :param omie_app_key:              Chave api da omie
         :param omie_app_secret:           APi Secret da omie
@@ -16,7 +16,7 @@ class OmieBase:
         self._appsecret = omie_app_secret
         self._head = {'Content-type': 'application/json'}
         self._has_session = session
-        self._httpx = httpx
+        self._httpx = use_httpx
         
 
         if session:
