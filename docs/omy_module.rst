@@ -1,8 +1,6 @@
 Omie
 ===================
 
-.. currentmodule:: omie  
-
 .. currentmodule:: omieapi.omie
 
 .. autoclass:: Omie
