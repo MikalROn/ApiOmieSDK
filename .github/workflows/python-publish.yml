@@ -13,6 +13,8 @@ on:
   pull_request:
       types: [closed]
       branches: [ "main" ]
+      paths:
+      - "setup.py"
 
 permissions:
   contents: read
