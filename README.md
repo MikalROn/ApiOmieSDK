@@ -11,6 +11,8 @@
 ![GitHub License](https://img.shields.io/github/license/MikalROn/ApiOmieSDK)
 ![GitHub contributors](https://img.shields.io/github/contributors/MikalROn/ApiOmieSDK)
 ![GitHub Repo stars](https://img.shields.io/github/stars/MikalROn/ApiOmieSDK)
+[![Documentation Status](https://img.shields.io/badge/docs-latest-blue)](https://MikalROn.github.io/ApiOmieSDK/)
+
 
 ## Documentação Oficial da Omie
 
