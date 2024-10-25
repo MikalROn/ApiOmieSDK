@@ -23,7 +23,8 @@ jobs:
       - name: Install dependencies
         run: |
           pip install -r requirements.txt 
-          pip install sphinx sphinx-rtd-theme sphinx-autodoc-typehints
+          pip install sphinx sphinx-rtd-theme sphinx-autodoc-typehints myst-parser
+
 
       - name: Build Documentation
         run: |

@@ -14,14 +14,15 @@ sys.path.insert(0, os.path.abspath('../'))
 project = 'Api Omie SDK'
 copyright = '2024, Daniel Coêlho'
 author = 'Daniel Coêlho'
-release = '0.4.1'
+release = '0.4.6'
 
 # -- General configuration ---------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#general-configuration
 
 extensions = [
     'sphinx.ext.autodoc',
-    'sphinx_autodoc_typehints'
+    'sphinx_autodoc_typehints',
+    'myst_parser'
 ]
 
 templates_path = ['_templates']
