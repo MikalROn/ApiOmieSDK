@@ -1,12 +1,12 @@
 from setuptools import setup, find_packages
 
-VERSION =  '0.4.1'
+VERSION =  '0.4.5'
 
 
 with open('README.md', 'rt', encoding='utf-8') as arq:
       readme = arq.read()
 
-keywords = ['Api omie', 'omie', 'api do omie', 'omieapi']
+keywords = ['Api omie', 'omie', 'api do omie', 'omieapi', 'apiomiesdk', 'omiesdk', 'omie sdk']
 
 setup(name='api-omie',
       url='https://github.com/MikalROn/ApiOmie-nao-oficial',
