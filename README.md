@@ -1,4 +1,4 @@
-<!-- -*- coding: latin-1 -*- -->
+
 
 # Api Omie SDK
 
@@ -72,6 +72,31 @@ print(response)
 ```
 
 É possível abrir uma sessão utilizando o metodo `Omie.abrir_sessão()`
+
+### Exemplo de uso com `httpx`
+
+```python
+from omieapi import Omie
+
+omie_app = Omie('sua_app_key', 'seu_app_secret', use_httpx=True)
+response = omie_app.listar_produtos(pagina=1)
+
+print(response)
+
+```
+
+### Ativando Logs para Depuração
+
+```python
+from omieapi import Omie
+
+omie_app = Omie('sua_app_key', 'seu_app_secret', log=True)
+response = omie_app.listar_produtos(pagina=1)
+
+print(response)
+
+```
+
 
 ## Contribua com este Projeto
 
