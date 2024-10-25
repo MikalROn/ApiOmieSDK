@@ -6,10 +6,15 @@ from json import JSONDecodeError
 
 class OmieBase:
 
-    def __init__(self, omie_app_key: str, omie_app_secret: str, session: bool=False, use_httpx: bool=False):
+    def __init__(self, omie_app_key: str, omie_app_secret: str, session: bool=False, use_httpx: bool=False, log: bool=False):
         """
-        :param omie_app_key:              Chave api da omie
-        :param omie_app_secret:           APi Secret da omie
+        Inicializa a classe Omie com as credenciais e opções de configuração.
+
+        :param omie_app_key: str          A chave de acesso da API Omie, usada para autenticação.
+        :param omie_app_secret: str       O segredo da API Omie, usado para autenticação.
+        :param session: bool, opcional    Indica se uma sessão persistente deve ser usada para as requisições (padrão: False).
+        :param use_httpx: bool, opcional  Define se a biblioteca `httpx` deve ser usada em vez de `requests` para as requisições (padrão: False).
+        :param log: bool, opcional        Gera log em um arquivo .txt
         """
         self._endpoint = 'https://app.omie.com.br/api/v1/'
         self._appkey = omie_app_key
@@ -17,6 +22,7 @@ class OmieBase:
         self._head = {'Content-type': 'application/json'}
         self._has_session = session
         self._httpx = use_httpx
+        self._log = log
         
 
         if session:
@@ -92,22 +98,27 @@ class OmieBase:
         if metodo not in lista_de_metodos:
             raise ValueError(f'{metodo} Não existe!')
 
+    def _gerar_log(self, r) -> None:
+        if r.status_code == 200:
+            with open('log.txt', 'a') as file:
+                file.write(f"'status_code': {r.status_code}, 'headers':  {r.headers}, 'Mensagem': 'Sucesso'\n")
+        else:
+            with open('log.txt', 'a') as file:
+                file.write(f"'status_code': {r.status_code}, 'headers':  {r.headers}, 'Mensagem': {r.json()}\n")
+        
+
     def _post_request(self, url: str, json: dict) -> dict:
             try:
                 
                 if self._has_session:
                     r = self._session.post(url, headers=self._head, json=json, timeout=(300.0, 300.0))
                 elif self._httpx:
-                    r = httpx.post(url, headers=self._headers, json=json, timeout=(300.0, 300.0))
+                    r = httpx.post(url, headers=self._head, json=json, timeout=(300.0, 300.0))
                 else:
                     r = post(url, headers=self._head, json=json, timeout=(300.0, 300.0))
                 
-                if r.status_code == 200:
-                    with open('log.txt', 'a') as file:
-                        file.write(f"'status_code': {r.status_code}, 'headers':  {r.headers}, 'Mensagem': 'Sucesso'\n")
-                else:
-                    with open('log.txt', 'a') as file:
-                        file.write(f"'status_code': {r.status_code}, 'headers':  {r.headers}, 'Mensagem': {r.json()}\n")
+                if self._log:
+                    self._gerar_log(r)
                 
                 if r.status_code == 200:
                     try:
