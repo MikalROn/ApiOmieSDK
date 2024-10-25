@@ -1,4 +1,4 @@
-import httpx
+import httpx, time
 
 from requests import post, Session
 from json import JSONDecodeError
@@ -96,12 +96,19 @@ class OmieBase:
             try:
                 
                 if self._has_session:
-                    r = self._session.post(url, headers=self._head, json=json)
+                    r = self._session.post(url, headers=self._head, json=json, timeout=(300.0, 300.0))
+                elif self._httpx:
+                    r = httpx.post(url, headers=self._headers, json=json, timeout=(300.0, 300.0))
                 else:
-                    if self._httpx:
-                        r = httpx.post(url, headers=self._headers, json=json)
-                        r = post(url, headers=self._head, json=json)
-                    
+                    r = post(url, headers=self._head, json=json, timeout=(300.0, 300.0))
+                
+                if r.status_code == 200:
+                    with open('log.txt', 'a') as file:
+                        file.write(f"'status_code': {r.status_code}, 'headers':  {r.headers}, 'Mensagem': 'Sucesso'\n")
+                else:
+                    with open('log.txt', 'a') as file:
+                        file.write(f"'status_code': {r.status_code}, 'headers':  {r.headers}, 'Mensagem': {r.json()}\n")
+                
                 if r.status_code == 200:
                     try:
                         return r.json()
@@ -110,6 +117,36 @@ class OmieBase:
                             'Error': 'JSON Decode Error',
                             'Message': f'{erro}'
                         }
+                
+                elif r.status_code == 429:
+                    time.sleep(60)
+                    return self._post_request(url, json)
+                
+                elif r.status_code == 425:
+                    startSlice = str(r.content).find('Tente novamente em')+19
+                    endSlice = str(r.content)[startSlice:].find(' ') + startSlice
+                    wait = str(r.content)[startSlice:endSlice]
+                    time.sleep(int(wait))
+                    return self._post_request(url, json)
+                
+                elif r.status_code == 500:
+                    if "Broken response from Application Server" in str(r.content):
+                        return self._post_request(url, json)
+                    elif "OmieAPI-Error': '6" in str(r.content):
+                        startSlice = str(r.content).find('Aguarde')+8
+                        endSlice = str(r.content)[startSlice:].find(' ') + startSlice
+                        wait = str(r.content)[startSlice:endSlice]
+                        time.sleep(int(wait))
+                        return self._post_request(url, json)
+                    elif "OmieAPI-Error': '8020" in str(r.content):
+                        time.sleep(60)
+                        return self._post_request(url, json)
+                    else:
+                        return {
+                            'Error': r.status_code,
+                            'headers':  r.headers,
+                            'Mensagem': r.json()
+                        }    
                 else:
                     return {
                         'Error': r.status_code,
@@ -117,10 +154,13 @@ class OmieBase:
                         'Mensagem': r.json()
                     }
             except Exception as erro:
-                return {
-                        'Error': 'Erro ao fazer requisição ',
-                        'Mensagem': f'{erro}'
-                    }
+                if "Connection aborted" in erro:
+                    return self._post_request(url, json)
+                else:
+                    return {
+                            'Error': 'Erro ao fazer requisição ',
+                            'Mensagem': f'{erro}'
+                        }
 
     def _chamar_api(self, endpoint: str = None, call: str = None, param: dict | tuple | list = None) -> dict:
         """
