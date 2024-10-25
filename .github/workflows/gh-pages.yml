@@ -23,7 +23,9 @@ jobs:
       - name: Install dependencies
         run: |
           pip install -r requirements.txt 
-          pip install sphinx sphinx-rtd-theme sphinx-autodoc-typehints
+          pip install sphinx sphinx-rtd-theme sphinx-autodoc-typehints myst-parser sphinx-design sphinx-mdinclude
+
+
 
       - name: Build Documentation
         run: |
