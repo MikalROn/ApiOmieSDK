@@ -77,8 +77,8 @@ class OmieBase:
         :param metodo:       Função a ser realizada disponivel na api omie EX:  'AssociarCodIntServico'
         :param endpoint:     Endpiot url da api EX:      'servicos/servico/'
         :param parametros:   Parametros usados na requisição, EX:  { "nCodServ": 0, "cCodIntServ": "" }
-        :return: Retorna dicionario com resultados da requisição ou erro, erros com Tipos Complexos são gerenciados pela
-        api.
+        :return:  Retorna dicionario com resultados da requisição ou erro, erros com Tipos Complexos são gerenciados pela
+         api.
         """
         return self._chamar_api(
             call=metodo,
@@ -180,7 +180,7 @@ class OmieBase:
         :keyword param:            Parametros para a chamada
                                    Ex:{"pagina": 1, "registros_por_pagina": 100, "apenas_importado_api": "N"}
 
-        :return:                 Resultado da Requisição ou erro
+        :return:                  Resultado da Requisição ou erro
         """
         url = f'{self._endpoint}{endpoint}'
         json = self._gerar_json(call, param)

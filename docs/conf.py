@@ -22,8 +22,11 @@ release = '0.4.6'
 extensions = [
     'sphinx.ext.autodoc',
     'sphinx_autodoc_typehints',
-    'myst_parser'
+
+    'sphinx_mdinclude'
 ]
+
+myst_enable_extensions = ["colon_fence"]
 
 templates_path = ['_templates']
 exclude_patterns = []
