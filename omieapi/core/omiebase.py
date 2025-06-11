@@ -164,14 +164,15 @@ class OmieBase:
                         'headers':  r.headers,
                         'Mensagem': r.json()
                     }
+            except ConnectionError:
+                return self._post_request(url, json)
+            except ConnectionAbortedError:
+                return self._post_request(url, json)
             except Exception as erro:
-                if "Connection aborted" in erro:
-                    return self._post_request(url, json)
-                else:
-                    return {
-                            'Error': 'Erro ao fazer requisição ',
-                            'Mensagem': f'{erro}'
-                        }
+                return {
+                        'Error': 'Erro ao fazer requisição ',
+                        'Mensagem': f'{erro}'
+                    }
 
     def _chamar_api(self, endpoint: str = None, call: str = None, param: dict | tuple | list = None) -> dict:
         """
