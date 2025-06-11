@@ -1,6 +1,6 @@
 from setuptools import setup, find_packages
 
-VERSION =  '0.4.61'
+VERSION =  '0.4.6.1'
 
 
 with open('README.md', 'rt', encoding='utf-8') as arq:
