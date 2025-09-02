@@ -6,7 +6,7 @@ from json import JSONDecodeError
 
 class OmieBase:
 
-    def __init__(self, omie_app_key: str, omie_app_secret: str, session: bool=False, use_httpx: bool=False, log: bool=False):
+    def __init__(self, omie_app_key: str, omie_app_secret: str, session: bool=False, use_httpx: bool=False, log: bool=False, limite_requisicoes: int = 5):
         """
         Inicializa a classe Omie com as credenciais e opções de configuração.
 
@@ -15,6 +15,7 @@ class OmieBase:
         :param session: bool, opcional    Indica se uma sessão persistente deve ser usada para as requisições (padrão: False).
         :param use_httpx: bool, opcional  Define se a biblioteca `httpx` deve ser usada em vez de `requests` para as requisições (padrão: False).
         :param log: bool, opcional        Gera log em um arquivo .txt
+        :param limite_requisicoes: int, opcional        limitaquantas vezes uma mesma requisição pode ser chamada
         """
         self._endpoint = 'https://app.omie.com.br/api/v1/'
         self._appkey = omie_app_key
@@ -23,7 +24,7 @@ class OmieBase:
         self._has_session = session
         self._httpx = use_httpx
         self._log = log
-        
+        self._limite_requisicoes = limite_requisicoes
 
         if session:
             if self._httpx:
@@ -108,6 +109,7 @@ class OmieBase:
         
 
     def _post_request(self, url: str, json: dict) -> dict:
+            tentativas: int = 0
             try:
                 
                 if self._has_session:
@@ -130,8 +132,15 @@ class OmieBase:
                         }
                 
                 elif r.status_code == 429:
+                    tentativas += 1
                     time.sleep(60)
-                    return self._post_request(url, json)
+                    if tentativas == self._limite_requisicoes:
+                        return self._post_request(url, json)
+                    else:
+                        raise Exception("Limite ecedido! erro 429. ")
+                        
+                        
+                    
                 
                 elif r.status_code == 425:
                     startSlice = str(r.content).find('Tente novamente em')+19
